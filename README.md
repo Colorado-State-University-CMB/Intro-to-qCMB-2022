@@ -12,7 +12,7 @@ Course material will be available here.
 ### Too much output (max.print)
 Many students last year had an RStudio with a default `max.print` of 10000... which led to documents being turned in that were hundreds of pages. It can be easily handled in the setup chunk.
 
-````
+````r
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 

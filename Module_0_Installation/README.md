@@ -14,3 +14,18 @@ Also, everyone is probably on a 64 bit machine, but Windows people should check.
 * Mac: 
   * [Find out which macOS your Mac is using](https://support.apple.com/en-us/HT201260)
   * Should be 64 bit (unless your Mac is pre-2007).
+
+## RStudio and Swirl
+
+Note where you downloaded from, and the version. 
+
+The [Swirl main page](https://swirlstats.com/) has information about Swirl.
+
+[Follow the installation guide](https://swirlstats.com/students.html)
+
+[Quicklink to download RStudio](https://www.rstudio.com/products/rstudio/download/#download).
+* Windows installer ends with *.exe*
+* Mac installer ends with *.dmg*
+
+
+

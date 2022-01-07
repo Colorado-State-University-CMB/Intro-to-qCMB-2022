@@ -9,7 +9,7 @@ Note **which version of Mac or Windows you have**. This will be useful when you 
 
 Also, everyone is probably on a 64 bit machine, but Windows people should check.
 
-* PC: 
+* Windows: 
   * [Which version of Windows operating system am I running?](https://support.microsoft.com/en-us/windows/which-version-of-windows-operating-system-am-i-running-628bec99-476a-2c13-5296-9dd081cdd808)
   * [How can I tell if my computer is running a 32-bit or a 64-bit version of Windows?](https://support.microsoft.com/en-us/windows/32-bit-and-64-bit-windows-frequently-asked-questions-c6ca9541-8dce-4d48-0415-94a3faa2e13d)
 * Mac: 

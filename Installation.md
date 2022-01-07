@@ -1,9 +1,9 @@
 
-## Installation notebook
+# Installation notebook
 
 Start a document. It can be a Word document. This will be your notebook for all the installation steps for the different requirements of the class.
 
-### Operating system version
+## Operating system version
 
 Note **which version of Mac or Windows you have**. This will be useful when you need to choose a certain program version for your system.
 

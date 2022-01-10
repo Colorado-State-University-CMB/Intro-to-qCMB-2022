@@ -2,8 +2,8 @@
 
 Course material will be available here.
 
+<details><summary>Suggestions for knitting RMarkdown documents</summary>
 
-## Suggestions for knitting RMarkdown documents
 
 ### TeX for knitting to PDF
 * MiKTeX on Windows
@@ -19,3 +19,4 @@ knitr::opts_chunk$set(echo = TRUE)
 options(max.print=100)
 ```
 ````
+</details>

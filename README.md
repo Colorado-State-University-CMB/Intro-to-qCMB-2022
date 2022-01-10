@@ -1,5 +1,7 @@
 # Introduction to Quantitative Cell and Molecular Biology, 2022 (CM580A3)
 
+![Bioinformatics Image](/dna-g4efa38871_1920.jpeg)
+
 Course material will be available here.
 
 <details><summary>Suggestions for knitting RMarkdown documents</summary>

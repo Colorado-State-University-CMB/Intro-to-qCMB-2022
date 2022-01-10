@@ -2,9 +2,11 @@
 
 ![Bioinformatics Image](/dna-g4efa38871_1920.jpeg)
 
-Course material will be available here.
+## Course material will be available here.
 
-<details><summary>Suggestions for knitting RMarkdown documents</summary>
+## For Instructors
+
+<details><summary>Knitting RMarkdown documents</summary>
 
 
 ### TeX for knitting to PDF

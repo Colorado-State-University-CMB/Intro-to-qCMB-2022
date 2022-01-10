@@ -4,6 +4,8 @@
 
 ## Course material will be available here.
 
+[Module 1 - R and RStudio](Module_1_RStudio/README.md)
+
 ## For Instructors
 
 <details><summary>Knitting RMarkdown documents</summary>

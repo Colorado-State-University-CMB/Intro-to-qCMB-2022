@@ -5,6 +5,7 @@
 ## Course material will be available here.
 
 [Module 1 - R and RStudio](Module_1_RStudio/README.md)
+[Module_2 - RMarkdown](Module_2_RMarkdown/README.md)
 
 ## For Instructors
 

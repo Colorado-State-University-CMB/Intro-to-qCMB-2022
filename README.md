@@ -2,7 +2,7 @@
 
 ![Bioinformatics Image](/images/dna-g4efa38871_1920.jpeg)
 
-## Course material will be available here.
+## Course material is available here.
 
 1. [Module 1 - R and RStudio](Module_1_RStudio/README.md)
 1. [Module 2 - RMarkdown](Module_2_RMarkdown/README.md)

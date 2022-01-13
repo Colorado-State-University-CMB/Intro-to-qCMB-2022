@@ -19,8 +19,6 @@ Also, everyone is probably on a 64 bit machine, but Windows people should check.
 
 Note where you downloaded from, and the version. 
 
-The [Swirl main page](https://swirlstats.com/) has information about Swirl.
-
 [Follow the installation guide](https://swirlstats.com/students.html)
 
 [Quicklink to download RStudio](https://www.rstudio.com/products/rstudio/download/#download).

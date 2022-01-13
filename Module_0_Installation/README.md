@@ -19,11 +19,12 @@ Also, everyone is probably on a 64 bit machine, but Windows people should check.
 
 Note where you downloaded from, and the version. 
 
-[Follow the installation guide](https://swirlstats.com/students.html)
+[Download R](https://cran.rstudio.com/)
 
 [Quicklink to download RStudio](https://www.rstudio.com/products/rstudio/download/#download).
 * Windows installer ends with *.exe*
 * Mac installer ends with *.dmg*
 
 
+These steps are based on [the swirl installation guide](https://swirlstats.com/students.html)
 

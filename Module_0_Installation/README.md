@@ -10,7 +10,7 @@ First, record information about your OS, followed by the steps you take to insta
 
 You can read further to see how I troubleshoot other issues that we won't deal with right away.
 
-## 1 Accounts 
+## 1. Accounts 
 
 1. At the top of your notebook, state your computer username and whether or not you have administrative permissions, if you don't know- leave this blank until step 3.
 
@@ -30,7 +30,7 @@ Just write "admin OK" if you can install. Again, keep write down your password s
 
 Get an account at github.com. It's free. Remember your username and password. Put your github username in the notebook.
 
-## 2 Your computer - Operating system version
+## 2. Your computer - Operating system version
 
 Note **which version of Mac or Windows you have**. This will be useful when you need to choose a certain program version for your system.
 
@@ -43,7 +43,7 @@ Also, everyone is probably on a 64 bit machine, but Windows people should check.
   * [Find out which macOS your Mac is using](https://support.apple.com/en-us/HT201260)
   * Should be 64 bit (unless your Mac is pre-2007).
 
-## 3 R, RStudio and Swirl
+## 3. R, RStudio and Swirl
 
 Note where you downloaded from, and the version. 
 

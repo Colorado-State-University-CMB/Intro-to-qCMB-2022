@@ -36,6 +36,8 @@ Go to file-> new -> RMarkdown. Prompted for package install. YES.
 Knit to PDF.
 Choose a place for your file, it's just a test. So test_knit.pdf.
 
+
+ERROR MESSAGE:
 No LaTeX installation detected (LaTeX is required to create PDF output). You should install a LaTeX distribution for your platform: https://www.latex-project.org/get/
 
   If you are not sure, you may install TinyTeX in R: tinytex::install_tinytex()

@@ -4,7 +4,17 @@ Start a document. It can be a Word document. This will be your notebook for all 
 
 First, record information about your OS, followed by the steps you take to install software. This notebook is critical if complications arise, but it's also handy to just have around.
 
+[Example Notebook](/Module_0_Installation/R_install_notes.txt) - This is my notebook for installing R and RStudio fresh on an MacOS Monterey laptop. I am doing extra steps than what is described below, but you can see how I label each step, and include error messages if they come up, mistakes I made, and alternate approaches.
+
 ## 1 Accounts 
+
+Start your notebook with your computer username and whether or not you have administrative permissions.
+
+Then get a github account and log your github username. 
+
+See the following sections for details.
+
+Keep your passwords in a separate file.
 
 ### Administrative access on your computer
 

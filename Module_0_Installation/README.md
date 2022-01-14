@@ -12,17 +12,19 @@ You can read further to see how I troubleshoot other issues that we won't deal w
 
 ## 1 Accounts 
 
-Start your notebook with your computer username and whether or not you have administrative permissions.
+1. At the top of your notebook, state your computer username and whether or not you have administrative permissions, if you don't know- leave this blank until step 3.
 
-Then get a github account and log your github username. 
+2. Then get a github account and log your github username. 
 
-See the following sections for details.
+_See the following sections for details._
 
-Keep your passwords in a separate file.
+**Keep your passwords in a separate file.** in case others need to see this notebook.
 
 ### Administrative access on your computer
 
-Make sure you know the password to your computer, and have administrative access to install software to it. Just write "admin OK" if so. If you need to write down the password, keep it somewhere safe (but not here because I'll need to see the notebook).
+Make sure you know the password to your computer, and have administrative access to install software to it. If you don't know this, you'll find out when you try to install anything (step 3). **If you can't install anything, you need to figure out your admin password.** You can proceed until step 3 while you figure it out.
+
+Just write "admin OK" if you can install. Again, keep write down your password somewhere safe (but not here).
 
 ### A Github Account
 

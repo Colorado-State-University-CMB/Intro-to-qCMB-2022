@@ -1,3 +1,8 @@
+Computer username: david. Admin access - yes.
+Github username: meekrob.
+
+R INSTALLATION.
+From https://cran.r-project.org/
 R-4.1.2.pkg (notarized and signed)
 SHA1-hash: 61d3909bc070f7fb86c5a2bd67209fda9408faaa
 (ca. 87MB)
@@ -148,7 +153,7 @@ instead of
 	-L/usr/local/gfortran/lib/gcc/x86_64-apple-darwin18/8.2.0
 
 Looks like I should have gone here: https://cran.r-project.org/bin/macosx/tools/
-Nope. That downgraded to x86_64-apple-darwin15 and deleted 21. Getting the Monterey DMG out of trash and reinstalling.
+NOPE. That downgraded to x86_64-apple-darwin15 and deleted 21. Getting the Monterey DMG out of trash and reinstalling.
 That replaced it with 21.
 
 Looking at https://www.r-bloggers.com/2021/03/gfortran-support-for-r-on-macos-2/

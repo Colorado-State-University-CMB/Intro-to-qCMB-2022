@@ -1,0 +1,166 @@
+R-4.1.2.pkg (notarized and signed)
+SHA1-hash: 61d3909bc070f7fb86c5a2bd67209fda9408faaa
+(ca. 87MB)
+VERIFY
+david@Davids-MacBook-Pro Downloads % openssl sha1 R-4.1.2.pkg 
+SHA1(R-4.1.2.pkg)= 61d3909bc070f7fb86c5a2bd67209fda9408faaa
+
+Open Applications/R.app
+Preferences -> Startup
+Default CRAN mirror -> Select -> USA / Kansas
+
+
+RSTUDIO
+Download RStudio Desktop: https://www.rstudio.com/products/rstudio/download/#download
+RStudio-2021.09.1-372.dmg
+david@Davids-MacBook-Pro Downloads % openssl sha256 RStudio-2021.09.1-372.dmg 
+SHA256(RStudio-2021.09.1-372.dmg)= daec6a4034ca93d562e4c4103eb7f764a1005fe4d774ec2ad13e547a51d8d942
+Website only shows the first 8 of the hash, but you can click it to get the full thing (but not copy).
+Open DMG, Drag to Applications.
+"git requires developer tools, install them now?"
+License Agreement.
+Installation took about 5 minutes.
+
+I doubt this was here before:
+
+david@Davids-MacBook-Pro Downloads % which gcc
+/usr/bin/gcc
+
+Go to file-> new -> RMarkdown. Prompted for package install. YES.
+
+Knit to PDF.
+Choose a place for your file, it's just a test. So test_knit.pdf.
+
+No LaTeX installation detected (LaTeX is required to create PDF output). You should install a LaTeX distribution for your platform: https://www.latex-project.org/get/
+
+  If you are not sure, you may install TinyTeX in R: tinytex::install_tinytex()
+
+  Otherwise consider MiKTeX on Windows - http://miktex.org
+
+  MacTeX on macOS - https://tug.org/mactex/
+  (NOTE: Download with Safari rather than Chrome _strongly_ recommended)
+
+  Linux: Use system package manager
+
+MAC: https://tug.org/mactex/
+
+david@Davids-MacBook-Pro Downloads % openssl sha256 MacTeX.pkg         
+SHA256(MacTeX.pkg)= e541257d70f911550341853709fc45d9fa9fcd4c93058382000ebb19b284833b
+      From website: e541257d70f911550341853709fc45d9fa9fcd4c93058382000ebb19b284833b
+
+Double click the .pkg. IT'S ~7GB ????????!!!!!!
+This is a long install.
+Should install a commandline tool called pdflatex? NO.
+
+Restart RSTUDIO. Then try the knit again. Works.
+
+BioConductor:
+https://cran.r-project.org/web/packages/BiocManager/vignettes/BiocManager.html
+
+chooseCRANmirror() 77: Kansas.
+
+install.packages("BiocManager")
+
+BiocManager::install(c("GenomicRanges", "Organism.dplyr"))
+Installs a long list of dependencies. Type 'y'-return.
+UPDATE Matrix? 
+Update all/some/none? [a/s/n]: 
+a
+
+
+> BiocManager::install()
+'getOption("repos")' replaces Bioconductor standard repositories, see
+'?repositories' for details
+
+replacement repositories:
+    CRAN: https://rweb.crmda.ku.edu/cran
+
+Bioconductor version 3.14 (BiocManager 1.30.16), R 4.1.2 (2021-11-01)
+> BiocManager::version()
+[1] ‘3.14’
+
+
+The help document seem to be unformatted:
+
+BiocManager::\link{repositories}() returns the Bioconductor and CRAN repositories used by install().
+\link{install.packages}() installs the packages themselves (used by BiocManager::install internally).
+\link{update.packages}() updates all installed packages (used by BiocManager::install internally).
+\link{chooseBioCmirror}() allows choice of a mirror from all public Bioconductor mirrors.
+\link{chooseCRANmirror}() allows choice of a mirror from all public CRAN mirrors.
+
+Looks like it's just BiocManager.
+
+Tried to update packages that need compilation...
+	ld: warning: directory not found for option '-L/usr/local/gfortran/lib/gcc/x86_64-apple-darwin18/8.2.0'
+	ld: warning: directory not found for option '-L/usr/local/gfortran/lib'
+	ld: library not found for -lgfortran
+	clang: error: linker command failed with exit code 1 (use -v to see invocation)
+	make: *** [sctransform.so] Error 1
+	ERROR: compilation failed for package ‘sctransform’
+	* removing ‘/Library/Frameworks/R.framework/Versions/4.1/Resources/library/sctransform’
+	* restoring previous ‘/Library/Frameworks/R.framework/Versions/4.1/Resources/library/sctransform’
+
+This is for sctransform.
+Found https://mac.r-project.org/tools/
+There is a build for Monterey. https://github.com/fxcoudert/gfortran-for-macOS/releases 
+After installing, it created the gfortran path above but for a later version. Let's see if it finds it in the R install.
+/usr/local/gfortran/lib/gcc/x86_64-apple-darwin21/11.2.0
+
+Success with some warnings:
+	* installing *source* package ‘sctransform’ ...
+	** package ‘sctransform’ successfully unpacked and MD5 sums checked
+	** using staged installation
+	** libs
+	clang++ -mmacosx-version-min=10.13 -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I'/Library/Frameworks/R.framework/Versions/4.1/Resources/library/RcppArmadillo/include' -I'/Library/Frameworks/R.framework/Versions/4.1/Resources/library/Rcpp/include' -I/usr/local/include   -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
+	clang++ -mmacosx-version-min=10.13 -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I'/Library/Frameworks/R.framework/Versions/4.1/Resources/library/RcppArmadillo/include' -I'/Library/Frameworks/R.framework/Versions/4.1/Resources/library/Rcpp/include' -I/usr/local/include   -fPIC  -Wall -g -O2  -c utils.cpp -o utils.o
+	clang++ -mmacosx-version-min=10.13 -std=gnu++11 -dynamiclib -Wl,-headerpad_max_install_names -undefined dynamic_lookup -single_module -multiply_defined suppress -L/Library/Frameworks/R.framework/Resources/lib -L/usr/local/lib -o sctransform.so RcppExports.o utils.o -L/Library/Frameworks/R.framework/Resources/lib -lRlapack -L/Library/Frameworks/R.framework/Resources/lib -lRblas -L/usr/local/gfortran/lib/gcc/x86_64-apple-darwin18/8.2.0 -L/usr/local/gfortran/lib -lgfortran -lquadmath -lm -F/Library/Frameworks/R.framework/.. -framework R -Wl,-framework -Wl,CoreFoundation
+	ld: warning: directory not found for option '-L/usr/local/gfortran/lib/gcc/x86_64-apple-darwin18/8.2.0'
+	ld: warning: dylib (/usr/local/gfortran/lib/libquadmath.dylib) was built for newer macOS version (12.0) than being linked (10.13)
+	ld: warning: dylib (/usr/local/gfortran/lib/libgfortran.dylib) was built for newer macOS version (12.0) than being linked (10.13)
+	installing to /Library/Frameworks/R.framework/Versions/4.1/Resources/library/00LOCK-sctransform/00new/sctransform/libs
+	** R
+	** data
+	*** moving datasets to lazyload DB
+	** inst
+	** byte-compile and prepare package for lazy loading
+	** help
+	*** installing help indices
+	** building package indices
+	** testing if installed package can be loaded from temporary location
+	** checking absolute paths in shared objects and dynamic libraries
+	** testing if installed package can be loaded from final location
+	** testing if installed package keeps a record of temporary installation path
+	* DONE (sctransform)
+So it found /usr/local/gfortran/lib/libgfortran.dylib at least, but no, did not detect the new version.
+
+Similar result for nlme.
+
+The gfortran executable was part of what I just installed, but it's not giving the 8.2.0 dep:
+	david@Cumbernauld Downloads % gfortran --version
+	GNU Fortran (GCC) 11.2.0
+	Copyright (C) 2021 Free Software Foundation, Inc.
+	This is free software; see the source for copying conditions.  There is NO
+	warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+Can we set Makevars, or something else, to use 
+	-L/usr/local/gfortran/lib/gcc/x86_64-apple-darwin21/11.2.0
+instead of
+	-L/usr/local/gfortran/lib/gcc/x86_64-apple-darwin18/8.2.0
+
+Looks like I should have gone here: https://cran.r-project.org/bin/macosx/tools/
+Nope. That downgraded to x86_64-apple-darwin15 and deleted 21. Getting the Monterey DMG out of trash and reinstalling.
+That replaced it with 21.
+
+Looking at https://www.r-bloggers.com/2021/03/gfortran-support-for-r-on-macos-2/
+Make ~/.R/Makevars with the following:
+	FC      = /usr/local/bin/gfortran
+		F77     = /usr/local/bin/gfortran
+		FLIBS   = -L/usr/local/gfortran/lib/gcc/x86_64-apple-darwin21/11.2.0
+!!!!!!!!!!!!!!!!!!WORKED!!!!!!!!!!!!!!!
+	Make RcppExports.o:
+	clang++ -mmacosx-version-min=10.13 -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I'/Library/Frameworks/R.framework/Versions/4.1/Resources/library/RcppArmadillo/include' -I'/Library/Frameworks/R.framework/Versions/4.1/Resources/library/Rcpp/include' -I/usr/local/include   -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
+	Make utils.o:
+	clang++ -mmacosx-version-min=10.13 -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I'/Library/Frameworks/R.framework/Versions/4.1/Resources/library/RcppArmadillo/include' -I'/Library/Frameworks/R.framework/Versions/4.1/Resources/library/Rcpp/include' -I/usr/local/include   -fPIC  -Wall -g -O2  -c utils.cpp -o utils.o
+	Make sctransform.so (this requires linking to libgfortran):
+	clang++ -mmacosx-version-min=10.13 -std=gnu++11 -dynamiclib -Wl,-headerpad_max_install_names -undefined dynamic_lookup -single_module -multiply_defined suppress -L/Library/Frameworks/R.framework/Resources/lib -L/usr/local/lib -o sctransform.so RcppExports.o utils.o -L/Library/Frameworks/R.framework/Resources/lib -lRlapack -L/Library/Frameworks/R.framework/Resources/lib -lRblas -L/usr/local/gfortran/lib/gcc/x86_64-apple-darwin21/11.2.0 -F/Library/Frameworks/R.framework/.. -framework R -Wl,-framework -Wl,CoreFoundation
+	installing to /Library/Frameworks/R.framework/Versions/4.1/Resources/library/00LOCK-sctransform/00new/sctransform/libs

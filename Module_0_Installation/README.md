@@ -4,7 +4,17 @@ Start a document. It can be a Word document. This will be your notebook for all 
 
 First, record information about your OS, followed by the steps you take to install software. This notebook is critical if complications arise, but it's also handy to just have around.
 
-## 1. Operating system version
+## 1 Accounts 
+
+### Administrative access on your computer
+
+Make sure you know the password to your computer, and have administrative access to install software to it. Just write "admin OK" if so. If you need to write down the password, keep it somewhere safe (but not here because I'll need to see the notebook).
+
+### A Github Account
+
+Get an account at github.com. It's free. Remember your username and password. Put your github username in the notebook.
+
+## 2 Your computer - Operating system version
 
 Note **which version of Mac or Windows you have**. This will be useful when you need to choose a certain program version for your system.
 
@@ -17,7 +27,7 @@ Also, everyone is probably on a 64 bit machine, but Windows people should check.
   * [Find out which macOS your Mac is using](https://support.apple.com/en-us/HT201260)
   * Should be 64 bit (unless your Mac is pre-2007).
 
-## 2. R, RStudio and Swirl
+## 3 R, RStudio and Swirl
 
 Note where you downloaded from, and the version. 
 
@@ -47,7 +57,7 @@ library("swirl")
 Again, **record any messages**, or that none were given.
 (These steps are based on [the swirl installation guide](https://swirlstats.com/students.html))
 
-## 3. Tex software for creating PDF documents.
+## 4. Tex software for creating PDF documents.
 
 ### Mac
 
@@ -76,7 +86,7 @@ It will open a file for editing, but j_ust click on the ball of yarn with the wo
 
 If it didn't work, try restarting RStudio and repeat the "Create the RMarkdown to PDF" steps. Record in your notebook if this is necessary.
 
-## 4. Install more R packages.
+## 5. Install more R packages.
 
 Now you will install R libaries that we'll use in class. There can be a lot of messages here, so they don't need to go into your notebook. **the thing to record is anything that says "ERROR".** 
 
@@ -111,5 +121,6 @@ library(biomaRt)
 
 
 
-## 5. Compilers for R source packages
+## 6. Compilers for R source packages
 
+Not now. We'll do #6 as needed.

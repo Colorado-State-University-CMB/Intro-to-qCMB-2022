@@ -6,7 +6,7 @@
 
 It shouldn't take more than 30 minutes to complete (if things go smoothly).
 
-[Installation instructions](Module_0_Installation/README.md)
+Keep a notebook of your progress in following the [Installation Instructions](Module_0_Installation/README.md).
 
 ## Course material is added here.
 

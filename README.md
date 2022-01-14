@@ -4,7 +4,7 @@
 
 ## Start here to get necessary software
 
-It shouldn't take more than 30 minutes to complete (if things go smoothely)
+It shouldn't take more than 30 minutes to complete (if things go smoothly).
 
 [Installation instructions](Module_0_Installation/README.md)
 
@@ -15,20 +15,3 @@ It shouldn't take more than 30 minutes to complete (if things go smoothely)
 1.
 1.
 1.
-
-
-## For Instructors
-
-<details><summary>Knitting RMarkdown documents</summary>
-
-### Too much output (max.print)
-Many students last year had an RStudio with a default `max.print` of 10000... which led to documents being turned in that were hundreds of pages. It can be easily handled in the setup chunk.
-
-````r
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-
-options(max.print=100)
-```
-````
-</details>

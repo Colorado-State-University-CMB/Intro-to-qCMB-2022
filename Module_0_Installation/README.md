@@ -53,12 +53,16 @@ Again, **record any messages**, or that none were given.
 
 Download and install MacText from https://tug.org/mactex/
 
+This was very large when I downloaded it: 7GB!
+
 
 ### Windows
 
 Download and install MiKTeX from http://miktex.org
 
-### Back to RStudio
+### Create the RMarkdown to PDF
+
+**Go back to RStudio**
 
 Record in your notes where you downloaded the Tex from, and any errors or whether it was successful.
 
@@ -70,5 +74,42 @@ Now, create a new Rmarkdown file. Leave it "Untitled", but **change the default 
 
 It will open a file for editing, but j_ust click on the ball of yarn with the word Knit next to it_. Save it as knit_test. This should open a new window with the document in PDF format. **Record whether you see this document, or any errors that might have popped up in the console.**
 
-## 4. Compilers for R source packages
+If it didn't work, try restarting RStudio and repeat the "Create the RMarkdown to PDF" steps. Record in your notebook if this is necessary.
+
+## 4. Install more R packages.
+
+Now you will install R libaries that we'll use in class. There can be a lot of messages here, so they don't need to go into your notebook. **the thing to record is anything that says "ERROR".** 
+
+### Common messages
+ * Warnings. "Warning" is OK and fairly common.
+ * `The package blahblah is not available for your version of R.` This doesn't mean what it implies- that there are other versions that _do_ have that package. It most likely just means you mistyped the package name. eyeroll.
+ * Out of date packages. `Do you want to update packages that have a newer version? All / Some / None?` **Choose None.**
+ * `Do you want to compile from source packages that have a newer version.` **No.**
+ * `Choose a local mirror` for download. If you get this, it might list ~100 locations to download from. Look for the one in Kansas (it's slightly closer than Iowa). 
+
+
+### Find your console again, and do the following:
+
+Record in your notes each packages name and whether it was sucessful, but there can be verbose output to sift through. Just be on the look out for ERRORS (tend to be red).
+
+```r
+install.packages("tidyverse")
+library(tidyverse)
+```
+
+```r
+install.packages("BiocManager")
+library(BiocManager)
+```
+
+To install from Bioconductor, we use a slightly different install command.
+
+```r
+BiocManager::install("biomaRt")
+library(biomaRt)
+```
+
+
+
+## 5. Compilers for R source packages
 

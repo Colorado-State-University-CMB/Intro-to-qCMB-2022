@@ -4,32 +4,15 @@ Github username: meekrob.
 R INSTALLATION.
 From https://cran.r-project.org/
 R-4.1.2.pkg (notarized and signed)
-SHA1-hash: 61d3909bc070f7fb86c5a2bd67209fda9408faaa
-(ca. 87MB)
-VERIFY
-david@Davids-MacBook-Pro Downloads % openssl sha1 R-4.1.2.pkg 
-SHA1(R-4.1.2.pkg)= 61d3909bc070f7fb86c5a2bd67209fda9408faaa
-
-Open Applications/R.app
-Preferences -> Startup
-Default CRAN mirror -> Select -> USA / Kansas
-
 
 RSTUDIO
 Download RStudio Desktop: https://www.rstudio.com/products/rstudio/download/#download
 RStudio-2021.09.1-372.dmg
-david@Davids-MacBook-Pro Downloads % openssl sha256 RStudio-2021.09.1-372.dmg 
-SHA256(RStudio-2021.09.1-372.dmg)= daec6a4034ca93d562e4c4103eb7f764a1005fe4d774ec2ad13e547a51d8d942
-Website only shows the first 8 of the hash, but you can click it to get the full thing (but not copy).
+
 Open DMG, Drag to Applications.
 "git requires developer tools, install them now?"
 License Agreement.
 Installation took about 5 minutes.
-
-I doubt this was here before:
-
-david@Davids-MacBook-Pro Downloads % which gcc
-/usr/bin/gcc
 
 Go to file-> new -> RMarkdown. Prompted for package install. YES.
 
@@ -51,20 +34,12 @@ No LaTeX installation detected (LaTeX is required to create PDF output). You sho
 
 MAC: https://tug.org/mactex/
 
-david@Davids-MacBook-Pro Downloads % openssl sha256 MacTeX.pkg         
-SHA256(MacTeX.pkg)= e541257d70f911550341853709fc45d9fa9fcd4c93058382000ebb19b284833b
-      From website: e541257d70f911550341853709fc45d9fa9fcd4c93058382000ebb19b284833b
-
-Double click the .pkg. IT'S ~7GB ????????!!!!!!
-This is a long install.
-Should install a commandline tool called pdflatex? NO.
 
 Restart RSTUDIO. Then try the knit again. Works.
 
 BioConductor:
 https://cran.r-project.org/web/packages/BiocManager/vignettes/BiocManager.html
 
-chooseCRANmirror() 77: Kansas.
 
 install.packages("BiocManager")
 
@@ -72,15 +47,10 @@ BiocManager::install(c("GenomicRanges", "Organism.dplyr"))
 Installs a long list of dependencies. Type 'y'-return.
 UPDATE Matrix? 
 Update all/some/none? [a/s/n]: 
-a
+n
 
 
 > BiocManager::install()
-'getOption("repos")' replaces Bioconductor standard repositories, see
-'?repositories' for details
-
-replacement repositories:
-    CRAN: https://rweb.crmda.ku.edu/cran
 
 Bioconductor version 3.14 (BiocManager 1.30.16), R 4.1.2 (2021-11-01)
 > BiocManager::version()

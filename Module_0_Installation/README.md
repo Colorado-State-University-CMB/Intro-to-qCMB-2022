@@ -4,7 +4,11 @@ Start a document. It can be a Word document. This will be your notebook for all 
 
 First, record information about your OS, followed by the steps you take to install software. This notebook is critical if complications arise, but it's also handy to just have around.
 
-[Example Notebook](/Module_0_Installation/R_install_notes.txt) - This is my notebook for installing R and RStudio fresh on an MacOS Monterey laptop. I am doing extra steps than what is described below, but you can see how I label each step, and include error messages if they come up, mistakes I made, and alternate approaches.
+### Example Notebook
+
+[This is my notebook](/Module_0_Installation/R_install_notes.txt) for installing R and RStudio fresh on an MacOS Monterey laptop. It follows the steps below to about line 60.
+
+You can read further to see how I troubleshoot other issues that we won't deal with right away.
 
 ## 1 Accounts 
 

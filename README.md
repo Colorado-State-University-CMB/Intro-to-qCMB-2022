@@ -8,10 +8,7 @@ It shouldn't take more than 30 minutes to complete (if things go smoothly).
 
 [Installation instructions](Module_0_Installation/README.md)
 
-## Course material is available here.
+## Course material is added here.
 
 1. [Module 1 - R and RStudio](Module_1_RStudio/README.md)
 1. [Module 2 - RMarkdown](Module_2_RMarkdown/README.md)
-1.
-1.
-1.

@@ -2,7 +2,9 @@
 
 Start a document. It can be a Word document. This will be your notebook for all the installation steps for the different requirements of the class.
 
-## Operating system version
+First, record information about your OS, followed by the steps you take to install software. This notebook is critical if complications arise, but it's also handy to just have around.
+
+## 1. Operating system version
 
 Note **which version of Mac or Windows you have**. This will be useful when you need to choose a certain program version for your system.
 
@@ -15,7 +17,7 @@ Also, everyone is probably on a 64 bit machine, but Windows people should check.
   * [Find out which macOS your Mac is using](https://support.apple.com/en-us/HT201260)
   * Should be 64 bit (unless your Mac is pre-2007).
 
-## RStudio and Swirl
+## 2. RStudio and Swirl
 
 Note where you downloaded from, and the version. 
 
@@ -26,5 +28,5 @@ Note where you downloaded from, and the version.
 * Mac installer ends with *.dmg*
 
 
-These steps are based on [the swirl installation guide](https://swirlstats.com/students.html)
+(These steps are based on [the swirl installation guide](https://swirlstats.com/students.html))
 

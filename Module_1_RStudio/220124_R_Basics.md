@@ -1,7 +1,9 @@
 
+<img src="webContent/Rprogramming.jpg" width="600">
+
 # R Basics
 
-<img src="webContent/Rprogramming.jpg" width="500">
+
 
 Let's get started!
 

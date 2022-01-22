@@ -1,6 +1,8 @@
 
 # R Basics
 
+<img src="webContent/Rprogramming.jpg" width="100">
+
 Let's get started!
 
 # January 24, 2022

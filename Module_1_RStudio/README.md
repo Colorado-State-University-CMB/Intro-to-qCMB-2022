@@ -1,4 +1,6 @@
-![RLogo](webContent/1200px-R_logo.svg.png | width=200)
+
+
+<img src="webContent/1200px-R_logo.svg.png" width="100" height="100">
 
 # R and RStudio
 

@@ -74,5 +74,7 @@ Why use R in particular? What are its benefits for the life sciences?
 
 -----
 
+<img src="" width="">
+
 # What is RStudio?
 

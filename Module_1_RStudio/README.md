@@ -1,4 +1,4 @@
-![RLogo](/webContent/1200px-R_logo.svg.png)
+![RLogo](webContent/1200px-R_logo.svg.png)
 
 # R and RStudio
 

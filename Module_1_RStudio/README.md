@@ -4,9 +4,9 @@
 
 # R and RStudio
 
-Instructor: Erin Osborne Nishimura, PhD
+**Instructor:** Erin Osborne Nishimura, PhD
 
-Dates: Monday January 24, 2022 & Wednesday January 26, 2022
+_Dates: Monday January 24, 2022 & Wednesday January 26, 2022_
 
 __Welcome to the first module of CM580A3 - Introduction to Quantitative Cell and Molecular Biology!__
 

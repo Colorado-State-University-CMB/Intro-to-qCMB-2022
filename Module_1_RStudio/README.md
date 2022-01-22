@@ -1,3 +1,5 @@
+![RLogo](/webContent/1200px-R_logo.svg.png)
+
 # R and RStudio
 
 Instructor: Erin Osborne Nishimura, PhD

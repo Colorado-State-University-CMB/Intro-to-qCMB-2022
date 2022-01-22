@@ -29,7 +29,7 @@ In this first module, we will explore the basics of R. What is R? R is a program
   * My background & my journey. How did I get here?
   * Your background & your journey. Where will you go?
 
-<img src="webContent/bigstock-background-concept-wordcloud-i-91463843.jpg" width="300" >
+<img src="webContent/bigstock-background-concept-wordcloud-i-91463843.jpg" width="400" align="middle">
 
 ## Who is a programmer? Who is a coder? Who is a computational biologist? Who is a bioinformatician? Who is a "geek"? What do these terms mean?
 

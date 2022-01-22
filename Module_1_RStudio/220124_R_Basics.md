@@ -42,6 +42,9 @@ January 24, 2022
 
 ## How did R come to be?
 
+
+<img src="webContent/Founders.jpeg" width="600">
+
   * 1976 - Bell Labs develops S, an open-source statistical programming language. The team was led by John Chambers.
   * 1991 - Ross Ihaka and Robert Gentleman at the University of Aukland in New Zealand embarks on a research venture to adapt S into R. 
     * Motivated to create a better user experience for academics

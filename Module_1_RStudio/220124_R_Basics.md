@@ -48,7 +48,7 @@ January 24, 2022
   * 1976 - Bell Labs develops S, an open-source statistical programming language. The team was led by John Chambers.
   * 1991 - Ross Ihaka and Robert Gentleman at the University of Aukland in New Zealand embarks on a research venture to adapt S into R. 
     * Motivated to create a better user experience for academics
-  * 1995 - first beta official released
+  * 1995 - first official beta release
   * 1997 - CRAN (Comprehensive R Archive Network) distributes R packages
   * 1997 - R Core Team, a governing body, is founded
   * 2000 - R 1.0.0 is released 

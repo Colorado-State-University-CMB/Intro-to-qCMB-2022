@@ -1,5 +1,5 @@
 
-<img src="webContent/Rprogramming.jpg" width="600">
+<img src="" width="600">
 
 # R Basics
 

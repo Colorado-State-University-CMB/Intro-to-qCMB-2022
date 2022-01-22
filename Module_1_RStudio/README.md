@@ -33,4 +33,8 @@ In this first module, we will explore the basics of R. What is R? R is a program
 
 ## Who is a programmer? Who is a coder? Who is a computational biologist? Who is a bioinformatician? Who is a "geek"? What do these terms mean?
 
+  * How have your past experiences in mathematics, coding, or quantitation shaped your notions of it? 
+  * How have your past experiences influenced whether you think you are **good at** it?
+  * How have your past experiences influenced whether you think you **enjoy** it?
+  * What about the stories we absorb and hear? How do these influence whether we feel like this is "our thing" or not?
 

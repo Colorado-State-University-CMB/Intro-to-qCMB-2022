@@ -1,5 +1,5 @@
 
-<img src="" width="600">
+<img src="webContent/RBanner1.jpeg" width="600">
 
 # R Basics
 

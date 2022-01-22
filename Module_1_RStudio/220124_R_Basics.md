@@ -3,11 +3,9 @@
 
 # R Basics
 
-
-
 Let's get started!
 
-# January 24, 2022
+January 24, 2022
 
 ## Lessons for today
 

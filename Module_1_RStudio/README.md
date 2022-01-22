@@ -24,6 +24,11 @@ In this first module, we will explore the basics of R. What is R? R is a program
   * Students will learn to extend functionality of R by loading **packages**
   * Students will gain experience in basic **plotting**
 
+## Introductions
+
+  * My background & my journey. How did I get here?
+  * Your background & your journey. Where will you go?
+
 ## Who is a programmer? Who is a coder? Who is a computational biologist? Who is a bioinformatician? What do these terms mean?
 
 

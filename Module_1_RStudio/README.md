@@ -15,14 +15,14 @@ In this first module, we will explore the basics of R. What is R? R is a program
 
 ## Learning objectives for this module
 
-  * Students and instructors are invited to start fresh with their own pre-conceived notions of programming, computation, and quantitation
-  * Students will learn how and why R is useful in biological research
-  * Students will learn how to interface with R and RStudio
-  * Students will become familiar with a few basic R objects
-  * Students will execute a few basic R functions
-  * Students will learn to import and export data
-  * Students will learn to extend functionality of R by loading packages
-  * Students will gain experience in basic plotting
+  * Students and instructors are invited to **start fresh** with their own pre-conceived notions of programming, computation, and quantitation
+  * Students will learn how and why R is **useful in biological research**
+  * Students will learn how to **interface** with R and RStudio
+  * Students will become familiar with a few basic **R objects**
+  * Students will execute a few basic **R functions**
+  * Students will learn to **import and export** data
+  * Students will learn to extend functionality of R by loading **packages**
+  * Students will gain experience in basic **plotting**
 
 ## Who is a programmer? Who is a coder? Who is a computational biologist? Who is a bioinformatician? What do these terms mean?
 

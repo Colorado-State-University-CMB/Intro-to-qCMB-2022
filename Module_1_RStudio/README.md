@@ -1,6 +1,6 @@
 
 
-<img src="webContent/1200px-R_logo.svg.png" width="100" height="100">
+<img src="webContent/1200px-R_logo.svg.png" width="100" ">
 
 # R and RStudio
 

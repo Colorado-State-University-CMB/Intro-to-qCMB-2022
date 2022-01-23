@@ -175,7 +175,7 @@ Please cite R and RStudio in your published works. Please cite all packages you 
 
 :heavy_exclamation_mark: **EXERCISE: More practice with R expressions**
 
-:arrow_right: Try the following expressions on your own. What happens?
+  * :arrow_right: Try the following expressions on your own. What happens?
 
 ```r
 > print("Hello World")

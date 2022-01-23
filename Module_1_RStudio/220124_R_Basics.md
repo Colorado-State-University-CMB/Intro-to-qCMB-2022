@@ -166,5 +166,19 @@ for data analysis. See also ‘citation("pkgname")’ for citing R packages.
 
 :warning: **BEST PRACTICES: Citing R**
 
-Please cite R and RStudio in your published works. Please cite all packages you use in published works. This helps the community. 
+Please cite R and RStudio in your published works. Please cite all packages you use in published works. When reviewing manuscripts for publication, please check for these citation. This helps the community. 
+
+
+:heavy_exclamation_mark: **EXERCISE: More practice with R expressions**
+
+:arrow_right: Try the following expressions on your own. What happens?
+
+```r
+> date()
+> getwd()
+> Sys.info()[["user"]]
+> 5 + 7
+> x <- 5 + 7
+> x
+```
 

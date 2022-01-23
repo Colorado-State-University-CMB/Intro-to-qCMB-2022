@@ -183,6 +183,7 @@ Please cite R and RStudio in your published works. Please cite all packages you 
 > getwd()
 > Sys.info()[["user"]]
 > 5 + 7
+> 5+7
 > x <- 5 + 7
 > x
 ```

@@ -192,27 +192,21 @@ Please cite R and RStudio in your published works. Please cite all packages you 
 
 :warning: **WARNING** What if something doesn't work right?
 
-If you don't complete your expression, R will give you a chance to finish it. 
-
-:arrow_right: Try leaving R hanging...
-
+  * If you don't complete your expression, R will give you a chance to finish it. 
+  * :arrow_right: Try leaving R hanging...
 ```r
 > 5 +
 ```
-
-You can add `7` after and push return again. It should work.
+  * You can add `7` after and push return again. It should work.
 
 :warning: **WARNING** What if that doesn't work?
 
-You can push your **ESC** key to return to the prompt at any time.
-
-:arrow_right: Try it
-
+  * You can push your **ESC** key to return to the prompt at any time.
+  * :arrow_right: Try it
 ```r
 > 5+
 ```
-
-:arrow_right: Push **ESC**
+  * :arrow_right: Push **ESC**
 
 
 

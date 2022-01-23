@@ -101,7 +101,7 @@ RStudio is an **Integrated Development Environment** or **IDE**. An IDE is a sof
     * :arrow_right: Go to **New File**
     * :arrow_right: Select **R Script**
 
-**Graphical re-cap:**
+:white_check_mark: **GRAPHICAL SUMMARY:**
 
 <img src="webContent/WebContent_Powerpoint_interface.jpg" width="1200">
 

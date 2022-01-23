@@ -94,5 +94,9 @@ RStudio is an **Integrated Development Environment** or **IDE**. An IDE is a sof
   * **Files panel** - This gives you the ability to browse and interact with the file structure on your own local computer.
   * **Help panel** - This will pop up with useful help information when you execute the help command. More on that later.
   * _Finally, there is one panel not shown upon opening RStudio, and that is the Text Editor_
-  * **Text editor** - 
+  * **Text editor** - The text editor is a panel that allows you to write a script of R commands into a document that can be saved for later, executed one line at a time, or executed all at once.
+  * :arrow_right: Let's start a new script so we can see the text editor.
+    * :arrow_right: Go to **File** on the top menu bar
+    * :arrow_right: Go to **New File**
+    * :arrow_right: Select **R Script**
 

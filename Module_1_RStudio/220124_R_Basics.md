@@ -85,8 +85,14 @@ RStudio is an **Integrated Development Environment** or **IDE**. An IDE is a sof
 
 :heavy_exclamation_mark: **EXERCISE: Exploring RStudio**
 
-  * Open R Studio. What does it look like?
+  * :arrow_right: Open R Studio. What does it look like?
   * It has a menu bar on the top and a series of windows.
-  * Console window - this is where R is loaded and ready to go. It shows you the version of R you are running. A prompt, which is denoted by the ">" character shows you that R is ready for your input. This is where we will **interact** with R. More on that later.
-  * Environment - this is a list that will populate with **objects** as we create them in R. More on objects later. 
-  * Plots - this is where plots and graphics will appear when we generate them. 
+  * **Console panel** - this is where R is loaded and ready to go. It shows you the version of R you are running. A prompt, which is denoted by the ">" character shows you that R is ready for your input. This is where we will **interact** with R. More on that later.
+  * **Environment panel** - this is a list that will populate with **objects** as we create them in R. More on objects later. 
+  * **Plots panel** - this is where plots and graphics will appear when we generate them.
+  * _But wait! That's not all. We can toggle through other panels behind the Console, Environment, and Plot panels that are shown as defaults._
+  * **Files panel** - This gives you the ability to browse and interact with the file structure on your own local computer.
+  * **Help panel** - This will pop up with useful help information when you execute the help command. More on that later.
+  * _Finally, there is one panel not shown upon opening RStudio, and that is the Text Editor_
+  * **Text editor** - 
+

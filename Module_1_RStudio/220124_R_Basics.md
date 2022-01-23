@@ -112,4 +112,4 @@ When RStudio closes, by default, it will prompt you whether you want to "Save wo
   * :arrow_right: Either remember to select **Don't Save** each time. 
   * :arrow_right: OR, you can change this setting by going to **RStudio** on the top menu, then **Preferences ...**, then changing **"Save workshopspace to .RData on exit"** from **Ask** to **Never**. It'll look like so:
 
-<img src="webContent/WebContent_Powerpoint_RData.jpg" width="800">
+<img src="webContent/WebContent_Powerpoint_RData.jpg" width="700">

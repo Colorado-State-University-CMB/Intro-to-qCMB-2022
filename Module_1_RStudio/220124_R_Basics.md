@@ -18,6 +18,10 @@ January 24, 2022
    - Dataframes
    - Matrices
 
+## Useful references
+
+  * [R-intro](https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf)
+
 -----
 
 
@@ -174,6 +178,7 @@ Please cite R and RStudio in your published works. Please cite all packages you 
 :arrow_right: Try the following expressions on your own. What happens?
 
 ```r
+> print("Hello World")
 > date()
 > getwd()
 > Sys.info()[["user"]]

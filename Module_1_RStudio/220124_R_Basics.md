@@ -81,3 +81,9 @@ Why use R in particular? What are its benefits for the life sciences?
 
 <img src="webContent/Screen Shot RStudio.png" width="700">
 
+RStudio is an **Integrated Development Environment** or **IDE**. An IDE is a software application that allow programmerss to develop software within an organized user space. Think of it as a dedicated application in which we can interact with a programming language. This is a nice way to stay organized when doing programming projects.
+
+:heavy_exclamation_mark: **EXERCISE** Exploring RStudio
+
+  * Open R Studio. What does it look like?
+  * 

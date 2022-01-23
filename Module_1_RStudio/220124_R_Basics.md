@@ -129,7 +129,7 @@ Remember how I said R is an **interpreted language**? This means that it is a la
 We can interact with R through the **console** like so...
 
 ```r
-sdfjgksl
-
+> sdfjksl
+Error: object 'sdfjksl' not found
 ```
 

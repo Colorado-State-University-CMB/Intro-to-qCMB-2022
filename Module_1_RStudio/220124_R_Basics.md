@@ -136,9 +136,9 @@ Remember how I said R is an **interpreted language**? This means that it is a la
 Error: object 'sdfjksl' not found
 ```
 
-:confused: Hmm, that didn't work. Each line we write is called an **expression**. Turns out R doesn't know what sdfjksl means. That's fair.
+:confused: Hmm, that didn't work. Each line we write is called an **expression**. Turns out R doesn't know what the expression sdfjksl means. That's fair.
 
-:arrow_right: Let's try an expression that should make sense to R. Look in the welcome message. R invites us to use the command `citation()` to learn how to cite R.
+:arrow_right: Let's write an expression that R knows. Look in the welcome message. R invites us to use the command `citation()` to learn how to cite R.
 
 ```
 > citation()
@@ -163,4 +163,8 @@ A BibTeX entry for LaTeX users is
 We have invested a lot of time and effort in creating R, please cite it when using it
 for data analysis. See also ‘citation("pkgname")’ for citing R packages.
 ```
+
+:warning: **BEST PRACTICES: Citing R**
+
+Please cite R and RStudio in your published works. Please cite all packages you use in published works. This helps the community. 
 

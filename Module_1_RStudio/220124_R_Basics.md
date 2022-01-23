@@ -126,10 +126,41 @@ How do we tell R what to do?
 
 Remember how I said R is an **interpreted language**? This means that it is a language that executes its programs line-by-line. This is useful because it makes it much easier for us to interact with R in a line-by-line way. It's going to feel more like a conversation or dialogue than a **compiled language** would feel. In a compiled language, the whole script or program is written, then it is converted (or compiled) into another language that the computer can more readily understand and more quickly execute. So (warning more metaphores) think of an interpreted language more like direct messaging and a compiled language more like composing an e-mail.
 
-We can interact with R through the **console** like so...
+
+:heavy_exclamation_mark: **EXERCISE: Your first conversation with R**
+
+:arrow_right: We can interact with R through the **console**. Just type in some random characters and push return like so...
 
 ```r
 > sdfjksl
 Error: object 'sdfjksl' not found
+```
+
+:confused: Hmm, that didn't work. Each line we write is called an **expression**. Turns out R doesn't know what sdfjksl means. That's fair.
+
+:arrow_right: Let's try an expression that should make sense to R. Look in the welcome message. R invites us to use the command `citation()` to learn how to cite R.
+
+```R 
+citation()
+
+To cite R in publications use:
+
+  R Core Team (2021). R: A language and environment for statistical computing. R
+  Foundation for Statistical Computing, Vienna, Austria. URL
+  https://www.R-project.org/.
+
+A BibTeX entry for LaTeX users is
+
+  @Manual{,
+    title = {R: A Language and Environment for Statistical Computing},
+    author = {{R Core Team}},
+    organization = {R Foundation for Statistical Computing},
+    address = {Vienna, Austria},
+    year = {2021},
+    url = {https://www.R-project.org/},
+  }
+
+We have invested a lot of time and effort in creating R, please cite it when using it
+for data analysis. See also ‘citation("pkgname")’ for citing R packages.
 ```
 

@@ -103,3 +103,13 @@ RStudio is an **Integrated Development Environment** or **IDE**. An IDE is a sof
 **Graphical re-cap:**
 
 <img src="webContent/WebContent_Powerpoint_interface.jpg" width="800">
+
+:heavy_exclamation_mark: **BEST PRACTICES: Closing RStudio**
+
+When RStudio closes, by default, it will prompt you whether you want to "Save workspace image to ~/.Rdata". I recommend selecting **Don't Save**. Otherwise, the next time R starts up, your old objects will already be there waiting for you. It's better form to start from scratch with each new session. However, when working on very long projects, I will admit, this is a useful feature. 
+
+  * What to do? 
+  * :arrow_right: Either remember to select **Don't Save** each time. 
+  * :arrow_right: OR, you can change this setting by going to **RStudio** on the top menu, then **Preferences ...**, then changing **"Save workshopspace to .RData on exit"** from **Ask** to **Never**. It'll look like so:
+
+<img src="webContent/WebContent_Powerpoint_RData.jpg" width="400">

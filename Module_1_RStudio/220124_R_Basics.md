@@ -131,7 +131,7 @@ Remember how I said R is an **interpreted language**? This means that it is a la
 
 :arrow_right: We can interact with R through the **console**. Just type in some random characters and push return like so...
 
-```r
+```
 > sdfjksl
 Error: object 'sdfjksl' not found
 ```
@@ -140,8 +140,8 @@ Error: object 'sdfjksl' not found
 
 :arrow_right: Let's try an expression that should make sense to R. Look in the welcome message. R invites us to use the command `citation()` to learn how to cite R.
 
-```R 
-citation()
+```
+> citation()
 
 To cite R in publications use:
 

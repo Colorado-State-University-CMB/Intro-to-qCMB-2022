@@ -10,7 +10,8 @@ January 24, 2022
 ## Lessons for today
 
  - What is R?
- - A tour of R-studio
+ - What is RStudio
+ - Interacting with R within RStudio
  - Meet the different R objects
    - Values & Numbers
    - Vectors
@@ -113,3 +114,10 @@ When RStudio closes, by default, it will prompt you whether you want to "Save wo
   * :arrow_right: OR, you can change this setting by going to **RStudio** on the top menu, then **Preferences ...**, then changing **"Save workshopspace to .RData on exit"** from **Ask** to **Never**. It'll look like so:
 
 <img src="webContent/WebContent_Powerpoint_RData.jpg" width="900">
+
+
+-----
+
+# Interacting with R within RStudio
+
+

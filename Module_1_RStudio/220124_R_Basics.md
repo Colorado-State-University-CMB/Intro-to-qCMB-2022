@@ -219,7 +219,7 @@ _In addition to interacting with R directly on the console, we can also write ea
   * :arrow_right: Save your **Untitled1** document as a script. Go to **File** in the top menu bar. Select **Save**. 
   * :arrow_right: Navigate or create an appropriate location for your script. Save your script as **220124_Module1_demo.R**.
 
-_Write lines of code in your script.
+_Write lines of code in your script._
 
   * :arrow_right: Write the following in your script. Any lines that start with **#** are **comments**. Those will be lines that are for humans to read. R will ignore them. This is how you will write copious notes. Get used to this!
 

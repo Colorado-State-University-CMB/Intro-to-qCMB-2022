@@ -118,7 +118,7 @@ When RStudio closes, by default, it will prompt you whether you want to "Save wo
 
 # Interacting with R within RStudio
 
-_OK, now we know what R is and we know what RStudio is. But how do they work together? R is the algorithm, the actual program. We can think of R like the engine of a car. RStudio is the interface. We can think of it like the driver's seat of the car. So, we'll make ourselves comfortable within RStudio and use RStudio to instruct R what to do._
+_OK, now we know what R is and we know what RStudio is. But how do they work together? R is the algorithm, the actual program. We can think of R like the engine of a car. RStudio is the interface. We can think of it like the driver's seat of the car. So, we'll make ourselves comfortable within RStudio where we will instruct R what to do._
 
 _How do we tell R what to do?_
 

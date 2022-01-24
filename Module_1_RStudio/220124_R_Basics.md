@@ -61,6 +61,9 @@ January 24, 2022
   * 2010 - CRAN exceeds 10,000 published packages!
   * 2021 - R's latest version is 4.1.2 Bird Hippie
 
+R is now a large, diverse community of users and developers. Here is a picture from the 2018 New York R conference courtesy of R-Bloggers:
+
+<img src="webContent/Conference-Panorama-crop.jpeg" width="900">
 
 
 >  “R changed my opinion of humanity to some extent, to see how people are really willing to freely give of themselves and produce something larger than themselves without any thought of personal glory. There’s a lot of work with no recognition.” - Ross Ihaka

@@ -9,8 +9,8 @@ January 24, 2022
 
 ## Lessons for today
 
- - [What is R](#what-is-r?)
- - [What is RStudio](#what-is-rstudio?)
+ - [What is R](#what-is-r)
+ - [What is RStudio](#what-is-rstudio)
  - Interacting with R within RStudio
  - Meet the different R objects
    - Values & Numbers

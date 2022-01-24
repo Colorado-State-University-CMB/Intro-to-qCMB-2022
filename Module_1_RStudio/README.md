@@ -38,3 +38,4 @@ In this first module, we will explore the basics of R. What is R? R is a program
   * How have your past experiences influenced whether you think you **enjoy** it?
   * What about the stories we absorb and hear? How do these influence whether we feel like this is "our thing" or not?
 
+▶️ Continue on to [R Basics - Part 1](220124_R_Basics.md)

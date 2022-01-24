@@ -72,12 +72,7 @@ R is now a large, diverse community of users and developers. Here is a picture f
 
 ❓ Why do we use any programming language in biology? 
 
-
 ❓ Why use R in particular? What are its benefits for the life sciences?
-  * Statistics is the heart of R
-  * Packages extend R for biology-specific tasks
-  * We can benefit from a wide, supportive, and dedicated community of users and developers who have created stereotyped documentation
-  * R is beautiful
 
 -----
 

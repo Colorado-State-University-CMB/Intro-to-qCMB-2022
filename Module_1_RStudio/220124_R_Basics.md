@@ -80,7 +80,7 @@ R is now a large, diverse community of users and developers. Here is a picture f
 
 <img src="webContent/Screen Shot RStudio.png" width="700">
 
-RStudio is an **Integrated Development Environment** or **IDE**. An IDE is a software application that allows programmerss to develop software within an organized user space. Think of it as a dedicated application in which we can interact with a programming language to generate organized software projects. IDE's combine a lot of useful tools all into one application with an organized layout.
+RStudio is an **Integrated Development Environment** or **IDE**. An IDE is a software application that allows programmerss to develop software within an organized user space. Think of it as a place where we can interact with R, write code, and have a lot of useful tools at our fingertips.
 
 :heavy_exclamation_mark: **EXERCISE: Exploring RStudio**
 

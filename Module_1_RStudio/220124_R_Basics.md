@@ -19,6 +19,7 @@ January 24, 2022
   * [R-intro](https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf) - .pdf documentation. R's manual
   * [Brooke Anderson's R youtube channel](https://www.youtube.com/channel/UC73v_zCdNE2aZrFZsG22JBw/videos) - lots of useful video content on basic R
   * [Base R Cheatsheet](https://iqss.github.io/dss-workshops/R/Rintro/base-r-cheat-sheet.pdf) - a handy 1-page guide to basic R functions
+  * [swirl R](https://swirlstats.com/) - an interactive way to learn R within R
   * [Data Analysts Captivated by R's Power](https://archive.nytimes.com/www.nytimes.com/2009/01/07/technology/business-computing/07program.html) - 2009 NY Times article on R
 
 -----

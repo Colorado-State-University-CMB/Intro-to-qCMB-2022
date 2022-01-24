@@ -20,7 +20,10 @@ January 24, 2022
 
 ## Useful references
 
-  * [R-intro](https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf)
+  * [R-intro](https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf) - .pdf documentation. R's manual
+  * [Brooke Anderson's R youtube channel](https://www.youtube.com/channel/UC73v_zCdNE2aZrFZsG22JBw/videos)
+  * [Base R Cheatsheet](https://iqss.github.io/dss-workshops/R/Rintro/base-r-cheat-sheet.pdf)
+  * [Data Analysts Captivated by R's Power](https://archive.nytimes.com/www.nytimes.com/2009/01/07/technology/business-computing/07program.html) - 2009 NY Times article on R
 
 -----
 

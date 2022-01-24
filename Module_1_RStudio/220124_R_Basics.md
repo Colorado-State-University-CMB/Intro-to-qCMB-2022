@@ -124,6 +124,7 @@ _How do we tell R what to do?_
 
 _Remember how I said R is an **interpreted language**? This means that it is a language that executes its programs line-by-line. This is useful because it makes it much easier for us to interact with R in a line-by-line way. It's going to feel more like a conversation or dialogue than a **compiled language** would feel. In a compiled language, the whole script or program is written, then it is converted (or compiled) into another language that the computer can more readily understand and more quickly execute. So (warning more metaphores) think of an interpreted language more like direct messaging and a compiled language more like composing an e-mail._
 
+## Interacting with R on the Console
 
 :heavy_exclamation_mark: **EXERCISE: Your first conversation with R**
 
@@ -202,6 +203,8 @@ for data analysis. See also ‘citation("pkgname")’ for citing R packages.
 > 5+
 ```
   * :arrow_right: Push **ESC**
+
+## Interacting with R through a script
 
 :heavy_exclamation_mark: **EXERCISE: Using a script**
 

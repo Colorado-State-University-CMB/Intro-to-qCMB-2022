@@ -53,4 +53,17 @@ len(dictionary)
 
 ```
 
+-----
+
+## QUESTION 3 (5 pts)
+
+
+-----
+
+## QUESTION 4 (5 pts)
+
+
+-----
+
+## QUESTION 5 (5 pts)
 

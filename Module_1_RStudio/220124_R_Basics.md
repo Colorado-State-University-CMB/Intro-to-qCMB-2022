@@ -11,7 +11,7 @@ January 24, 2022
 
  - [What is R](#what-is-r)
  - [What is RStudio](#what-is-rstudio)
- - Interacting with R within RStudio
+ - [Interacting with R within RStudio](#interacting-with-r-within-rstudio)
  - Meet the different R objects
    - Values & Numbers
    - Vectors

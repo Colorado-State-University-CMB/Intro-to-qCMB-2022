@@ -212,6 +212,28 @@ for data analysis. See also ‘citation("pkgname")’ for citing R packages.
 ```
   * :arrow_right: Push **ESC**
 
+:heavy_exclamation_mark: **EXERCISE: Using a script**
+
+_In addition to interacting with R directly on the console, we can also write each of our expressions into a document called a **script**. Doing this will save each line for future use, for posterity. As we write this script, we can send each line to R interactively, one-by-one. Once we are happy with each expression, we can save the script._
+
+  * :arrow_right: Save your **Untitled1** document as a script. Go to **File** in the top menu bar. Select **Save**. 
+  * :arrow_right: Navigate or create an appropriate location for your script. Save your script as **220124_Module1_demo.R**.
+
+_Write lines of code in your script.
+
+  * :arrow_right: Write the following in your script. Any lines that start with **#** are **comments**. Those will be lines that are for humans to read. R will ignore them. This is how you will write copious notes. Get used to this!
+
+```r
+# My first script
+
+print("Hello World")
+date()
+getwd()
+
+```
+  * :arrow_right: Execute the first line of the script by placing your cursor somewhere within the line `print("Hello World") and then clicking on the **Run** icon that contains a right-pointed arrow.
+  * :arrow_right: Alternatively, we can use short cut keys. To do this, place your cursor somewhere within the line `date()` and hit **COMMAND** + **RETURN**
+  * :arrow_right: We can execute multiple lines in succession by highlighting them together. Highlight the entire script from # to `getwd()`. Now, either click **Run** or use the shortcut to execute.
 
 
 

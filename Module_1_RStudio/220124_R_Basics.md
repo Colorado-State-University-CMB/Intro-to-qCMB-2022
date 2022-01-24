@@ -114,7 +114,7 @@ RStudio is an **Integrated Development Environment** or **IDE**. An IDE is a sof
 
 :warning: **BEST PRACTICES: Closing RStudio**
 
-When RStudio closes, by default, it will prompt you whether you want to "Save workspace image to ~/.Rdata". I recommend selecting **Don't Save**. Otherwise, the next time R starts up, your old objects will already be there waiting for you. It's better form to start from scratch with each new session. However, when working on very long projects, I will admit, this is a useful feature. 
+_When RStudio closes, by default, it will prompt you whether you want to "Save workspace image to ~/.Rdata". I recommend selecting **Don't Save**. Otherwise, the next time R starts up, your old objects will already be there waiting for you. It's better form to start from scratch with each new session. However, when working on very long projects, I will admit, this is a useful feature._
 
   * What to do? 
   * :arrow_right: Either remember to select **Don't Save** each time. 
@@ -145,7 +145,7 @@ Error: object 'sdfjksl' not found
 
 :confused: Hmm, that didn't work. Each line we write is called an **expression**. Turns out R doesn't know what the expression sdfjksl means. That's fair.
 
-:arrow_right: Let's write an expression that R knows. Look in the welcome message. R invites us to use the command `citation()` to learn how to cite R.
+:arrow_right: Let's write an expression that R should recognize. Look in the welcome message. R invites us to use the command `citation()` to learn how to cite R.
 
 ```
 > citation()
@@ -170,10 +170,11 @@ A BibTeX entry for LaTeX users is
 We have invested a lot of time and effort in creating R, please cite it when using it
 for data analysis. See also ‘citation("pkgname")’ for citing R packages.
 ```
+  * Yay! That worked!
 
 :warning: **BEST PRACTICES: Citing R**
 
-Please cite R and RStudio in your published works. Please cite all packages you use in published works. When reviewing manuscripts for publication, please check for these citation. This helps the community. 
+  * _Please cite R and RStudio in your published works. Please cite all packages you use in published works. When reviewing manuscripts for publication, please check for these citation. This helps the community._
 
 
 :heavy_exclamation_mark: **EXERCISE: More practice with R expressions**

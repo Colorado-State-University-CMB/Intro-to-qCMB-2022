@@ -233,4 +233,4 @@ getwd()
   * :arrow_right: We can execute multiple lines in succession by highlighting them together. Highlight the entire script from # to `getwd()`. Now, either click **Run** or use the shortcut to execute.
 
 
-
+[R Basics - Part 2](220124_R_Basics_2.md)

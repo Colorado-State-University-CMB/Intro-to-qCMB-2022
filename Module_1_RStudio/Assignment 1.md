@@ -43,7 +43,7 @@ QUESTION 2 (5 pts)
 
 Heather has written some code to create a data frame. Each line of her code has a bug, or error. Explain each error. 
 
-```r
+```
 languages <- ("English", "Spanish", "Japanese", "French")
 _greetings_ <- c("hello", "hola", "ohio", "bonjour")
 partings < c("bye", "adios", "mata", "salut")

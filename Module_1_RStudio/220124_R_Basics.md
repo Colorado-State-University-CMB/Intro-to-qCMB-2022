@@ -1,7 +1,7 @@
 
 <img src="webContent/RBanner1.jpeg" width="600">
 
-# R Basics
+# R Basics - Part 1
 
 Let's get started!
 

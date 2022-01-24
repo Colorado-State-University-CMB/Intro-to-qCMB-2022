@@ -231,4 +231,9 @@ getwd()
 
 ----
 
+:warning: **SUPER COOL TIPS:**
+
+  * You can use **TAB** to autocomplete both in the text editor and on the console. Toggle through with **TAB** or **ARROW KEYS** to find what you want
+  * You can use the **UP ARROW** in the **CONSOLE** to navigate through the last expressions you executed.
+
 ▶️ Continue on to [R Basics - Part 2](220124_R_Basics_2.md)

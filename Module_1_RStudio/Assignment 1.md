@@ -9,7 +9,7 @@
 
 -----
 
-QUESTION 1 (5 pts)
+## QUESTION 1 (5 pts)
 
 We learned that vectors come in different classes depending on the data type they house. 
 
@@ -39,7 +39,8 @@ C. If we try to add 1 to each vector, what happens? If we try to take the mean o
 
 
 -----
-QUESTION 2 (5 pts)
+
+## QUESTION 2 (5 pts)
 
 Heather has written some code to create a data frame. Each line of her code has a bug, or error. Explain each error. 
 

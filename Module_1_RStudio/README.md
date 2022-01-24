@@ -27,6 +27,7 @@ In this first module, we will explore the basics of R. What is R? R is a program
 ## Introductions
 
   * My background & my journey. How did I get here?
+    * Full disclaimer - I do not have a computer science background.
   * Your background & your journey. Where will you go?
 
 <img src="webContent/bigstock-background-concept-wordcloud-i-91463843.jpg" width="400" >

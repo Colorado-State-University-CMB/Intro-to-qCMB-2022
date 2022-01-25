@@ -12,7 +12,7 @@ January 26, 2022
 ## Useful references
 
 
-# Functions: the verbs of the R language
+# Functions the verbs of the R language
 
 ## Packages
 

@@ -4,7 +4,7 @@ January 26, 2022
 
 ## Lessons for today
 
-  * Functions - the verbs of the R language(#functions-the-verbs-of-the-r-language)
+  * Functions - the verbs of the R language(#functions)
   * Import and Export of data
   * Packages expand R
   * Plotting - R is beautiful
@@ -12,7 +12,9 @@ January 26, 2022
 ## Useful references
 
 
-# Functions - the verbs of the R language
+----
+
+# Functions
 
 ## Packages
 

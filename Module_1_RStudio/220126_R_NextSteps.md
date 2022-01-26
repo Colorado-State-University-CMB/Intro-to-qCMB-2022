@@ -231,7 +231,14 @@ The most popular package for plotting is **ggplot2**. It is part of a larger sui
 
 To check out what is possible in ggplot2, look at this [handy ggplot2 plotting guide](https://www.cedricscherer.com/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/).
 
+❓ **How do we install new packages?**
+
+  * Step 1 - Install the package. This happens once. It will download the package from the internet and save it on your local computer. You can do from within R using the `install.packages()` function OR, you can do it in RStudio through the menu **Tools** and then **Install Packages...*
+  * Step 2 - Each time you start RStudio, you'll need to load the package from the library. This makes it available for use. Think of this like checking out a book from the library. It uses the function `library()`.
+
 **INSTALLING TIDYVERSE**
+
+*just an example. You may have already done this. Or you should do it later. It may take some time.
 
 ```r
 # Do this once:
@@ -240,5 +247,7 @@ install.packages("tidyverse")
 # Do this each time you want to use a tidyverse package:
 library(tidyverse)
 ```
+
+
 
 

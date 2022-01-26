@@ -67,7 +67,7 @@ A. Using the help pages for barplot, learn about the option `horiz`. Hack the li
 
 B. What does the option `horiz` control?
 
-C. Change the values for the option `las` to `0,1, 2, or 3`. What do they control?
+C. Change the values for the option `las` to `0,1, 2, or 3`. Explain what changes in your plot as a result? 
 
 D. What line of code would add a main title to your plot that says "Ten Most Populous Scottish Towns"? Write the full expression.
 

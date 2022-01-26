@@ -234,6 +234,8 @@ This generated the following plot:
 
 When it comes to graphics, the base R plot is going to start to feel very limiting fairly quickly. For example, it is a real pain to change the numeric formatting of the population from scientific notation to plain ol' 100,000 notation. This gets frustrating. Packages specifically designed to make plotting easy, organized, and beautiful will keep you from going crazy. 
 
+<img src="webContent/Screen Shot 2022-01-26 at 9.31.59 AM.png" width="300">
+
 The most popular package for plotting is **ggplot2**. It is part of a larger suite of R packages called the [**tidyverse**](https://www.tidyverse.org/). You will learn more about tidyverse in later modules of this course.
 
 To check out what is possible in ggplot2, look at this [handy ggplot2 plotting guide](https://www.cedricscherer.com/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/).

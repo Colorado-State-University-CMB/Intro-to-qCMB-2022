@@ -255,6 +255,13 @@ install.packages("tidyverse")
 library(tidyverse)
 ```
 
+# Shameless plug
+
+  * Please consider joining me in the Fall semester for a 3-module course on Computational Biology:
+    * DSCI510 - Linux as a computational platform (no pre-requisites)
+    * DSCI511 - Python Programming (DSCI510 or previous experience in Linux is a pre-requisite)
+    * DSCI512 - RNA sequencing data analysis (DSCI510 or previous experience in Linux is a pre-requisite)
 
 
+# Thanks, everyone! And keep coding!
 

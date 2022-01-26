@@ -162,6 +162,8 @@ str(scottish_towns)
 
 ## Plotting
 
+Plotting is 
+
 ## Packages
 
 

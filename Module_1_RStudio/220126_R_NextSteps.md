@@ -77,7 +77,7 @@ First, let's download a dataset to import.
 
 ➡️ Download this file by right clicking and saving it to the directory that contains the .R script on which you are currently working:
 
-  * [scottish_towns_wikipedia.txt](inputData/scottish_towns_wikipedia.txt)
+  * [scottish_towns_wikipedia.txt](https://drive.google.com/file/d/12scoAC57ZsmUS82oXUb2qWFKcTHm9LVD/view?usp=sharing)
 
 To do this, we will first need to learn a little bit about how to navigate file structures within R.
 

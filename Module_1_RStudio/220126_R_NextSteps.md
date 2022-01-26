@@ -162,15 +162,11 @@ str(scottish_towns)
 
 ## Plotting
 
-Plotting and graphics are really what make R special. R graphics can handle a large amount of data and packages extend base R into capabilities that are very impressive.
+  * Plotting and graphics are really what make R special. R graphics can handle a large amount of data and packages extend base R into capabilities that are very impressive.
+  * [The R Graph Gallery](https://www.r-graph-gallery.com/index.html) has some impressive examples.
+  * To be honest, the graphics in base R are pretty clunky and tricky to modify. For today, I'll show you how to make a simple R plot using the scottish_towns dataset.
 
-[The R Graph Gallery](https://www.r-graph-gallery.com/index.html) has some impressive examples.
-
-To be honest, the graphics in base R are pretty clunky and tricky to modify. For today, I'll show you how to make a simple R plot using the scottish_towns dataset.
-
-❗ **EXERCISE: Basic R Plot
-
-The function `plot()` uses the following syntax to plot x and y values into a scatter plot:
+**X Y SCATTER PLOT** The function `plot()` uses the following syntax to plot x and y values into a scatter plot:
 
 <img src="webContent/WebContent_Powerpoint_plotting.jpg" width="800">
 
@@ -178,9 +174,47 @@ The result looks like this:
 
 <img src="webContent/Rplot.jpeg" width="500">
 
+❗ **EXERCISE: Basic R Plot
 
+➡️ Let's try it!
 
-➡️ Follow along:
+```r
+# We can use integer or numeric classes as input
+str(scottish_towns)
+
+# We'll use these x-values...
+scottish_towns$Rank
+
+# ... and these y-values:
+scottish_towns$Population
+
+# Plot
+plot(scottish_towns$Rank, scottish_towns$Population)
+
+# Let's add color
+plot(scottish_towns$Rank, scottish_towns$Population, col = scottish_towns$Status)
+
+# ready to get fancy? 
+# this is just a demonstration
+par(mar = c(5.1, 6.1, 4.1, 2.1))
+plot(scottish_towns$Rank,
+     scottish_towns$Population,
+      col = scottish_towns$Status,
+      las = 1,
+      ylab = NA,
+      xlab = "Ranking by population",
+      pch = 19)
+ mtext("Population", side=2, line=4) 
+ text(scottish_towns$Rank[1:4], scottish_towns$Population[1:4], 
+      row.names(scottish_towns)[1:4], cex=0.6, pos=4, col="red", )
+ legend(40, 600000, legend=c("City", "Town"),
+        col=c("black", "red"), pch = 19)
+```
+
+## Saving plots
+
+To save a plot, we can simply use the **Export** menu item on the top of the Plots panel. You can export your plot as a .pdf and specify the width and height of the output image. You may need to play around. Sometimes, things can be buggy.
+
 
 ## Packages
 

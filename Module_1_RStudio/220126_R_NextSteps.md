@@ -5,7 +5,7 @@ January 26, 2022
 ## Lessons for today
 
   * [Functions - the verbs of the R language](#functions---the-verbs-of-the-r-language)
-  * Import and Export of data
+  * [Import and Export of data](#import-and-export-of-data)
   * Packages expand R
   * Plotting - R is beautiful
 
@@ -69,7 +69,7 @@ mean(chromosomes, trim = 0.2)
 <img src="webContent/WebContent_Powerpoint_functionGrammar.jpg" width="600">
 
 
-## Import and Export of Data
+# Import and Export of Data
 
 So far, we've created objects by assignment expressions that directly specify their values. Next, we'll learn how to **import** data into R through an special assignment expression.
 
@@ -124,13 +124,40 @@ scottish_towns <- read.table("scottish_towns_wikipedia.txt", header = TRUE, row.
 
 ⚠️ **BEST PRACTICES** Exploratory Data Analysis
 
+➡️ Look at what you have acquired and make sure everything looks good!
+
 ```r
 str(scottish_towns)
 class(scottish_towns)
 ```
 
+## Cleaning, Wrangling, & Munging
 
+One thing you will discover is that it takes A LOT of time to make your data nice and neat and tidy. Getting everything set up perfectly so that a function will run on an object takes a lot of ground work. This ground work goes by many names, usually depending on how frustrated the user is. It's called either cleaning, wrangling, or munging data. 
 
+I had to clean up this data quite a bit to make the neat and tidy file you just imported. I removed footnotes. I made the Column Header "Council Area" one word instead of two. 
+
+Next, we have a little to do list here:
+
+  1. Let's remove the commas from the **Population** elements
+  2. Let's set the **Population** column to be a numeric vector
+  3. Let's set the **Status** and **CouncilArea** columns to be factor vectors
+
+To do this, we will employ a process called **reassignment** in which we re-write columns of data
+
+```r
+
+# Remove commas and set Population to numeric
+scottish_towns$Population <- as.numeric(gsub(",","",scottish_towns$Population))
+
+# Set Status and Council.area to factors 
+scottish_towns$Status <- as.factor(scottish_towns$Status)
+scottish_towns$Council.area <- as.factor(scottish_towns$Council.area)
+
+# What happened?
+str(scottish_towns)
+
+```
 
 ## Plotting
 

@@ -5,9 +5,9 @@ January 26, 2022
 ## Lessons for today
 
   * [Functions - the verbs of the R language](#functions---the-verbs-of-the-r-language)
-  * [Import and Export of data](#import-and-export-of-data)
-  * Packages expand R
-  * Plotting - R is beautiful
+  * [Importing data](#import-and-export-of-data)
+  * [Plotting](#plotting)
+  * [Packages](#Packages)
 
 ## Useful references
 
@@ -69,7 +69,7 @@ mean(chromosomes, trim = 0.2)
 <img src="webContent/WebContent_Powerpoint_functionGrammar.jpg" width="600">
 
 
-# Import and Export of Data
+# Importing Data
 
 So far, we've created objects by assignment expressions that directly specify their values. Next, we'll learn how to **import** data into R through an special assignment expression.
 

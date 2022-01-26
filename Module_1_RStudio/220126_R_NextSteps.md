@@ -30,7 +30,7 @@ mean(chromosomes)
 
 Functions typically involve parentheses. Sometimes these parentheses are empty and sometimes we type something in them. Think of this similar to how some verbs take direct objects (I threw the ball) and some don't (I run). 
 
-Two different types of information can go in the parenthese: **arguments** and **options**.
+Two different types of information can go in the parentheses: **arguments** and **options**.
 
   * **ARGUMENTS**: These are object names that are added inside the parentheses. They are what the function will operate on. They are analogous to direct objects in English. 
   * **OPTIONS**: Think of these as adverbs. These are optional content you can add that changes **how** the function will operate.

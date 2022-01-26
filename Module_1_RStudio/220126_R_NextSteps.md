@@ -215,6 +215,13 @@ plot(scottish_towns$Rank,
 
 To save a plot, we can simply use the **Export** menu item on the top of the Plots panel. You can export your plot as a .pdf and specify the width and height of the output image. You may need to play around. Sometimes, things can be buggy.
 
+I used the following options:
+
+<img src="webContent/Screen Shot 2022-01-26 at 8.39.17 AM.png" width="500">
+
+This generated the following plot:
+
+<img src="webContent/ScottishTownsPlot.jpg" width="500">
 
 # Packages
 

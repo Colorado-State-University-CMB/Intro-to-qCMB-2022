@@ -80,13 +80,20 @@ E. Save your plot as a .pdf and turn it in.
 
 ## QUESTION 4 (5 pts)
 
+Let's practice importing some data. Here is a real supplementary dataset that my lab recently published for a manuscript. 
 
+[Table_S4_Signal_to_noise_quantification_table](https://drive.google.com/file/d/1bJy_ELikr5F264xRe-ASNI4iXBVYuxIP/view?usp=sharing)
+
+  * Download the file to your computer.
+  * Ensure your working directory is set properly
+  * Import the dataset into R using either `read.table()` or `read.csv()` and save it as an object called `signal_to_noise`
+  * What is the output of `str(signal_to_noise)`? Copy and paste it here as the answer to this question.
 
 -----
 
 ## QUESTION 5 (5 pts)
 
-Go to the [R Graph Gallery](https://www.r-graph-gallery.com/index.html). Choose a category of R plots that you would like to learn more about. Using the R Graph Gallery pages, wikipedia, and other internet resources, learn how these plots generate their data. In 2 - 3 sentences, describe the plots here. Be sure to include what type of data work best in this plot, how the plot is generated, and what the benefits are of this type of data visualization (for the reader/viewer). 
+A. Go to the [R Graph Gallery](https://www.r-graph-gallery.com/index.html). Choose a category of R plots that you would like to learn more about. Using the R Graph Gallery pages, wikipedia, and other internet resources, learn how these plots generate their data. In 2 - 3 sentences, describe the plots in the category you have chosen. Be sure to include what type of data work best in this plot, how the plot is generated (what is on which axis, how measurements are calculated, etc), and what the benefits are of this type of data visualization (for the reader/viewer). 
 
-Next, read through some of the R code in the Gallery associated with each plot. You may not understand the R code itself, but just try. You will probably better understand the commenting codes. Answer the following: What functions are being used in this code? Are they part of the base R package or an add on package? If an add-on, what is the suggested add on package? You may need to google search some of this information.
+B. Next, read through some of the R code in the Gallery associated with each plot. You may not understand the R code itself, but just try. You will probably better understand the commenting codes. Answer the following: What functions are being used in this code? Are they part of the base R package or an add on package? If an add-on, what is the suggested add on package? You may need to google search some of this information.
 

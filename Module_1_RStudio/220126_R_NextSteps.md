@@ -32,9 +32,8 @@ Functions typically involve parentheses. Sometimes these parentheses are empty a
 
 Two different types of information can go in the parenthese: **arguments** and **options**.
 
-**ARGUMENTS**: These are object names that are added inside the parentheses. They are analogous to direct objects in English. They are what the function will operate on. 
-
-**OPTIONS**: Think of these as adverbs. These are optional content you can add that changes **how** the function will operate.
+  * **ARGUMENTS**: These are object names that are added inside the parentheses. They are what the function will operate on. They are analogous to direct objects in English. 
+  * **OPTIONS**: Think of these as adverbs. These are optional content you can add that changes **how** the function will operate.
 
 The `help()` function gives us information about how a function operates. The help page will tell us
    * What a function does

@@ -119,9 +119,15 @@ read.table("scottish_towns_wikipedia.txt", header = TRUE, row.names = "Locality"
 
 # That only printed out the data from the file, it didn't capture it.
 # To capture the data, use an assignment expression:
-
 scottish_towns <- read.table("scottish_towns_wikipedia.txt", header = TRUE, row.names = "Locality")
+```
 
+⚠️ **BEST PRACTICES** Exploratory Data Analysis
+
+```r
+str(scottish_towns)
+class(scottish_towns)
+```
 
 
 

@@ -238,7 +238,7 @@ To check out what is possible in ggplot2, look at this [handy ggplot2 plotting g
 
 **INSTALLING TIDYVERSE**
 
-*just an example. You may have already done this. Or you should do it later. It may take some time.
+*just an example. You may have already done this. Or you should do it later. It may take some time.*
 
 ```r
 # Do this once:

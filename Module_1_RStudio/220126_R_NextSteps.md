@@ -83,7 +83,14 @@ To determine where R "thinks it is" on your computer, use the command `getwd()` 
 getwd()
 ```
 
-If we want to import a
+For today, we're going to make things easy. We will set our working directory to the directory that contains our dataset.
+
+➡️ Go to the **Files** Panel of RStudio.
+
+➡️ Navigate to the location containing the downloaded dataset.
+
+➡️ Change the working directory by going to the **Files Menu Banner**, selecting **More**, and selecting **Set As Working Directory**
+
 
 
 ## Plotting

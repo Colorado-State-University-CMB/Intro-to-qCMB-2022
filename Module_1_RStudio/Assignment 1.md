@@ -67,7 +67,13 @@ A. Using the help pages for barplot, learn about the option `horiz`. Hack the li
 
 B. What does the option `horiz` control?
 
-C. Change the values for the option las to 1, 2, 3, or 4. What do they control?
+C. Change the values for the option `las` to `0,1, 2, or 3`. What do they control?
+
+D. What line of code would add a main title to your plot that says "Ten Most Populous Scottish Towns"? Write the full expression.
+
+E. Save your plot as a .pdf and turn it in.
+
+
 
 
 -----
@@ -79,4 +85,8 @@ C. Change the values for the option las to 1, 2, 3, or 4. What do they control?
 -----
 
 ## QUESTION 5 (5 pts)
+
+Go to the [R Graph Gallery](https://www.r-graph-gallery.com/index.html). Choose a category of R plots that you would like to learn more about. Using the R Graph Gallery pages, wikipedia, and other internet resources, learn how these plots generate their data. In 2 - 3 sentences, describe the plots here. Be sure to include what type of data work best in this plot, how the plot is generated, and what the benefits are of this type of data visualization (for the reader/viewer). 
+
+Next, read through some of the R code in the Gallery associated with each plot. You may not understand the R code itself, but just try. You will probably better understand the commenting codes. Answer the following: What functions are being used in this code? Are they part of the base R package or an add on package? If an add-on, what is the suggested add on package? You may need to google search some of this information.
 

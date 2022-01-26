@@ -162,7 +162,17 @@ str(scottish_towns)
 
 ## Plotting
 
-Plotting is 
+Plotting and graphics are really what make R special. R graphics can handle a large amount of data and packages extend base R into capabilities that are very impressive.
+
+[The R Graph Gallery](https://www.r-graph-gallery.com/index.html) has some impressive examples.
+
+To be honest, the graphics in base R are pretty clunky and tricky to modify. For today, I'll show you how to make a simple R plot using the scottish_towns dataset.
+
+❗ **EXERCISE: Basic R Plot
+
+➡️ Follow along:
+
+<img src="webContent/WebContent_Powerpoint_plotting.jpg width="800">
 
 ## Packages
 

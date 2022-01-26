@@ -69,13 +69,26 @@ mean(chromosomes, trim = 0.2)
 <img src="webContent/WebContent_Powerpoint_functionGrammar.jpg" width="600">
 
 
-## Import & Export of Data
+## Import and Export of Data
+
+So far, we've created objects by assignment expressions that directly specify their values. Next, we'll learn how to **import** data into R through an special assignment expression.
+
+First, let's download a dataset to import. 
+
+To do this, we will first need to learn a little bit about how to navigate file structures within R.
+
+To determine where R "thinks it is" on your computer, use the command `getwd()` for **get working directory**.
+
+```r
+getwd()
+```
+
+If we want to import a
 
 
 ## Plotting
 
 ## Packages
-
 
 
 

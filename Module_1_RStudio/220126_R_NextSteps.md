@@ -127,6 +127,7 @@ scottish_towns <- read.table("scottish_towns_wikipedia.txt", header = TRUE, row.
 ➡️ Look at what you have acquired and make sure everything looks good!
 
 ```r
+dim(scottish_town)
 str(scottish_towns)
 class(scottish_towns)
 ```

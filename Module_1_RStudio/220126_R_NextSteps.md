@@ -66,7 +66,7 @@ mean(chromosomes, trim = 0.2)
 
 ⚠️ **GRAPHICAL SUMMARY** 
 
-<img src="webContent/WebContent_Powerpoint_functionGrammar.jpg" width="400">
+<img src="webContent/WebContent_Powerpoint_functionGrammar.jpg" width="600">
 
 
 ## Import & Export of Data

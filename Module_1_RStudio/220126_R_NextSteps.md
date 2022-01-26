@@ -75,6 +75,10 @@ So far, we've created objects by assignment expressions that directly specify th
 
 First, let's download a dataset to import. 
 
+➡️ Download this file by right clicking and saving it to the directory that contains the .R script on which you are currently working:
+
+  * [scottish_towns_wikipedia.txt](inputData/scottish_towns_wikipedia.txt)
+
 To do this, we will first need to learn a little bit about how to navigate file structures within R.
 
 To determine where R "thinks it is" on your computer, use the command `getwd()` for **get working directory**.

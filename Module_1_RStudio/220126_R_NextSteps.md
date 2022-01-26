@@ -172,7 +172,8 @@ To be honest, the graphics in base R are pretty clunky and tricky to modify. For
 
 ➡️ Follow along:
 
-<img src="webContent/WebContent_Powerpoint_plotting.jpg width="800">
+<img src="webContent/WebContent_Powerpoint_plotting.jpg" width="800">
+
 
 ## Packages
 

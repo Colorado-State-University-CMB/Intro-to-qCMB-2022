@@ -160,7 +160,7 @@ str(scottish_towns)
 
 ```
 
-## Plotting
+# Plotting
 
   * Plotting and graphics are really what make R special. R graphics can handle a large amount of data and packages extend base R into capabilities that are very impressive.
   * [The R Graph Gallery](https://www.r-graph-gallery.com/index.html) has some impressive examples.
@@ -216,7 +216,7 @@ plot(scottish_towns$Rank,
 To save a plot, we can simply use the **Export** menu item on the top of the Plots panel. You can export your plot as a .pdf and specify the width and height of the output image. You may need to play around. Sometimes, things can be buggy.
 
 
-## Packages
+# Packages
 
 
 

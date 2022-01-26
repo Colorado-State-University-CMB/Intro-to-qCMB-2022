@@ -11,11 +11,13 @@ January 26, 2022
 
 ## Useful references
 
- * Base R Cheatsheet
+ * [Base R cheat sheet](https://iqss.github.io/dss-workshops/R/Rintro/base-r-cheat-sheet.pdf)
+ * [Basic lessons on R & R plotting](https://www.w3schools.com/r/r_graph_plot.asp)
  * R plotting basics
  * [Tidyverse](https://www.r-graph-gallery.com/index.html)
  * [A ggplot2 Tutorial](https://www.cedricscherer.com/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/)
  * [The R Graph Gallery](https://www.r-graph-gallery.com/index.html)
+ * [Learn more with swirl](https://swirlstats.com/)
 
 
 ----

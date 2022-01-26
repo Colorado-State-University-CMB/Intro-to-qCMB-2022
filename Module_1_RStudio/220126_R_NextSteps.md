@@ -30,11 +30,18 @@ mean(chromosomes)
 
 Functions typically involve parentheses. Sometimes these parentheses are empty and sometimes we type something in them. Think of this similar to how some verbs take direct objects (I threw the ball) and some don't (I run). 
 
-**ARGUMENTS**: In the case of R, this type of required input is called an **argument**. 
+Two different types of information can go in the parenthese: **arguments** and **options**.
 
-**OPTIONS**: R functions can also take optional inputs called **options**.
+**ARGUMENTS**: These are object names that are added inside the parentheses. They are analogous to direct objects in English. They are what the function will operate on. 
 
-The `help()` function gives us information about each function. Place the function name within the parentheses:
+**OPTIONS**: Think of these as adverbs. These are optional content you can add that changes **how** the function will operate.
+
+The `help()` function gives us information about how a function operates. The help page will tell us
+   * What a function does
+   * Whether it requires an argument
+   * what object classes are allowed as arguments
+   * The potential list of options
+   * The default values associated with each option
 
 ➡️ Try the help function
 
@@ -42,15 +49,15 @@ The `help()` function gives us information about each function. Place the functi
 help(dim)
 ```
 
-  * The `x` in the example tells you that this function takes an argument. 
+  * The `x` in the example tells you that this function takes an argument. If we read under **ARGUMENTS** we can learn whith object classes are allowed.
 
-➡️ Let's look at the help menu for `mean` and see how options are specified.
+➡️ Let's look at the help menu for `mean`.
 
 ```r
 help(mean)
 ```
 
-The help menu species the **defalt** values that are set for each option. As a default, trim is set to 0. In other words, all the values are used to calculate the mean. However, this value can be changed to 0.2, in which case, the most extreme 20 % of datapoints will be removed before the mean is calculated. 
+This help menu also species the **options** that the mean function takes and their **default** values. As a default, trim is set to 0. In other words, all the values are used to calculate the mean. However, this value can be changed to 0.2, in which case, the most extreme 20 % of all datapoints will be removed before the mean is calculated. 
 
 ➡️ Give it a try:
 
@@ -58,14 +65,17 @@ The help menu species the **defalt** values that are set for each option. As a d
 mean(chromosomes, trim = 0.2)
 ```
 
-⚠️ **SUMMARY** 
+⚠️ **GRAPHICAL SUMMARY** 
 
+<img src="webContent/WebContent_Powerpoint_functionGrammar.jpg" width="400">
 
-## Packages
 
 ## Import & Export of Data
 
+
 ## Plotting
+
+## Packages
 
 
 

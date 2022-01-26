@@ -75,9 +75,14 @@ So far, we've created objects by assignment expressions that directly specify th
 
 First, let's download a dataset to import. 
 
-➡️ Download this file by right clicking and saving it to the directory that contains the .R script on which you are currently working:
+➡️ Download the following file:
 
   * [scottish_towns_wikipedia.txt](https://drive.google.com/file/d/12scoAC57ZsmUS82oXUb2qWFKcTHm9LVD/view?usp=sharing)
+  * ➡️ Open the page
+  * ➡️ Download by selecting the down arrow icon in the top right corner
+  * ➡️ Save the file to a directory on your computer that makes sense
+  * ➡️ Ensure the file name saved is "scottish_towns_wikipedia.txt"
+  * Note - I just generated this file from [this wikipedia page](https://en.wikipedia.org/wiki/List_of_towns_and_cities_in_Scotland_by_population)
 
 To do this, we will first need to learn a little bit about how to navigate file structures within R.
 

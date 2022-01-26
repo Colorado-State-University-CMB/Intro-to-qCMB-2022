@@ -24,6 +24,8 @@ date()
 
 dim(model_systems)
 
+mean(chromosomes)
+
 ```
 
 You've probably noticed that using functions requires you to type a lot of parentheses. Sometimes these parentheses are empty and sometimes we type something in them. Think of this like using verbs in the English language. Some verbs take direct objects (I throw the ball)  and some verbs stand alone (I run). In the same way, sometime functions require an object to operate on and others do not. The date function doesn't require an input object to report today's date.

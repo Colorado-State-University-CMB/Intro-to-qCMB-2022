@@ -86,7 +86,7 @@ Let's practice importing some data. Here is a real supplementary dataset that my
 
   * Download the file to your computer.
   * Ensure your working directory is set properly
-  * Import the dataset into R using either `read.table()` or `read.csv()` and save it as an object called `signal_to_noise`
+  * Import the dataset into R using `read.csv()` and save it as an object called `signal_to_noise`
   * Note - .csv stands for "comma separated value"
   * What is the output of `str(signal_to_noise)`? Copy and paste it here as the answer to this question.
 

@@ -1,3 +1,5 @@
+<img src="webContent/WebContent_Powerpoint_nextSteps.jpg" width="1000">
+
 # R Next Steps
 
 January 26, 2022

@@ -22,3 +22,4 @@ For Monday, please read the following paper:
 7. Petersen TN, Brunak S, von Heijne G, Nielsen H. SignalP 4.0: discriminating signal peptides from transmembrane regions. Nat Methods. 2011 Sep 29;8(10):785-6. doi: 10.1038/nmeth.1701. PMID: 21959131.
 8. Krogh A, Larsson B, von Heijne G, Sonnhammer EL. Predicting transmembrane protein topology with a hidden Markov model: application to complete genomes. J Mol Biol. 2001 Jan 19;305(3):567-80. doi: 10.1006/jmbi.2000.4315. PMID: 11152613.
 9. Suh, J., Hutter, H. A survey of putative secreted and transmembrane proteins encoded in the C. elegans genome. BMC Genomics 13, 333 (2012). https://doi.org/10.1186/1471-2164-13-333
+10. Zhulin IB. 2015. Databases for microbiologists. J Bacteriol 197:2458–2467. doi:10.1128/JB.00330-15. 

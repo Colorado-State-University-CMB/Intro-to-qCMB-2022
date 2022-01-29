@@ -7,6 +7,7 @@
 ## Welcome to the 3rd module of CM580A3 - Introduction to Quantitative Cell and Molecular Biology! 
 
 In this module we will explore biological databases. 
+What are they? How can we use them? How can they help us answer questions and develop new hypothesis?  
 
 For Monday, please read the following paper:
 - [High Innate Immune Specificity Through Diversified C-Type Lectin-Like Domain Proteins In Invertebrates](https://pubmed.ncbi.nlm.nih.gov/26580547/)

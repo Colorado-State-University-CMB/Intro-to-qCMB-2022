@@ -98,7 +98,6 @@ To set up our Wormbase Parasite Biomart search, lets first navigate through the 
 ```{r, message=FALSE}
 # packages to load 
 library(usethis)
-library(devtools)
 library(biomaRt)
 library(dplyr)
 library(tibble)

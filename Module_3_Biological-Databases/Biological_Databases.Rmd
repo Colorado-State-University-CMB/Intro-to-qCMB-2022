@@ -242,24 +242,33 @@ hist(freq_pro_doms) # look at distribution of the data
 ```
 
 ```{r}
+# function used to produce result summaries. Depends on the class of the R object 
 summary(freq_pro_doms) # why didn't this work?  
-class(freq_pro_doms)
-typeof(freq_pro_doms)
+
+# determine the class of any R objects 'internal' type  
+class(freq_pro_doms) 
+
+# determine the (R internal) type or storage mode of any object
+typeof(freq_pro_doms) 
 ```
 
 ```{r}
 quantile(freq_pro_doms)
+
 boxplot(freq_pro_doms)
 ```
 
 Lets pull out the top 9 protein domains and IDs
 ```{r}
-sorted_doms <- view(sort(freq_pro_doms, decreasing = TRUE))
-top9 <- sorted_doms[1:9, 1]
+sorted_doms <- sort(freq_pro_doms, decreasing = TRUE)
+sorted_doms <- as.data.frame(sorted_doms)
+top9 <- sorted_doms[1:9, ]
 view(top9)
+print(top9)
 
-clec_pro_domains[, 4:5] %>% filter(interpro_short_description %in% top9) -> Top9domIDs
+clec_pro_domains[, 4:5] %>% filter(interpro_short_description %in% top9[,1]) -> Top9domIDs
 view(unique(Top9domIDs))
+print(unique(Top9domIDs))
 ```
 
 We can now check out some of these protein domains in [InterPro](https://www.ebi.ac.uk/interpro/) and learn more about them. 

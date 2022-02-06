@@ -1,0 +1,175 @@
+---
+title: "qCMB_Assignment 3"
+author: "Jessica Hill"
+date: "2/09/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+***
+Assignment 3 is due on **February ##, 2022**
+
+*** 
+
+**Instructions:** Please complete the following questions and turn in the completed document as a knitted R markdown document. You will turn in your assignment on canvas.
+
+***
+
+### Required packages to install and load for this assignment 
+
+To start, un-comment the package instillation lines and package loading lines. Once complete, re-comment out lines. 
+```{r}
+#install.packages(c("usethis", "BiocManager", "dplyr", "tibble", "imageclipr"))
+#devtools::install_github("hadley/devtools")
+#BiocManager::install("biomaRt")
+```
+
+```{r, message=FALSE}
+library(usethis)
+library(devtools)
+library(biomaRt)
+library(dplyr)
+library(tibble)
+```
+
+*** 
+
+### Question 1 (5 points): 
+
+Take our C. elegans 'clec gene' list from earlier and find some human orthologues.
+
+First, lets set up the original search and re-make our clec gene list
+```{r}
+mart <- useMart("parasite_mart", dataset = "wbps_gene", host = "https://parasite.wormbase.org", port = 443)
+
+genes <- getBM(mart = mart,
+                      filters = list(species_id_1010 = "caelegprjna13758", biotype = "protein_coding"),
+               attributes = c("wbps_gene_id", "external_gene_id"))
+
+head(genes)
+print(length(unique(genes$wbps_gene_id)))
+```
+
+```{r}
+genes %>% filter(grepl("clec", external_gene_id)) -> clec_genes
+view(clec_genes)
+print(length(clec_genes$wbps_gene_id))
+```
+
+```{r}
+clec_gene_ids <- clec_genes$wbps_gene_id
+view(clec_gene_ids)
+```
+
+Second, lets input our clec gene list into a new Biomart search and adjust the attributes to include human ortholouges.  
+```{r}
+mart <- useMart("parasite_mart", dataset = "wbps_gene", host = "https://parasite.wormbase.org", port = 443)
+
+clec_ortholouges <- getBM(mart = mart,
+                      filters = list(species_id_1010 = 'caelegprjna13758', wbps_gene_id = clec_gene_ids, only_hsapiens_homologue = TRUE), 
+                      attributes = c("wbps_gene_id", "external_gene_id", "hsapiens_gene", "hsapiens_gene_name", "hsapiens_homolog_perc_id_r1", "hsapiens_homolog_perc_id"))
+
+
+view(clec_ortholouges)
+```
+
+%identity: from worm to human comparison 
+human % identity: from human to worm comparison 
+
+
+How many did we find?
+```{r}
+hum_clec_ortho <- unique(clec_ortholouges[,3])
+view(hum_clec_ortho)
+print(length(hum_clec_ortho))
+```
+
+*** 
+
+### Question 2 (5 points):
+
+Take our list of all the human clec ortholouge gene IDs and search for key traits
+
+```{r}
+mart <- useMart("parasite_mart", dataset = "wbps_gene", host = "https://parasite.wormbase.org", port = 443)
+
+human_clecs <- getBM(mart = mart, 
+               filters = list(species_id_1010 = "hsapiens", wbps_gene_id = hum_clec_ortho),
+               attributes = c("production_name_1010", "wbps_gene_id", "external_gene_id", "interpro_id", "interpro_short_description", "transmembrane_domain", "signal_domain"))
+
+view(human_clecs)
+```
+
+```{r}
+human_clecs_doms <- human_clecs[, 5]
+view(human_clecs_doms) # there are 286 total entries
+view(unique(human_clecs_doms)) # a total of 24 are unique 
+
+freq_human_clec_doms <- table(human_clecs_doms)
+sum(freq_human_clec_doms) # we havent lost anything, still have 286 total entries
+view(sort(freq_human_clec_doms, decreasing = TRUE))
+```
+
+now list all unique human gene names given in the 'external gene id' column 
+```{r}
+# complete the code to perform this task
+your_gene_list <- human_clecs[,3] 
+view(your_gene_list) 
+
+# now add a line of code below to get rid of duplicate values and show only unique values 
+unique_genes <- unique(your_gene_list)
+view(unique_genes)
+
+# how many genes did you find?
+print(length(unique_genes))
+```
+
+***
+
+### Question 3 (5 points):
+
+Take the human gene, CD209, from your 'unique genes' list and find its corresponding c. elegans ortholouge.
+
+```{r}
+clec_ortholouges %>% filter(grepl("CD209", hsapiens_gene_name)) -> answer
+answer
+```
+
+Now lets take [CD209](https://www.uniprot.org/uniprot/Q9NNX6) and [CLEC-87](https://www.uniprot.org/uniprot/Q9XVS3) and retrieve their UniProt IDs. 
+
+The UniProtID for CD209 is Q9NNX6
+The UniProtID for CLEC-87 is Q9XVS3
+
+Now lets perform a sequence alignment with CD209 and CLEC-87 to compare them using [UniProt Align](https://www.uniprot.org/align/). We will use the UniProt IDs as the inputs. 
+
+What is their % identity? 
+
+
+***
+
+### Question 4 (5 points):
+
+What if we start our search with CD209 and work backwards trying to find C. elegans ortholouges. 
+Lets use UniProt to do this. 
+
+After looking up CD209 in UniProt, scroll down to family and domain databases. Click on the InterPro domain id for C-type_lectin-like. 
+
+Now we are taken to the InterPro website. Here we see the C-type lectin-like domain information page. Toggle over to 'Taxonomy' and click it. This should bring up key species. 
+
+Do you see C. elegans (Caenorhabditis elegans)? 
+
+How many similar proteins are reported? 
+
+Try clicking on some options, can you find any of these 'matching proteins'. These proteins are matched by their similar domains. In other words we are finding orthologous C. elegans proteins. 
+
+
+***
+
+### Question 5 (5 points):
+Describe the R package BiomaRt, and 1 function within BiomaRt. Also describe what innovation the package and chosen function provide. 
+
+Check out some of the [R documentation](https://www.rdocumentation.org/packages/biomaRt/versions/2.28.0) to help answer these questions. 
+

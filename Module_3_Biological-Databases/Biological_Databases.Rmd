@@ -9,6 +9,22 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE, error = TRUE, warning = FALSE)
 ```
 
+```{r, message=FALSE}
+# if you havent yet installed these packages please uncomment and do so now
+#install.packages(c("usethis", "devtools", "dplyr", "tibble"))
+#devtools::install_github('Timag/imageclipr')
+#BiocManager::install("biomaRt")
+```
+
+```{r, message=FALSE}
+# packages to load 
+library(usethis)
+library(biomaRt)
+library(dplyr)
+library(tibble)
+library(imageclipr)
+```
+
 ***
 ### Quick Survey
 How many of you have worked with a biological database before? 
@@ -89,20 +105,6 @@ Lets perform a database search for all the C. elegans 'clec' genes and determine
 
 To set up our Wormbase Parasite Biomart search, lets first navigate through the website and use that information to guide our selections in R. 
     
-```{r, message=FALSE}
-# if you havent yet installed these packages please uncomment and do so now
-#install.packages(c("usethis", "devtools", "dplyr", "tibble", "imageclipr"))
-#BiocManager::install("biomaRt")
-```
-
-```{r, message=FALSE}
-# packages to load 
-library(usethis)
-library(biomaRt)
-library(dplyr)
-library(tibble)
-library(imageclipr)
-```
 
 Lets first establish a connection to the WormBase ParaSite BioMart
 ```{r}

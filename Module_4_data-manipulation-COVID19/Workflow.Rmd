@@ -1,0 +1,24 @@
+---
+title: "Into_qCMB"
+author: "Pablo Maldonado"
+date: "2/7/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Looking at COVID19 Data
+
+This is a data set that has been curated buy Ramin Krispin and Jerret Byrnes
+
+install.packages("coronavirus")
+library(coronavirus)
+library(tidyverse)
+head(coronavirus)
+coronavirus %>%
+  filter(country == "US")
+head(covid19_vaccine)
+covid19_vaccine %>%
+  filter(country_region == "US")

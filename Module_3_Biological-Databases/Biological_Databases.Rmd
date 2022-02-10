@@ -231,7 +231,7 @@ We can determine the frequency of protein domains among CLECs
 ```{r}
 freq_pro_doms <- table(clec_pro_domains$interpro_short_description)
 view(sort(freq_pro_doms, decreasing = TRUE)) 
-# the frequency of genes associated with a particular protein domain. 
+# the frequency of clec proteins associated with a particular protein domain. 
 ```
 
 ```{r}

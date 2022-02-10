@@ -1,7 +1,7 @@
 ---
 title: "qCMB_Assignment 3"
 author: "Jessica Hill"
-date: "2/14/2022"
+date: "2/09/2022"
 output: html_document
 ---
 
@@ -10,7 +10,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ***
-Assignment 3 is due on **February ##, 2022**
+Assignment 3 is due on **February 14, 2022**
 
 *** 
 

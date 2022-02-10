@@ -9,7 +9,8 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Looking at COVID19 Data
+## Looking at COVID19 
+Data
 
 This is a data set that has been curated buy Ramin Krispin and Jerret Byrnes
 

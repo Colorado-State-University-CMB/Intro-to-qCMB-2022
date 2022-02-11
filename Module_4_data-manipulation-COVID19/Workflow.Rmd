@@ -1,30 +1,76 @@
 ---
-title: "Intro_to_qCMB"
-author: "Pablo Maldonado"
-date: "2/7/2022"
+title: "Data Manipulation with COVID-19"
+author: ""
+date: "2/14/2022"
 output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, message=FALSE)
 ```
 
-## Data Manipulation with COVID-19 
+This is an R package created and curated buy Ramin Krispin and Jerret Byrnes and 
+has been uploaded to the [CRAN repository](https://cran.r-project.org/web/packages/coronavirus/readme/README.html). 
+Currently, it contains two data sets which contain data on COVID19 cases, deaths, 
+vaccinations, populations and countries among other data. We will use the two 
+datasets within this coronavirus package to practice some data manipulation so
+we can set ourselves up for data visualization.
 
-This is a data set that has been curated buy Ramin Krispin and Jerret Byrnes and 
-automatically updates daily. The package has been uploaded to the CRAN repository
 
+### Open the toolbox
+Let's begin by installing the package and a few tools with the ***install.packages() & library()*** functions
 ```{r}
-install.packages("coronavirus")
-coronavirus
+# Use quotes "" for installing packages
+#install.packages("coronavirus")
+# install.packages("tidyverse")
 library(coronavirus)
 library(tidyverse)
+```
 
+### Let's take a look at the data
+```{r}
 head(coronavirus)
-coronavirus %>%
-  filter(country == "US")
+tail(coronavirus)
+
+
 head(covid19_vaccine)
-covid19_vaccine %>%
-  filter(country_region == "US")
+tail(covid19_vaccine)
+str(covid19_vaccine)
+str(coronavirus)
+```
+
+```{r}
+coronavirus %>%
+  select(country) %>%
+  unique() %>%
+  count()
+
+covid19_vaccine %>%  
+  select(country_region) %>%
+  unique() %>%
+  count()
+
+coronavirus %>%
+  select(cases) %>%
+  count()
+
+covid19_vaccine%>%
+  select(people_fully_vaccinated) %>%
+  count()
+
+# covid19_vaccine %>%
+#   filter(country_region == "Afghanistan")
+```
+
+```{r}
+# coronavirus %>%
+#   select(c(country, population, cases, type)) 
+# 
+# type <- coronavirus %>%
+#   select(type)
+# 
+# covid19_vaccine %>%
+#   select(province_state) %>%
+#   !is.na()
 ```
 

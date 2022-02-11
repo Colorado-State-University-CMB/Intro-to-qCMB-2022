@@ -1,5 +1,5 @@
 ---
-title: "Into_qCMB"
+title: "Intro_to_qCMB"
 author: "Pablo Maldonado"
 date: "2/7/2022"
 output: html_document
@@ -9,19 +9,22 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Looking at COVID19 
-Data
+## Data Manipulation with COVID-19 
 
-This is 
-a data set that has been curated buy Ramin Krispin and Jerret Byrnes
+This is a data set that has been curated buy Ramin Krispin and Jerret Byrnes and 
+automatically updates daily. The package has been uploaded to the CRAN repository
 
-
+```{r}
 install.packages("coronavirus")
+coronavirus
 library(coronavirus)
 library(tidyverse)
+
 head(coronavirus)
 coronavirus %>%
   filter(country == "US")
 head(covid19_vaccine)
 covid19_vaccine %>%
   filter(country_region == "US")
+```
+

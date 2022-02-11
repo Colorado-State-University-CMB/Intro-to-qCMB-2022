@@ -119,7 +119,7 @@ now list all unique human gene names given in the 'external gene id' column
 your_gene_list <- human_clecs[,3] 
 view(your_gene_list) 
 
-# now add a line of code below to get rid of duplicate values and show only unique values 
+# now show only unique values 
 unique_genes <- unique(your_gene_list)
 view(unique_genes)
 

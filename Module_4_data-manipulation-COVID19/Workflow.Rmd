@@ -1,5 +1,5 @@
 ---
-title: "Data Manipulation with COVID-19"
+title: "Data Manipulation and Visualization with COVID-19"
 author: ""
 date: "2/14/2022"
 output: html_document
@@ -24,6 +24,7 @@ Let's begin by installing the package and a few tools with the ***install.packag
 #install.packages("coronavirus")
 # install.packages("tidyverse")
 library(coronavirus)
+update_dataset()
 library(tidyverse)
 ```
 

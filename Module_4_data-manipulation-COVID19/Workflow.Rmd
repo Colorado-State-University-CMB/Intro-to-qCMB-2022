@@ -93,18 +93,24 @@ which(is.na(coronavirus$population))
 
 ```
 
+#### What if we wanted to sum() the observations within a character vector?
 ```{r}
-# What if we wanted to sum() the observations within a character vector?
+# Remember, we can only use the sum() function on numerics
 coronavirus %>%
   select(type) %>%
   sum()
+
+# There are three unique observations within the "type" character vector
+coronavirus %>%
+  select(type) %>%
+  unique() 
 
 ```
 
 
 ```{r}
 total_cases <- coronavirus %>%
-  filter(type != "recovery") %>%
+  filter(type != "recovery") %>% # "!=" (not equal to)
   group_by(type) %>%
   summarise(cases = sum(cases)) %>%
   mutate(type = factor(type, levels = c("confirmed", "death"))) # Factors are used to represent categorical data which cannot be done with a character vector
@@ -116,15 +122,15 @@ total_cases
 ```{r}
 coronavirus %>%
   filter(type != "recovery") %>%
-  group_by(type, continent_name) %>%
+  group_by(type, country) %>%
   summarise(cases = sum(cases), .groups = "drop") %>%
   mutate(type = factor(type, levels = c("confirmed", "death"))) %>%
   pivot_wider(names_from = type, values_from = cases) %>%
   mutate(death_rate = death / confirmed) %>%
-  filter(!is.na(continent_name)) %>%
+  filter(!is.na(country)) %>%
   arrange(-death_rate) %>%
   datatable(rownames = FALSE,
-            colnames = c("Continent", "Confrimed Cases", "Death Cases","Death Rate %")) %>%
+            colnames = c("Country", "Confrimed Cases", "Death Cases","Death Rate %")) %>%
   formatPercentage("death_rate", 2)
 
 ```

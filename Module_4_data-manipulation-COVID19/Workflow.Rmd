@@ -9,69 +9,141 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE, message=FALSE)
 ```
 
-This is an R package created and curated buy Ramin Krispin and Jerret Byrnes and 
+`coronavirus`is an R package created and curated by Ramin Krispin and Jerret Byrnes and 
 has been uploaded to the [CRAN repository](https://cran.r-project.org/web/packages/coronavirus/readme/README.html). 
-Currently, it contains two data sets which contain data on COVID19 cases, deaths, 
-vaccinations, populations and countries among other data. We will use the two 
-datasets within this coronavirus package to practice some data manipulation so
-we can set ourselves up for data visualization.
+Currently, it contains two data sets, `coronavirus` & `covid19_vaccine`, that are 
+updated daily and have data on cases, deaths, vaccinations, population, 
+and countries among other geospatial data. Notice that the `coronavirus` data 
+and `coronavirus` package share the same name. You'll be able to distinguish the
+package in R Studio via the `::` in `coronavirus::` when typed within an R chunk.
 
+### `coronavirus` data set: Monday February 14, 2022
+We'll begin with the `coronavirus` data set. To manipulate and visualize our date, 
+we'll need to load a few other packages (`tidyverse`, `plotly`, `DT`) which contain
+the tools we need to query and analyze the data.
 
-### Open the toolbox
-Let's begin by installing the package and a few tools with the ***install.packages() & library()*** functions
+#### Open our toolbox
+Let's begin by installing the package and a few tools with the `install.packages()` & `library()` functions
 ```{r}
 # Use quotes "" for installing packages
+
+#install.packages("tidyverse")
+#install.packages("plotly")
+#install.packages("DT")
 #install.packages("coronavirus")
-# install.packages("tidyverse")
-library(coronavirus)
-update_dataset()
+
+# Load them in
 library(tidyverse)
+library(plotly) # interactive maps and charts
+library(DT) # interactive data tables
+library(coronavirus)
+
 ```
 
-### Let's take a look at the data
+#### Let's take a look at the data
 ```{r}
+coronavirus
 head(coronavirus)
 tail(coronavirus)
-
-
-head(covid19_vaccine)
-tail(covid19_vaccine)
-str(covid19_vaccine)
 str(coronavirus)
 ```
-
+#### Diving a bit deeper
 ```{r}
+# How many countries are listed in the data?
 coronavirus %>%
   select(country) %>%
   unique() %>%
   count()
 
-covid19_vaccine %>%  
-  select(country_region) %>%
-  unique() %>%
-  count()
-
+# Running this code however WON'T count the number of cases 
 coronavirus %>%
   select(cases) %>%
   count()
 
-covid19_vaccine%>%
-  select(people_fully_vaccinated) %>%
-  count()
+# Using the the sum() function can tell us total number of cases in the data set. This is possible because the "cases" vector is an numeric
+                    coronavirus %>%
+                      select(cases) %>%
+                      sum()
+                    
+                    coronavirus %>%
+                      select(type) %>%
+                      sum()
 
-# covid19_vaccine %>%
-#   filter(country_region == "Afghanistan")
+# How about cases in the US only?
+coronavirus %>%
+  filter(country == "US") %>%
+  select(cases) %>%
+  sum()
+  
+```
+
+#### Are there any missing values 
+```{r}
+
+any(is.na(coronavirus))
+
+# How many?
+sum(is.na(coronavirus))
+
+# Where are the NA's?
+colSums(is.na(coronavirus))
+
+# Location of each NA?
+which(is.na(coronavirus$population))
+
 ```
 
 ```{r}
-# coronavirus %>%
-#   select(c(country, population, cases, type)) 
-# 
-# type <- coronavirus %>%
-#   select(type)
-# 
-# covid19_vaccine %>%
-#   select(province_state) %>%
-#   !is.na()
+# What if we wanted to sum() the observations within a character vector?
+coronavirus %>%
+  select(type) %>%
+  sum()
+
+```
+
+
+```{r}
+total_cases <- coronavirus %>%
+  filter(type != "recovery") %>%
+  group_by(type) %>%
+  summarise(cases = sum(cases)) %>%
+  mutate(type = factor(type, levels = c("confirmed", "death"))) # Factors are used to represent categorical data which cannot be done with a character vector
+
+total_cases
+```
+
+
+```{r}
+coronavirus %>%
+  filter(type != "recovery") %>%
+  group_by(type, continent_name) %>%
+  summarise(cases = sum(cases), .groups = "drop") %>%
+  mutate(type = factor(type, levels = c("confirmed", "death"))) %>%
+  pivot_wider(names_from = type, values_from = cases) %>%
+  mutate(death_rate = death / confirmed) %>%
+  filter(!is.na(continent_name)) %>%
+  arrange(-death_rate) %>%
+  datatable(rownames = FALSE,
+            colnames = c("Continent", "Confrimed Cases", "Death Cases","Death Rate %")) %>%
+  formatPercentage("death_rate", 2)
+
+```
+
+```{r}
+
+```
+
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+
+```{r}
+
 ```
 

@@ -199,24 +199,20 @@ confirmed_country <- coronavirus %>%
 
 confirmed_country
 ```
-## Plotly can make things much more exciting to look at
+## 2.7 Plotly can make things much more exciting to look at
 ```{r}
-conf_df <- coronavirus %>% 
+treemap_df <- coronavirus %>% 
   filter(type == "confirmed") %>%
   group_by(country) %>%
   summarise(total_cases = sum(cases)) %>%
-  arrange(-total_cases) %>%
   mutate(parents = "Confirmed") %>%
-  ungroup() 
-  
-  plot_ly(data = conf_df,
+  arrange(-total_cases)  
+
+  plot_ly(data = treemap_df,
           type= "treemap",
           values = ~total_cases,
-          labels= ~ country,
-          parents=  ~parents,
-          domain = list(column=0),
-          name = "Confirmed",
+          labels= ~country,
+          parents= ~parents,
           textinfo="label+value+percent parent")
-
 ```
 

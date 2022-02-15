@@ -1,8 +1,9 @@
 ---
 title: "Data Manipulation and Visualization with COVID-19"
-author: ""
+author: ''
 date: "2/14/2022"
-output: html_document
+output:
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -38,7 +39,7 @@ library(tidyverse)
 library(plotly) # interactive maps and charts
 library(DT) # interactive data tables
 library(coronavirus)
-
+update_dataset()
 ```
 
 #### 1.2 Let's take a look at the data
@@ -65,7 +66,7 @@ coronavirus %>%
                     coronavirus %>%
                       select(cases) %>%
                       sum()
-                    
+#244042117
                     # coronavirus %>%
                     #   select(type) %>%
                     #   sum()
@@ -75,7 +76,7 @@ coronavirus %>%
   filter(country == "US") %>%
   select(cases) %>%
   sum()
-  
+#45403708
 ```
 
 #### 1.4 Are there any missing values 

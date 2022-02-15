@@ -39,7 +39,7 @@ library(tidyverse)
 library(plotly) # interactive maps and charts
 library(DT) # interactive data tables
 library(coronavirus)
-update_dataset()
+#update_dataset()
 ```
 
 #### 1.2 Let's take a look at the data

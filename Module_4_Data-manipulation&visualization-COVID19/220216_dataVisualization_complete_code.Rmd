@@ -1,0 +1,225 @@
+---
+title: "220216_qCMB_data_Visualization"
+author: "Naly Torres"
+date: "2/16/2022"
+output: html_document
+---
+
+```{r}
+#Load library
+library(tidyverse)
+library(coronavirus)
+```
+
+
+## Upload/look at the data:
+```{r}
+#save dataset as an object
+coronavirus <- coronavirus
+
+
+#explore the data
+head(coronavirus, n = 20)
+tail(coronavirus, n = 20)
+str(coronavirus)
+
+```
+
+
+## Clean up the data: make a smaller dataset that only includes what we're interested in:
+```{r}
+
+#1. Select data from the last date of entry
+#2. take out rows with missing values
+#3. select only the columns we are interested in
+#4. Add total number of cases per country
+#5. Arrange in descending order
+
+covid_df <- coronavirus %>% 
+  filter(date == max(date),
+         !is.na(population)) %>%
+  select("country", "type", "cases", "population") %>%
+  group_by(country, type) %>%
+  summarise(population = sum(population), cases = sum(cases), type, population) %>%
+  unique () %>%
+  group_by(country) %>%
+  mutate(total_cases = sum(cases)) %>%
+  arrange(desc(total_cases))
+
+
+#explore the data
+head(covid_df, n = 20)
+tail(covid_df, n = 20)
+str(covid_df)
+
+
+
+```
+
+
+
+## Explore the top 15 countries with COVID-19 cases with a simple bar plot
+```{r}
+#explore the data
+covid_df_top15 <- head(covid_df, n = 45)
+
+
+#ggplot it!
+top15_covid_plot <- ggplot(covid_df_top15,
+       aes(x = cases, y = country)) +
+  geom_bar(stat='identity',
+           aes(fill = type, size = cases)) +
+  theme_classic() +
+  labs(title = "Top 15 countries with COVID-19 cases",
+      x = "Amount of cases",
+      y = "Country") +
+  theme(legend.position = "right") +
+  guides(size = "none")
+
+top15_covid_plot 
+
+
+#ggsave it!
+ggsave("top15_covid_plot.png", top15_covid_plot, width = 8, height = 5)
+            
+
+```
+
+
+## Challenge: plot of COVID cases in the US
+```{r}
+
+library(knitr)
+include_graphics("covid_us_plot.png")
+```
+
+
+## COVID in the US
+```{r}
+
+#filter for the US
+covid_us <- covid_df %>%
+  filter(country == "US")
+  
+
+#explore the data
+covid_us
+
+```
+
+
+
+```{r}
+
+#explore the data
+covid_us
+
+
+#ggplot it!
+
+covid_us_plot <- ggplot(covid_us,
+       aes(x = type, y = cases)) +
+  geom_bar(stat='identity',
+           aes(fill = "tomato")) +
+  theme_classic() +
+  labs(title = "COVID-19 cases in the US",
+      x = "Type",
+      y = "Amount of cases") +
+  theme(legend.position = "none")
+    
+covid_us_plot   
+
+
+
+#ggsave it!
+ggsave("covid_us_plot.png", covid_us_plot, width = 8, height = 5)
+
+```
+
+
+## Now plot multiple countries
+```{r}
+#explore the data
+covid_df_top15
+
+#ggplot it!
+
+top15_wrap_plot <- ggplot(covid_df_top15,
+       aes(x = type, y = cases)) +
+  geom_bar(stat='identity') +
+  aes(fill = "tomato") +
+  theme_classic() +
+  labs(title = "Top 15 countries with COVID-19 cases",
+      x = "Type",
+      y = "Amount of cases") +
+  theme(legend.position = "none") +
+  facet_wrap("country", nrow =5)
+
+#ggsave it!
+ggsave("top15_wrap_plot.png", top15_wrap_plot, width = 8, height = 8)
+```
+
+
+################
+
+## Sometimes you need variables as column names - like confirmed, deaths and recovery -> Pivor wider!
+
+covid_df
+
+#pivot wider to have confirmed, death and recovery be column names, then arrange on descending order of cases
+
+```{r}
+
+covid_df_wider <- pivot_wider(covid_df,
+            names_from = "type",
+            values_from = cases) %>%
+  group_by(country) %>% 
+  summarise(total_cases, population = sum(population), confirmed_total = sum(confirmed), death_total = sum(death), recovery_total = sum(recovery)) %>% 
+  unique () %>%
+ arrange(desc(total_cases))
+
+#explore the data
+head(covid_df_wider, n = 20)
+tail(covid_df_wider, n = 20)
+str(covid_df_wider)
+
+
+```
+
+## Make a plot of the top 15 countries with covid cases using geom_point, then add data as aesthetics.
+```{r}
+#explore the data
+covid_df_wider
+
+
+#ggplot it!
+
+covid_df_wider <- head(covid_df_wider, n = 15)
+
+top15_point_plot <- ggplot(covid_df_wider,
+       aes(x = country, y = total_cases)) +
+  geom_point(aes(size = confirmed_total,
+                 color = death_total)) +
+  theme_classic() +
+  labs(title = "Top 15 countries with COVID-19 cases",
+      x = "Country",
+      y = "Total amount of cases") +
+  theme(legend.position = "right",
+        axis.text.x = element_text(angle = 90)) +
+   scale_size_continuous(name = "Amount of cases") +
+  scale_color_continuous(name = "Amount of deaths")
+
+  
+top15_point_plot
+   
+#ggsave it!
+ggsave("top15_point_plot.png", top15_point_plot, width = 8, height = 5)
+            
+```
+
+
+
+
+
+
+

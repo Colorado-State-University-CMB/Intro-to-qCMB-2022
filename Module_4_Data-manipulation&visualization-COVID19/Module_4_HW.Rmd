@@ -1,0 +1,53 @@
+---
+title: "Module_4_HW"
+author: "Pablo Maldonado"
+date: "2/16/2022"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message=FALSE)
+```
+
+
+```{r}
+# Use quotes "" for installing packages
+
+#install.packages("tidyverse")
+#install.packages("plotly")
+#install.packages("DT")
+#install.packages("coronavirus")
+
+# Load them in
+library(tidyverse)
+library(plotly) # interactive maps and charts
+library(DT) # interactive data tables
+library(coronavirus)
+#update_dataset()
+```
+
+```{r}
+
+covid_df <- coronavirus %>%
+  filter(type != "recovery") %>%
+  filter(across(c(country, type, cases, population), ~ !is.na(.))) %>%
+  group_by(type, country, population) %>%
+  unique() %>%
+  summarise(cases = sum(cases)) %>%
+  pivot_wider(names_from = type, values_from = cases) %>%
+  mutate(total_cases = sum(confirmed, death)) %>%
+  arrange(desc(total_cases))
+
+
+covid19_vaccine_df <- covid19_vaccine %>% 
+  filter(date == max(date)) %>%
+  select("country_region", "people_partially_vaccinated", 
+         "people_fully_vaccinated", "population", "continent_name") %>%
+  filter(across(c(country_region, people_partially_vaccinated, 
+         people_fully_vaccinated, population, continent_name), ~ !is.na(.))) %>%
+  group_by(country_region) %>%
+  unique () %>%
+  arrange(desc(population))
+
+```
+

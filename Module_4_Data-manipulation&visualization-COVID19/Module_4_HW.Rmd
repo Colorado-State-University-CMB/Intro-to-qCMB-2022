@@ -30,6 +30,9 @@ library(coronavirus)
 
 covid_df <- coronavirus %>%
   filter(type != "recovery") %>%
+  group_by(country) %>%
+  filter(population == max(population)) %>%
+  ungroup() %>%
   filter(across(c(country, type, cases, population), ~ !is.na(.))) %>%
   group_by(type, country, population) %>%
   unique() %>%
@@ -49,5 +52,8 @@ covid19_vaccine_df <- covid19_vaccine %>%
   unique () %>%
   arrange(desc(population))
 
+
+covid_df
+covid19_vaccine_df
 ```
 

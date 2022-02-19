@@ -55,8 +55,5 @@ covid19_vaccine_df <- covid19_vaccine %>%
 
 covid_df
 covid19_vaccine_df
-
-covid19_vaccine_df %>%
-  filter(country_region == "Russia")
 ```
 

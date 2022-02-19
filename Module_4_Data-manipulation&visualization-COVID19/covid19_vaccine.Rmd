@@ -23,7 +23,7 @@ library(tidyverse)
 library(plotly) # interactive maps and charts
 library(DT) # interactive data tables
 library(coronavirus)
-#update_dataset()
+update_dataset() # Make sure you check the console for Yes/No, and restart the R session.
 ```
 
 ```{r}
@@ -54,6 +54,6 @@ covid19_vaccine_df <- covid19_vaccine %>%
 
 
 covid_df
-covid19_vaccine_df
+covid19_vaccine_df %>% filter(country_region == "Russia")
 ```
 

@@ -1,0 +1,60 @@
+---
+title: "Homework 4"
+author: "Change-this-to-your-name"
+date: "2/18/2022"
+output: html_document
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Choose a dataset to plot. You can use:
+
+* built-in datasets in R, or 
+* fetch one from a repository like [#tidytuesday](https://github.com/rfordatascience/tidytuesday#datasets), or
+* use the coronavirus dataset (look at covid19_vaccine.Rmd for reading in)
+
+Make sure you use `update_dataset()` if you choose either of the coronavirus datasets (some tidy formatting doesn't work if you don't).
+
+You can list R built-in datasets in a new tab with the following code. This code also loads `mtcars` into your environment as an example.
+```{r list-dataset}
+data() # opens in new tab
+
+#choose a dataset
+data(mtcars) # adds the data to your environment
+ls()
+```
+
+### QUESTION 1:
+* What dataset (name) are you using? ______________
+* Describe the dataset: _________________________________
+
+```{r QUESTION-1-read-in-data}
+# if you're using a built-in, just do data(datasetname)
+# if you're using an external datasource, install or read it in
+# if you're using coronavirus data, paste in the code from covid19_vaccine.Rmd
+```
+
+----
+
+### Question 2: Barplot
+```{r create-a-ggplot-barplot}
+# use ggplot to create a bar plot
+```
+
+----
+
+### Question 3: Add a column to the "fill" argument of aes()
+```{r barplot-with-fill}
+# add a "fill" argument to the aesthetic
+```
+
+----
+
+### Question 4: ggplot extentions
+Choose and describe a new plotting method from [this blog)(https://mode.com/blog/r-ggplot-extension-packages/).
+
+*Points just for trying* the extension on a new plot on your dataset.
+```{r try-out-extension}
+# try out a new ggfunction
+```

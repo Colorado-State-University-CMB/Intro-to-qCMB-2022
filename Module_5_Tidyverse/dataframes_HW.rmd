@@ -1,0 +1,359 @@
+---
+title: "Dataframes with Tidyverse"
+author: "YOUR NAME"
+date: "2/21/2022"
+output:
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+#install.packages("tidyverse)
+library("tidyverse")
+
+```
+
+
+**Change the author on line 3 to your name**
+
+## ToothGrowth part 1
+Take a look at the pre-built R dataset "ToothGrowth". Go to this link to learn about the data:
+
+*https://www.rdocumentation.org/packages/datasets/versions/3.6.2/topics/ToothGrowth*
+
+Also, take a look at the code chunk already written for you. The head() function are written for you, and will result in printing the first 6 rows of the ToothGrowth dataframe. We are going to build up this dataframe using the functions available in tidyverse. Run the code chunck bellow, then answer the in-line questions. 
+
+**Is the data in long format or wide format?:**
+
+Let's summarize the data. Pipe the ToothGrowth dataframe into the group_by() and summarize() functions by adding a pipe (%>%) to the end of line 36 and removing the leading # from lines 37 and 38. The group_by() function will create a row (group) for every unique combination of "supp" and "dose". The summarize() function will take every group and calculate n (n(), number of times that unique combination occurs), mean (mean(len), the mean of values in "len" column for each group), and sd (sd(len), standard deviation of the values in the "len" column for each group). 
+
+**What datatype is the supp, dose, and n columns?:**
+
+```{r Toothgrowth dataset part 1, message=FALSE}
+
+data("ToothGrowth")
+
+ToothGrowth_df <- ToothGrowth
+  #group_by(supp, dose) %>%
+  #summarize(n=n(), mean = mean(len), sd = sd(len))
+
+head(ToothGrowth_df) # prints the first 6 rows of the dataframe
+#tail(ToothGrowth_df) # prints the last 6 rows of the dataframe
+
+```
+
+## ToothGrowth part 2
+Lets build up this dataframe using piping and the functions available in the tidyverse. 
+
+**1. Group and summarize the dataframe as we did above, in part 1.** You can copy the code directly, or for practice, you can type it out yourself.
+
+**2. Rename the "supp" column to supplement_type using dplyr::rename()**
+
+**3. Dose is currently in milligrams/day. Lets change is to micrograms/day by create a new column called "dose (ug/day)" that is equal to dose multiplied by 1000 using the mutate() function.** Note, because the new column name includes special characters and spaces, the new column name needs to be in quotes. 
+
+**4. Remove the column called "dose" using the select() function. **
+
+**5. Sort the data frame (smallest to largest) by mean using arrange()**
+
+```{r Toothgrowth dataset part 2, message=FALSE}
+
+data("ToothGrowth")
+
+ToothGrowth_df2 <- ToothGrowth
+
+
+
+ToothGrowth_df2
+```
+
+
+## Iris dataset
+
+We are going to practice melting and pivoting dataframes using the built-in R dataset, Iris. Learn about the iris dataset here:
+*https://www.rdocumentation.org/packages/datasets/versions/3.6.2/topics/iris*
+
+The dataset has already been loaded for you. Run the code chunck bellow and answer the in-line question. 
+
+**Is this dataframe in long format or wide format?:**
+
+**1. Melt the iris dataframe using the gather() function so that each row only contains one observation (aka long format).** In the gather() function, fill in the key and value arguments,i.e. key = "part_and_dimension" and value = "measurement". "Gather" data in columns 1 through 4. Remember to pipe the iris dataset into gather() before running the code.
+
+**2. Uncomment the next line of code by removing the # sign and pipe the dataframe into the separate() function. Run the code.** The separate() function splits the "part_and_dimension" column into two columns, "part" and "dimension", on the ".". This is a method to split a character string by a specified delimiter. In this case, the interpreter is smart enough to know what the delimiter is without me having to specify.
+
+**3. Pipe the dataframe into a group_by() then summarize() function. Group the data on "Species", "part", "dimension" and summarize the data by mean measurements using  "mean_measurement = mean(measurements)" as the only argument in the summarize() function.**
+
+**4. Using the spread() function, pivot the data so that there is a column for length and a column for width where the values for each dimension are from the mean_measurement column. That is, using the spread() function, the key and value arguments should be "dimension" and "mean_measurement", respectively.**
+
+```{r Iris dataset, message=FALSE}
+
+data("iris")
+
+
+iris_df <- iris 
+
+  
+  #separate(col=part_and_dimension, into=c("part", "dimension")) %>%
+  
+
+iris_df
+
+```
+
+
+## Differential gene expression (DGE) part 1
+
+We are going to play with an new dataframe that is not available in R. Import the DGE.tsv file using read.delim() and assign it to the variable "data" (already done for you, just uncomment the first line of code). This dataframe contains differential gene expression data for the 2306 genes encoded in the *Thermococcus kodakarensis* genome. There are two different experimental conditions (exponential or stationary growth phase, abbreviated expo and stat, respectively) and two replicates for each condition (rep1 and rep2). The values associated with each gene under each condition/replicate corresponds to how many RNA reads where mapped to those genes after next generation RNA-sequencing. If you are unfamiliar with RNA-seq, feel free to ask me to explain or google it youself.  
+
+**1. Run the code chunck bellow. Is the data in long or wide format?**
+
+**2. Using the gather() function, collapse the 4 condition_replicate columns into a single column and all read counts into a another column. Gather the data from columns 2:5 and run the code.**
+
+**3. Without removing the line of code you just wrote, undo the gather function by piping the dataframe into the spread() function.** Notice how the dataframe is back to its original form.
+
+```{r DGE part 1, message=FALSE}
+
+# import tab separated text files
+data <- read.delim("./DGE.tsv", sep="\t")
+
+DGE_df1 <- data 
+
+
+head(DGE_df1,10)
+```
+
+
+## Differential gene expression (DGE) part 2  -- On your own or in a group
+
+Lets do some data analysis. We are going to calculate reads per kilobase per million mapped reads (RPKM, the normalized read count) for each gene and compare the level of gene expression across two experimental conditions, exponential (expo) and stationary (stat) growth phases. Two tab separated text files are provided to you. One contains the RNA read counts for each gene (df is called "data" in the code chunk) and the other contains general information about each gene (df is called gen_lengths in the code chunk) that will help us calculate normalized read counts per gene (RPKMs). The number of mapped reads in millions for each library is assigned to a variable named according to this format: condition_replicate_MMR (e.g. expo1_MMR for exponential growth phase, replicate 1, million of mapped reads). Two custom function are provided for you to calculate p value and indicate whether a gene is up or down regulated. You do not need to do anything with the code that is already written for you. 
+
+**1. Import the gene expression data (DGE.tsv) and supporting file (gene_lengths.tsv) by running the code chunk. Look at the row count printed to the console, and familiarize yourself with the dataframes contents.**
+
+**2. Under DGE_df2 <- data, starting building the dataframe by merging it with gene_lengths on the "gene_id column. Perform a right outer join (all.x=TRUE), and run the code chunk.**
+
+**3. For each of the condition/replicate pair (expo_rep1, expo_re2, stat_rep1, stat_rep2), create a new column that calculates the RPKM. The first one has been done for you, just uncomment the line that starts with  "mutate(expo_RPKM_rep1 = ...". Keep with the same naming conventions and name the columns expo_RPKM_rep2, stat_RPKM_rep1, and stat_RPKM_rep2. There should be 4 new columns added to the dataframe. Run the code chunk.  **
+
+**4. Lets clean up the dataframe by selecting ( select() ) the following columns: gene_id, expo_RPKM_rep1, expo_RPKM_rep2, stat_RPKM_rep1, stat_RPKM_rep2. Run the code and look at the resultant dataframe. **
+
+**5. After the commented rowwise() function, we are going to mutate the dataframe by adding more columns. For now, ignore the rowwise() line, and add two new columns (!!after the rowwise() function) that calculate the mean RPKM across replicates for each condition. The first one has been done for you. Just uncomment the line that starts with "mutate(expo_mean_RPKM = ". Keep with this naming convention and name the new column "stat_mean_RPKM". Run the code and look at the resultant dataframe. **
+
+**6. Look at the dataframe and the values that were added in step 5. What seems to be the issue? Uncomment the rowwise() function and re-run the code. Is the issue fixed?** When mutating a column by applying a function() to row values, you need to include the rowwise() function so the interpreter knows to calculate the new value using the row values for each and every row. Otherwise, the interpreter uses the row values in the first row, and propagates that new value to all rows. If this is still unclear, comment out the rowwise() function again and run the code. You will see that all the values in the new column are the same for every row.
+
+**7. Calculate the log2 fold change between the expo_mean_RPKM and the stat_mean_RPKM for each gene. That is, mutate the dataframe to include a column called log2FC that is equal to log2( expo_mean_RPKM / stat_mean_RPKM ). ** Actually, add log2FC = log2( (expo_mean_RPKM+1) / (stat_mean_RPKM+1) ), where you add 1 to each mean RPKM value. This is common practice when analyzing gene expression because it prevents any divisions by 0, which will explode the world. 
+
+**8. Calculate the p value for each gene using the custom function get_pvalue().** That is, mutate ( mutate() ) the dataframe to include a column called pvalue that is equal to get_pvalue(expo_RPKM_rep1, expo_RPKM_rep2, stat_RPKM_rep1, stat_RPKM_rep2).
+
+**9. Let's clean up the dataframe by removing the following columns: expo_RPKM_rep1, expo_RPKM_rep2, stat_RPKM_rep1, and stat_RPKM_rep2. Run the code and look at the dataframe. **
+
+**10. Lets pull out all the statistically significant, differentially regulated genes. Filter the dataframe so that only rows where the log2FC is greater than 1 OR less than -1. Then, filter so that the dataframe only includes rows where the pvalue is less than 0.05. Run the code and look at the resultant dataframe.**
+
+**11. Create a new column called regulation that is equal to regulation(log2FC).** This is a custom function that returns "upregulated", "downregulated" or "unchanged" depending on whether the gene has increased, decreased, or uncahnged gene expression between the exponential and stationary growth phase samples. 
+
+**12. Arrange the dataframe by pvalue in ascending order.**
+
+**13. Uncomment the last line of code where the final dataframe is saved as DGE_analysis.tsv to your local drive. Run the code and confirm that the final dataframe was saved to a file. **
+
+```{r DGE part 2, message=FALSE}
+# import tab separated text files
+data <- read.delim("./DGE.tsv", sep="\t")
+gene_lengths <- read.delim("./gene_ids.tsv", sep="\t")
+
+# library sizes (million mapped reads = MMR)
+expo1_MMR <- sum(data$expo_rep1) / 1000000
+expo2_MMR <- sum(data$expo_rep2) / 1000000
+stat1_MMR <- sum(data$stat_rep1) / 1000000
+stat2_MMR <- sum(data$stat_rep2) / 1000000
+
+
+# custom function that will be applied to dataframe
+get_pvalue <- function(RPKM_a1,RPKM_a2,RPKM_b1,RPKM_b2){ 
+  pval= t.test( x = c(RPKM_a1,RPKM_a2),
+                y = c( RPKM_b1,RPKM_b2) )$p.value
+  return(pval)
+}
+
+regulation <- function(log2FC){
+  if(log2FC > 1){return('upregulated')}
+  else if(log2FC < -1){return('downregulated')}
+  else{return('unchanged')}
+}
+
+
+# Start here. build up the dataframe layer-by-layer using piping. Don't uncomment the code until the instructions tell you to. 
+DGE_df2 <- data 
+
+
+
+  #mutate(expo_RPKM_rep1 = expo_rep1 / (length / 1000)  / expo1_MMR   ) %>%
+
+ 
+  
+ #rowwise() %>%
+    #mutate(expo_mean_RPKM = mean(c(expo_RPKM_rep1, expo_RPKM_rep2)) ) %>%
+    
+
+
+nrow(DGE_df2) # count rows
+head(DGE_df2,10) # print first 10 rows of DGE dataframe
+
+#write.table(DGE_df2, "./DGE_analysis.tsv", sep="\t", row.name=FALSE)
+```
+
+
+## Data types
+R is really good at detecting the correct data type for each column variable. But, some functions require a specific data type as input, forcing you to manually change the data type if R did not correctly guess the data type. Datatypes include factor (fctr), character (chr), integer (int), and double (dbl; a decimal value). Converting a df column to a new data type is as easy as re-defining the column ( df$column_name <- <new value> ) using one of the following functions: as.factor(), as.character(), as.integer(), as.double(). Lets practice.
+
+**1. Run the code chunck. Look at the data types listed under each column name in the gene_lengths dataframe. Then, uncomment the first line of code and run the code chunk again. What datatype did we convert gene_id to?.** Study the syntax. We re-defined the gene_id column from the gene_lengths dataframe (gene_lengths$gene_id) to itself within the as.character() function. 
+
+```{r datatypes 1, message=FALSE}
+
+#gene_lengths$gene_id <- as.character( gene_lengths$gene_id  ) # convert gene_id to character type
+head(gene_lengths,3)
+
+```
+
+**2. Run the code chunk and look at the head of the ToothGrowth dataframe and the data types in each column. Re-define the dose column as an integer type by uncommenting the first line** Note that because the column name has spaces and special characters, the column name needs to be in quotations. 
+
+```{r datatypes 2, message=FALSE}
+
+#ToothGrowth_df$"dose (ug/day)" <- as.integer( ToothGrowth_df$"dose (ug/day)" )  # convert dose to integer
+head(ToothGrowth_df,3)
+
+```
+
+**3. Run the code chunk bellow and observe the data types in each column of the iris dataframe. Uncomment the first line of code and run the code chunk to see the data types of each column. What column did we re-define and what data type is it now? Uncomment the second line of code and re-run the code chunk.** Notice that the data frame looks the same. The difference between the functions factor() and as.factor() is that factor() allows you to re-level the column. Columns are automatically leveled in alphabetical and numerical order, but sometimes we want the factors in a column to be ordered in a different way for graphing purposes. For example, if we made a graph with the x axis labels corresponding to the "part" column, the first value on the x axis would be "Petal" and the second would be "Sepal", because "Petal" comes before "Sepal" alphabetically. But Maybe we want "Sepal" to appear first on the x axis, followed by "Petal". In this case, you wold want to re-level this column. 
+```{r datatypes 3, message=FALSE}
+
+#iris_df$part <- as.factor( iris_df$part )   # convert part to factor
+#iris_df$part <- factor( iris_df$part, levels=c("Sepal","Petal") ) # convert part to factor and/or re-level
+head(iris_df)
+
+```
+
+**4. Re-define DGE_df2 so that the "regulation" column is a factor**
+```{r datatypes 4, message=FALSE}
+
+
+head(DGE_df2)
+```
+
+**5. Re-define DGE_df1 so that the "expo_rep1" column is a double.**
+```{r datatypes 5, message=FALSE}
+
+
+head(DGE_df1)
+```
+
+## Import/melt/export: control vs treatment dataframe
+
+**1. Import the cvt_wide.tsv file using read.delim() and print the dataframe**. It is tab separated (sep = '\t') file that describes observations from a control and treatment group in triplicate.
+
+**2. Convert the dataframe to long form (aka melt the dataframe) using the gather() function. Make it so there is a column called "group" where treatment and control are listed, and the corresponding values are listed in a column called "observation".** 
+
+**3. Group the data by using the group_by() function, so that there are control and treatment groups. Then, summarize the data using the summarize() function. Within the summarize function, create a column for number of observations per group ( n=n() ), the mean of the observations ( mean() ) per group, and the standard deviation ( sd() ) of the observations per group. Print the dataframe.**  
+
+**4. Export the dataframe to your local drive using write.table().** Confirm that the dataframe was saved to a text file.  
+
+```{r cvt dataframe, message=FALSE}
+
+
+```
+
+
+# ggplot2!
+
+## ToothGrowth ggplot
+
+**1. Start by running the code chunk bellow** Look at the plot. 
+
+**2. Add a color = dose to the aes() function.** 
+
+**3. Run the code line-by-line, looking at the resultant plot with each new layer. Remember to add + after each layer, then uncomment the next line of code. Study the code and understand what each function (each layer) is adding to the graph before moving on to the next line.** Note, there are four different lines of code using the theme() function. Normally, you can put all your theme arguments into one theme() function, separated by commas. 
+
+**4. Uncomment the ggsave() function, study the code, and run the code chunk. Open up the png from your local drive. Zoom in on the graph. Then, in the ggsave function, change dpi = 200. Take another look at the graph on your local drive.**
+
+```{r Toothgrowth_df ggplot, fig.height = 3, fig.width = 4}
+
+ToothGrowth_df3 <- ToothGrowth
+ToothGrowth_df3$dose <- as.factor(ToothGrowth_df3$dose) 
+
+ggplot(ToothGrowth_df, aes( x = dose, y = len)) +
+  geom_boxplot() 
+#  geom_jitter(size = 1, position = position_dodge(.75)) 
+#  theme_classic() 
+#  facet_wrap(~supp) 
+#  scale_color_manual(values=c("blue", "red", "orange")) 
+#  labs(x="Dose (mg/day)", y="Length",title="Tooth Growth") 
+#  scale_y_continuous(limits = c(0,40)) 
+#  theme(plot.title = element_text(hjust = 0.5, size = 14) ) 
+#  theme(axis.text = element_text(size = 10, color="black") ) 
+#  theme(axis.title = element_text( size = 10) ) 
+#  theme(legend.position = 'none')
+
+#ggsave('toothgrowth_plot.png', device = 'png', path='./', dpi = 50)
+
+```
+
+
+
+## DGE volcano plot
+
+I have made version 3 of the differential gene expression dataframe. This dataframe is similar to df2, but without filtering for differentially regulated genes.
+
+**Run the code and look at the head of the data frame. **
+
+```{r DGE df3}
+DGE_df3 <- data %>%
+  merge(gene_lengths, by="gene_id", all.x=TRUE) %>%
+  mutate(expo_RPKM_rep1 = expo_rep1 / (length / 1000)  / expo1_MMR   ) %>%
+  mutate(expo_RPKM_rep2 = expo_rep2 / (length / 1000)  / expo2_MMR   ) %>%
+  mutate(stat_RPKM_rep1 = stat_rep1 / (length / 1000)  / stat1_MMR   ) %>%
+  mutate(stat_RPKM_rep2 = stat_rep2 / (length / 1000)  / stat2_MMR   ) %>%
+  select(gene_id, expo_RPKM_rep1, expo_RPKM_rep2, stat_RPKM_rep1, stat_RPKM_rep2) %>%
+ rowwise() %>%
+  mutate(expo_mean_RPKM = mean(c(expo_RPKM_rep1, expo_RPKM_rep2)) ) %>%
+  mutate(stat_mean_RPKM = mean(c(stat_RPKM_rep1, stat_RPKM_rep2)) ) %>%
+  mutate(log2FC = log2((expo_mean_RPKM+1)/(stat_mean_RPKM+1))) %>%
+  mutate(pvalue = get_pvalue(expo_RPKM_rep1,
+                             expo_RPKM_rep2,
+                             stat_RPKM_rep1,
+                             stat_RPKM_rep2) )%>%
+  select(-expo_RPKM_rep1, -expo_RPKM_rep2,-stat_RPKM_rep1,-stat_RPKM_rep2) %>%
+  mutate(regulation = regulation(log2FC, pvalue)) %>%
+  arrange(desc(regulation))
+
+head(DGE_df3)
+```
+
+
+We are going to make a volcano plot of differential gene expression. We are going to plot the log2 fold change on the x axis and the -log10 pvalue on the y axis. Genes that have statistically significant (p < 0.05), decreased gene expression will be in the top left panel of the graph (log2FC < -1 and -log10(pvalue) > 1.3). Genes that have statistically significant, increased expression will be in the top right panel of the graph (log2FC > 1 and -log10(pvalue) > 1.3). If needed, read more about volcano plots here:
+*https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/rna-seq-viz-with-volcanoplot/tutorial.html*
+
+**1. Initialize a ggplot for DGE_df3 and fill in the missing arguments. The x axis will be equal to log2FC and the y axis will be equal to -log10(pvalue). Color the data points using data from the "regulation" column. Add a geom_point in the second layer of the ggplot. Run the code and look at your plot.** 
+
+**2. After you run the code, add a size argument to the geom_point() layer. Set size = 0.5.**
+
+**3. Add a layer to your plot. Change the canvas to theme_classic(). Run th code.**
+
+**4. Manually color the data points according to their regulation.** Use scale_color_manual(values=c("...","...","..."). Pick your two favorite colors for up and down regulated genes, but make the data points grey when the gene is NOT differentially regulated. The coloring should look something like the plot found at this link: *https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/rna-seq-viz-with-volcanoplot/tutorial.html*
+
+**5. Rename the x and y axis so they are more descriptive/look nicer.**
+
+**6. Using scale_x_continuous(), break up the x axis so the limits are between -6 and 6 (limits=c(-6,6)).** 
+
+**7. Using scale_y_continuous(), break up the y axis so the limits are between 0 and 4 (limits=c(0,4)).** 
+
+**8. Add a layer for theme(). Make the axis text and axis titles size = 10 and color = "black".** axis.text and axis.title should both equal element_text(). Within the element_text() function, add size and color arguments.
+
+**9. Within the theme() function, remove the legend by assigning legend.position = 'none'.**
+
+**10. Save your ggplot as a pdf using ggsave() by uncommenting the last line of code** Play with the height and width arguments until your graph looks good when you open it from your local drive. Optionally, add an arguments for dpi (figure quality).
+
+```{r DGE volcano plot, fig.height = 3, fig.width = 4}
+
+ggplot(data = ..., mapping = aes( x = ..., y = -log10(pvalue), color = ...)) +
+
+
+
+#ggsave('DGE_volcano_plot.pdf', path='./', device = 'pdf', width = 10, height = 10)
+
+```

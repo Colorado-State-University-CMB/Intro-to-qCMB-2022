@@ -269,7 +269,9 @@ head(DGE_df1)
 
 **3. Run the code line-by-line, looking at the resultant plot with each new layer. Remember to add + after each layer, then uncomment the next line of code. Study the code and understand what each function (each layer) is adding to the graph before moving on to the next line.** Note, there are four different lines of code using the theme() function. Normally, you can put all your theme arguments into one theme() function, separated by commas. 
 
-**4. Uncomment the ggsave() function, study the code, and run the code chunk. Open up the png from your local drive. Zoom in on the graph. Then, in the ggsave function, change dpi = 200. Take another look at the graph on your local drive.**
+**4. Change color = supp to fill = supp in the aes()function and scale_color_manual(...) to scale_fill_manual(...), Run the code.*** 
+
+**5. Uncomment the ggsave() function, study the code, and run the code chunk. Open up the png from your local drive. Zoom in on the graph. Then, in the ggsave function, change dpi = 200. Take another look at the graph on your local drive.**
 
 ```{r Toothgrowth_df ggplot, fig.height = 3, fig.width = 4}
 

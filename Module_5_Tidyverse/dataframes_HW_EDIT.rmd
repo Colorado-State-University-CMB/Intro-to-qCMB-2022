@@ -167,6 +167,11 @@ stat2_MMR <- sum(data$stat_rep2) / 1000000
 get_pvalue <- function(RPKM_a1,RPKM_a2,RPKM_b1,RPKM_b2){ 
   pval= t.test( x = c(RPKM_a1,RPKM_a2),
                 y = c( RPKM_b1,RPKM_b2) )$p.value
+  
+  if(is.na(pval)){pval = 1}
+  if(pval == Inf){pval = 1}
+  if(pval == -Inf){pval = 0.0001}
+
   return(pval)
 }
 

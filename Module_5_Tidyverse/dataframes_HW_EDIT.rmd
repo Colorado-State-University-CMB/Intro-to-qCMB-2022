@@ -33,13 +33,12 @@ Let's summarize the data. Pipe the ToothGrowth dataframe into the group_by() and
 
 data("ToothGrowth")
 
-ToothGrowth_df <- ToothGrowth %>%
-  group_by(supp, dose) %>%
-  summarize(n=n(), mean = mean(len), sd = sd(len))
+ToothGrowth_df <- ToothGrowth
+  #group_by(supp, dose) %>%
+  #summarize(n=n(), mean = mean(len), sd = sd(len))
 
 head(ToothGrowth_df) # prints the first 6 rows of the dataframe
 #tail(ToothGrowth_df) # prints the last 6 rows of the dataframe
-
 ```
 
 ## ToothGrowth part 2
@@ -59,14 +58,8 @@ Lets build up this dataframe using piping and the functions available in the tid
 
 data("ToothGrowth")
 
-ToothGrowth_df2 <- ToothGrowth %>%
-  group_by(supp, dose) %>%
-  summarize(n=n(), mean = mean(len), sd = sd(len)) %>%
-  dplyr::rename(supplementary_type = supp) %>%
-  mutate("dose (ug/day)" = dose * 1000) %>%
-  select(-dose) %>% 
-  arrange(mean)
-
+ToothGrowth_df2 <- ToothGrowth 
+  # start here. Don't forget to pipe!
 
 ToothGrowth_df2
 ```
@@ -94,13 +87,9 @@ The dataset has already been loaded for you. Run the code chunk bellow and answe
 data("iris")
 
 
-iris_df <- iris %>%
-  gather(key="part_and_dimension", value = "measurement", 1:4) %>%
-  separate(col=part_and_dimension, into=c("part", "dimension")) %>%
-  group_by(Species, part, dimension) %>%
-  summarize(mean_measurement = mean(measurement)) %>%
-  spread(key = dimension, value = mean_measurement)
-  
+iris_df <- iris 
+    # start here. Don't forget to pipe!
+
 
 iris_df
 
@@ -122,9 +111,7 @@ We are going to play with an new dataframe that is not available in R. Import th
 # import tab separated text files
 data <- read.delim("./DGE.tsv", sep="\t")
 
-DGE_df1 <- data %>%
-    gather(key="condition_replicate", value = "counts", 2:5) %>%
-    spread(key = condition_replicate, value = counts)
+DGE_df1 <- data
 
 
 head(DGE_df1,10)
@@ -162,6 +149,8 @@ Let's do some data analysis. We are going to calculate reads per kilobase per mi
 
 **13. Uncomment the last line of code where the final dataframe is saved as DGE_analysis.tsv to your local drive. Run the code and confirm that the final dataframe was saved to a file. **
 
+Your final dataframe should contain ~75 rows, correspoding to ~75 differentially expressed, statistically significant genes.
+
 ```{r DGE part 2, message=FALSE}
 # import tab separated text files
 data <- read.delim("./DGE.tsv", sep="\t")
@@ -181,9 +170,9 @@ get_pvalue <- function(RPKM_a1,RPKM_a2,RPKM_b1,RPKM_b2){
   return(pval)
 }
 
-regulation <- function(log2FC, pvalue){
-  if(log2FC > 1 & pvalue < 0.05){return('upregulated')}
-  else if(log2FC < -1 & pvalue < 0.05){return('downregulated')}
+regulation <- function(log2fc){
+  if(log2fc > 1){return('upregulated')}
+  else if(log2fc < -1){return('downregulated')}
   else{return('unchanged')}
 }
 
@@ -191,23 +180,13 @@ regulation <- function(log2FC, pvalue){
 # Start here. build up the dataframe layer-by-layer using piping. 
 # Don't uncomment the code until the instructions tell you to. 
 
-DGE_df2 <- data %>%
-  merge(y=gene_lengths, by = 'gene_id', all.x=TRUE) %>%
+DGE_df2 <- data
 
-  mutate(expo_RPKM_rep1 = expo_rep1 / (length / 1000)  / expo1_MMR   ) %>%
-  mutate(expo_RPKM_rep2 = expo_rep2 / (length / 1000)  / expo2_MMR   ) %>%
-  mutate(stat_RPKM_rep1 = stat_rep1 / (length / 1000)  / stat1_MMR   ) %>%
-  mutate(stat_RPKM_rep2 = stat_rep2 / (length / 1000)  / stat2_MMR   ) %>%
-
-  select(gene_id, expo_RPKM_rep1, expo_RPKM_rep2, stat_RPKM_rep1, stat_RPKM_rep2) %>%
+  #mutate(expo_RPKM_rep1 = expo_rep1 / (length / 1000)  / expo1_MMR   )
  
-  rowwise() %>%
-    mutate(expo_mean_RPKM = mean(c(expo_RPKM_rep1, expo_RPKM_rep2)) ) %>%
-    mutate(stat_mean_RPKM = mean(c(stat_RPKM_rep1, stat_RPKM_rep2)) ) %>%
-    
-    mutate(log2FC = log2( (expo_mean_RPKM+1) / (stat_mean_RPKM+1) ) ) %>%
-    mutate(pval = get_pvalue(expo_RPKM_rep1, expo_RPKM_rep2, stat_RPKM_rep1, stat_RPKM_rep2)) %>%
-    select(-expo_RPKM_rep1, -expo_RPKM_rep2, -stat_RPKM_rep1, -stat_RPKM_rep2)
+
+  #rowwise() %>%
+    #mutate(expo_mean_RPKM = mean(c(expo_RPKM_rep1, expo_RPKM_rep2)) ) 
 
 
 
@@ -225,7 +204,7 @@ R is really good at detecting the correct data type for each column variable. Bu
 
 ```{r datatypes 1, message=FALSE}
 
-gene_lengths$gene_id <- as.character( gene_lengths$gene_id  ) # convert gene_id to character type
+#gene_lengths$gene_id <- as.character( gene_lengths$gene_id  ) # convert gene_id to character type
 head(gene_lengths,3)
 
 ```
@@ -236,7 +215,7 @@ head(gene_lengths,3)
 
 ## BUG Change to ToothGrowth_df2 !!
 
-ToothGrowth_df2$"dose (ug/day)" <- as.integer( ToothGrowth_df2$"dose (ug/day)" )  # convert dose to integer
+#ToothGrowth_df2$"dose (ug/day)" <- as.integer( ToothGrowth_df2$"dose (ug/day)" )  # convert dose to integer
 head(ToothGrowth_df2,3)
 
 ```
@@ -328,12 +307,14 @@ I have made version 3 of the differential gene expression dataframe. This datafr
 
 ```{r DGE df3}
 
+#Custom function
 regulation <- function(log2FC, pvalue){
   if(log2FC > 1 & pvalue < 0.05){return('upregulated')}
   else if(log2FC < -1 & pvalue < 0.05){return('downregulated')}
   else{return('unchanged')}
 }
 
+#dataframe for volcano plot
 DGE_df3 <- data %>%
   merge(gene_lengths, by="gene_id", all.x=TRUE) %>%
   mutate(expo_RPKM_rep1 = expo_rep1 / (length / 1000)  / expo1_MMR   ) %>%

@@ -13,7 +13,6 @@ library("tidyverse")
 
 ```
 
-
 **Change the author on line 3 to your name**
 
 ## ToothGrowth part 1
@@ -25,7 +24,7 @@ Also, take a look at the code chunk already written for you. The head() function
 
 **Is the data in long format or wide format?:**
 
-Let's summarize the data. Pipe the ToothGrowth dataframe into the group_by() and summarize() functions by adding a pipe (%>%) to the end of line 36 and removing the leading # from lines 37 and 38. The group_by() function will create a row (group) for every unique combination of "supp" and "dose". The summarize() function will take every group and calculate n (n(), number of times that unique combination occurs), mean (mean(len), the mean of values in "len" column for each group), and sd (sd(len), standard deviation of the values in the "len" column for each group). 
+Let's summarize the data. Pipe the ToothGrowth dataframe into the group_by() and summarize() functions by adding a pipe (%>%) to the end of line 40 and removing the leading # from lines 41 and 42. The group_by() function will create a row (group) for every unique combination of "supp" and "dose". The summarize() function will take every group and calculate n (n(), number of times that unique combination occurs), mean (mean(len), the mean of values in "len" column for each group), and sd (sd(len), standard deviation of the values in the "len" column for each group). 
 
 **What datatype is the supp, dose, and n columns?:**
 
@@ -50,7 +49,7 @@ Lets build up this dataframe using piping and the functions available in the tid
 
 **3. Dose is currently in milligrams/day. Lets change is to micrograms/day by create a new column called "dose (ug/day)" that is equal to dose multiplied by 1000 using the mutate() function.** Note, because the new column name includes special characters and spaces, the new column name needs to be in quotes. 
 
-**4. Remove the column called "dose" using the select() function. **
+**4. Remove the column called "dose" using the select() function.**
 
 **5. Sort the data frame (smallest to largest) by mean using arrange()**
 
@@ -203,9 +202,9 @@ head(DGE_df2,10) # print first 10 rows of DGE dataframe
 
 
 ## Data types
-R is really good at detecting the correct data type for each column variable. But, some functions require a specific data type as input, forcing you to manually change the data type if R did not correctly guess the data type. Datatypes include factor (fctr), character (chr), integer (int), and double (dbl; a decimal value). Converting a df column to a new data type is as easy as re-defining the column ( df$column_name <- <new value> ) using one of the following functions: as.factor(), as.character(), as.integer(), as.double(). Lets practice.
+R is really good at detecting the correct data type for each column. But, some functions require a specific data type as input, forcing you to manually change the data type if R did not correctly guess the data type. Data types include factor (fctr), character (chr), integer (int), and double (dbl; a decimal value). Converting a df column to a new data type is as easy as re-defining the column ( df$column_name <- <new value> ) using one of the following functions: as.factor(), as.character(), as.integer(), as.double(). Lets practice.
 
-**1. Run the code chunck. Look at the data types listed under each column name in the gene_lengths dataframe. Then, uncomment the first line of code and run the code chunk again. What datatype did we convert gene_id to?.** Study the syntax. We re-defined the gene_id column from the gene_lengths dataframe (gene_lengths$gene_id) to itself within the as.character() function. 
+**1. Run the code chunk bellow. Look at the data types listed under each column name in the gene_lengths dataframe. Then, uncomment the first line of code and re-run the code again. What data type did we convert gene_id to?.** Study the syntax. We re-defined the gene_id column from the gene_lengths dataframe (gene_lengths$gene_id) to itself within the as.character() function. 
 
 ```{r datatypes 1, message=FALSE}
 
@@ -214,7 +213,7 @@ head(gene_lengths,3)
 
 ```
 
-**2. Run the code chunk and look at the head of the ToothGrowth dataframe and the data types in each column. Re-define the dose column as an integer type by uncommenting the first line** Note that because the column name has spaces and special characters, the column name needs to be in quotations. 
+**2. Run the code chunk and look at the head of the ToothGrowth dataframe and the data types in each column. Re-define the dose column to an integer by uncommenting the first line, then re-run the code. Check that the data type for this column is now an integer.** Note that because the column name has spaces and special characters, the column name needs to be in quotations. 
 
 ```{r datatypes 2, message=FALSE}
 
@@ -225,9 +224,9 @@ head(ToothGrowth_df2,3)
 
 ```
 
-**3a. Run the code chunk bellow and observe the data types in each column of the iris dataframe. Uncomment the first line of code and run the code chunk to see the data types of each column. What column did we re-define and what data type is it now?** 
+**3a. Run the code chunk bellow and observe the data types in each column of the iris dataframe. Uncomment the first line of code and re-run the code to see the data types of each column. What column did we re-define and what data type is it now?** 
 
-**3b Uncomment the second line of code and re-run the code chunk.** Notice that the data frame looks the same. The difference between the functions factor() and as.factor() is that factor() allows you to re-level the column. Columns are automatically leveled in alphabetical and numerical order, but sometimes we want the factors in a column to be ordered in a different way for graphing purposes. For example, if we made a graph with the x axis labels corresponding to the "part" column, the first value on the x axis would be "Petal" and the second would be "Sepal", because "Petal" comes before "Sepal" alphabetically. But Maybe we want "Sepal" to appear first on the x axis, followed by "Petal". In this case, you wold want to re-level this column. 
+**3b Uncomment the second line of code and re-run the code again** Notice that the data frame looks the same. The difference between the functions factor() and as.factor() is that factor() allows you to re-level the column. Columns are automatically leveled in alphabetical and numerical order, but sometimes we want the factors in a column to be ordered in a different way for graphing purposes. For example, if we made a graph with the x axis labels corresponding to the "part" column, the first value on the x axis would be "Petal" and the second would be "Sepal", because "Petal" comes before "Sepal" alphabetically. But Maybe we want "Sepal" to appear first on the x axis, followed by "Petal". In this case, you wold want to re-level the column values as shown in the second line of code. 
 ```{r datatypes 3, message=FALSE}
 
 #iris_df$part <- as.factor( iris_df$part )   # convert part to factor
@@ -254,12 +253,11 @@ head(DGE_df1)
 
 **1. Import the cvt_wide.tsv file using read.delim() and print the dataframe.** It is a tab separated (sep = '\t') file that describes observations from a control and treatment group in triplicate.
 
-**2. Convert the dataframe to long form (aka melt the dataframe) using the gather() function. Make it so there is a column called "group" where treatment and control are listed, and the corresponding values are listed in a column called "observation".** 
+**2. Convert the dataframe to long form (aka. melt the dataframe) using the gather() function. Make it so there is a column called "group" where treatment or control are listed in that column, and the corresponding values are listed in a column called "observation".** 
 
 **3. Group the data by using the group_by() function, so that there are control and treatment groups. Then, summarize the data using the summarize() function. Within the summarize function, create a column for number of observations per group ( n=n() ), the mean of the observations ( mean() ) per group, and the standard deviation ( sd() ) of the observations per group. Print the dataframe.**
 
-**4. Export the dataframe to your local drive using write.table().** Confirm that the dataframe was saved to a text file.  
-
+**4. Export the dataframe to your local drive using write.table().** Confirm that the dataframe was saved to a text file.
 ```{r cvt dataframe, message=FALSE}
 
 
@@ -276,16 +274,16 @@ head(DGE_df1)
 
 **3. Run the code line-by-line, looking at the resultant plot with each new layer. Remember to add + after each layer, then uncomment the next line of code. Study the code and understand what each function (each layer) is adding to the graph before moving on to the next line.** If you did not see the change with the new line of code, comment out the previous line, run the code and take a closer look at the graph. Then uncomment that line of code, running the chunk, and try to find the difference between the graphs. Note, there are four different lines of code using the theme() function. Normally, you can put all your theme arguments into one theme() function, separated by commas.
 
-**4. Change color = supp to fill = supp in the aes() function and scale_color_manual(...) to scale_fill_manual(...). Run the code and look at the plot.*** 
+**4. Change color = dose to fill = dose in the aes() function and scale_color_manual(...) to scale_fill_manual(...). Run the code and look at the plot.**
 
 **5. Uncomment the ggsave() function, study the code, and run the code chunk. Open up the png from your local drive and zoom in on the graph. Then, in the ggsave function, change dpi = 200 and re-run the code. Take another look at the graph on your local drive.**
 
-```{r Toothgrowth_df ggplot, fig.height = 3, fig.width = 4}
+```{r Toothgrowth_df3 ggplot, fig.height = 3, fig.width = 4}
 
 ToothGrowth_df3 <- ToothGrowth
 ToothGrowth_df3$dose <- as.factor(ToothGrowth_df3$dose) 
 
-ggplot(ToothGrowth_df, aes( x = dose, y = len)) +
+ggplot(ToothGrowth_df3, aes( x = dose, y = len, color = dose)) +
   geom_boxplot() 
 #  geom_jitter(size = 1, position = position_dodge(.75)) 
 #  theme_classic() 
@@ -311,13 +309,6 @@ I have made version 3 of the differential gene expression dataframe. This datafr
 **Run the code and look at the head of the data frame. This is the data you will be plotting in the next step. **
 
 ```{r DGE df3}
-
-#Custom function
-regulation <- function(log2FC, pvalue){
-  if(log2FC > 1 & pvalue < 0.05){return('upregulated')}
-  else if(log2FC < -1 & pvalue < 0.05){return('downregulated')}
-  else{return('unchanged')}
-}
 
 #dataframe for volcano plot
 DGE_df3 <- data %>%

@@ -142,7 +142,7 @@ Let's do some data analysis. We are going to calculate reads per kilobase per mi
 
 **10. Lets pull out all the statistically significant, differentially regulated genes. Filter the dataframe so that only rows where the log2FC is greater than 1 OR less than -1. Then, filter so that the dataframe only includes rows where the pvalue is less than 0.05. Run the code and look at the resultant dataframe.**
 
-**11. Create a new column called regulation that is equal to regulation(log2FC).** This is a custom function that returns "upregulated", "downregulated" or "unchanged" depending on whether the gene has increased, decreased, or unchanged gene expression between the exponential and stationary growth phase samples. 
+**11. Create a new column called regulation that is equal to regulation(log2FC, pvalue).** This is a custom function that returns "upregulated", "downregulated" or "unchanged" depending on whether the gene has increased, decreased, or unchanged gene expression between the exponential and stationary growth phase samples. 
 
 **12. Arrange the dataframe by pvalue in ascending order.**
 
@@ -174,11 +174,13 @@ get_pvalue <- function(RPKM_a1,RPKM_a2,RPKM_b1,RPKM_b2){
   return(pval)
 }
 
-regulation <- function(log2fc){
-  if(log2fc > 1){return('upregulated')}
-  else if(log2fc < -1){return('downregulated')}
+
+regulation <- function(log2fc, pval){
+  if(log2fc > 1 & pval < 0.05 ){return('upregulated')}
+  else if(log2fc < -1 & pval < 0.05 ){return('downregulated')}
   else{return('unchanged')}
 }
+
 
 
 # Start here. build up the dataframe layer-by-layer using piping. 
@@ -327,7 +329,7 @@ DGE_df3 <- data %>%
                              stat_RPKM_rep1,
                              stat_RPKM_rep2) )%>%
   select(-expo_RPKM_rep1, -expo_RPKM_rep2,-stat_RPKM_rep1,-stat_RPKM_rep2) %>%
-  mutate(regulation = regulation(log2FC = log2FC, pvalue = pvalue)) %>%
+  mutate(regulation = regulation(log2fc = log2FC, pval = pvalue)) %>%
   arrange(desc(regulation))
 
 head(DGE_df3)
@@ -337,7 +339,7 @@ head(DGE_df3)
 We are going to make a volcano plot of differential gene expression. We are going to plot the log2 fold change on the x axis and the -log10 pvalue on the y axis. Genes that have statistically significant (p < 0.05), decreased gene expression will be in the top left panel of the graph (log2FC < -1 and -log10(pvalue) > 1.3). Genes that have statistically significant, increased expression will be in the top right panel of the graph (log2FC > 1 and -log10(pvalue) > 1.3). If needed, read more about volcano plots here:
 *https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/rna-seq-viz-with-volcanoplot/tutorial.html*
 
-**1. Initialize a ggplot for DGE_df3 and fill in the missing arguments. The x axis will be equal to log2FC and the y axis will be equal to -log10(pvalue). Color the data points using data from the "regulation" column. Add a geom_point in the second layer of the ggplot. Run the code and look at your plot.** 
+**1. Initialize a ggplot for DGE_df3 and fill in the missing arguments. The x axis will be equal to log2FC and the y axis will be equal to -log10(pvalue). Color the data points using data from the "regulation" column. Add the piping operator, + after the first line of code, the add  geom_point in the second layer of the ggplot. Run the code and look at your plot.** 
 
 **2. After you run the code, add a size argument to the geom_point() layer. Set size = 0.5.**
 
@@ -359,7 +361,7 @@ We are going to make a volcano plot of differential gene expression. We are goin
 
 ```{r DGE volcano plot, fig.height = 3, fig.width = 4}
 
-ggplot(data = ..., mapping = aes( x = ..., y = -log10(pvalue), color = ...)) +
+ggplot(data = ..., mapping = aes( x = ..., y = -log10(pvalue), color = ...))
 
 
 

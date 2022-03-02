@@ -18,6 +18,10 @@ How do you get the *first **10** lines* of a file?
 
 How do you get the *first **5** lines* of a file?
 
+How do you get the *last **3** lines* of a file?
+
+How do you get just the third line?
+
 # New commands
 
 ## echo

@@ -178,7 +178,7 @@ A:
 
 Q: Create sonnet_1.txt (containing the first two lines of the sonnet) by first redirecting the contents of line_1.txt and then appending the contents of line_2.txt. `cat line_2.txt >> sonnet_1.txt.`
 
-`echo "From fairest creatures we desire increase," > sonnet_1_copy.txt` , `echo "That thereby beauty's rose might never die," >> sonnet_1_copy.txt` , `diff sonnet_1.txt sonnet_1_copy.txt`
+echo "From fairest creatures we desire increase," > sonnet_1_copy.txt , echo "That thereby beauty's rose might never die," >> sonnet_1_copy.txt , diff sonnet_1.txt sonnet_1_copy.txt
 
 A:
 

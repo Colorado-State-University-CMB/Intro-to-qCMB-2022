@@ -114,8 +114,11 @@ We are going to play with an new dataframe that is not available in R. Import th
 
 # import tab separated text files
 data <- read.delim("./DGE.tsv", sep="\t")
+head(data,10)
 
-DGE_df1 <- data 
+DGE_df1 <- data %>%
+  gather(key="condition_replicate", value="counts", 2:5) %>%
+  spread(key="condition_replicate", value="counts")
 
 
 head(DGE_df1,10)
@@ -130,7 +133,7 @@ Lets do some data analysis. We are going to calculate reads per kilobase per mil
 
 **2. Under DGE_df2 <- data, starting building the dataframe by merging it with gene_lengths on the "gene_id column. Perform a right outer join (all.x=TRUE), and run the code chunk.**
 
-**3. For each of the condition/replicate pair (expo_rep1, expo_re2, stat_rep1, stat_rep2), create a new column that calculates the RPKM. The first one has been done for you, just uncomment the line that starts with  "mutate(expo_RPKM_rep1 = ...". Keep with the same naming conventions and name the columns expo_RPKM_rep2, stat_RPKM_rep1, and stat_RPKM_rep2. There should be 4 new columns added to the dataframe. Run the code chunk.  **
+**3. For each of the condition/replicate pair (expo_rep1, expo_rep2, stat_rep1, stat_rep2), create a new column that calculates the RPKM. The first one has been done for you, just uncomment the line that starts with  "mutate(expo_RPKM_rep1 = ...". Keep with the same naming conventions and name the columns expo_RPKM_rep2, stat_RPKM_rep1, and stat_RPKM_rep2. There should be 4 new columns added to the dataframe. Run the code chunk.  **
 
 **4. Lets clean up the dataframe by selecting ( select() ) the following columns: gene_id, expo_RPKM_rep1, expo_RPKM_rep2, stat_RPKM_rep1, stat_RPKM_rep2. Run the code and look at the resultant dataframe. **
 
@@ -179,16 +182,15 @@ regulation <- function(log2FC){
 
 
 # Start here. build up the dataframe layer-by-layer using piping. Don't uncomment the code until the instructions tell you to. 
-DGE_df2 <- data 
-
-
-
-  #mutate(expo_RPKM_rep1 = expo_rep1 / (length / 1000)  / expo1_MMR   ) %>%
-
- 
-  
- #rowwise() %>%
-    #mutate(expo_mean_RPKM = mean(c(expo_RPKM_rep1, expo_RPKM_rep2)) ) %>%
+DGE_df2 <- data %>% 
+  merge(gene_lengths,by="gene_id",all.x=T) %>%
+  mutate(expo_RPKM_rep1 = expo_rep1 / (length / 1000)  / expo1_MMR   ) %>%
+  mutate(expo_RPKM_rep2 = expo_rep2 / (length / 1000)  / expo2_MMR   ) %>%
+  mutate(stat_RPKM_rep1 = stat_rep1 / (length / 1000)  / stat1_MMR   ) %>%
+  mutate(stat_RPKM_rep2 = stat_rep2 / (length / 1000)  / stat2_MMR   )   %>% select(gene_id, expo_RPKM_rep1, expo_RPKM_rep2, stat_RPKM_rep1, stat_RPKM_rep2) %>% 
+ rowwise() %>%
+   mutate(expo_mean_RPKM = mean(c(expo_RPKM_rep1, expo_RPKM_rep2)) ) %>%
+   mutate(stat_mean_RPKM = mean(c(stat_RPKM_rep1, stat_RPKM_rep2)) ) 
     
 
 
@@ -215,8 +217,8 @@ head(gene_lengths,3)
 
 ```{r datatypes 2, message=FALSE}
 
-#ToothGrowth_df$"dose (ug/day)" <- as.integer( ToothGrowth_df$"dose (ug/day)" )  # convert dose to integer
-head(ToothGrowth_df,3)
+#ToothGrowth_df2$"dose (ug/day)" <- as.integer( ToothGrowth_df2$"dose (ug/day)" )  # convert dose to integer
+head(ToothGrowth_df2,3)
 
 ```
 

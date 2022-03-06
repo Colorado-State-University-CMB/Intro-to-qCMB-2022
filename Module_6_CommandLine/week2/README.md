@@ -4,9 +4,23 @@
 
 Say you inherit someone's project and they have downloaded a bunch of CIF (protein structure files) that aren't named correctly. Luckily, they are text format, and you can read them easily.
 
-**Download and expand CIFs.tgz**
+**Create a directory structure in your working directory.**
 
-`tar -zxvf CIFs.tgz` expands the file, creating a new directory with cif files in them. See [Command reference](https://github.com/Colorado-State-University-CMB/Intro-to-qCMB-2022/edit/main/Module_6_CommandLine/week2/README.md#command-reference)
+```bash
+proj01/
+	pdb/
+		cif/
+	loci/
+		bed/
+		gtf/
+		fasta/
+
+```
+
+**Download and expand CIFs.tgz**
+Go to CIFs.tgz in this github directory and download them. Move the file into `proj01/pdb/cif`.
+
+`tar -zxvf CIFs.tgz` expands the file, creating a new directory with cif files in them. See [Command reference](https://github.com/Colorado-State-University-CMB/Intro-to-qCMB-2022/edit/main/Module_6_CommandLine/week2/README.md#command-reference) for more on [tar](https://github.com/Colorado-State-University-CMB/Intro-to-qCMB-2022/edit/main/Module_6_CommandLine/week2/README.md#tar).
 
 ### Command reference
 

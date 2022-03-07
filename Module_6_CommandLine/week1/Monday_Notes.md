@@ -98,3 +98,30 @@ david@Cumbernauld / % pwd
 
 Play the in-browser game [Terminus](https://web.mit.edu/mprat/Public/web/Terminus/Web/main.html) to get use to file hiearchy navigation. 
 It is especially good at getting you into the habit of ls'ing after cd'ing.
+
+## Command reference
+
+### Navigation
+<dl>
+       <dt>ls</dt>
+       <dd>list directory contents. Use `-a` to list "all", including the dot-files.</dd>
+       <dt>cd</dt>
+       <dd>Change directories. Use `cd ..` to navigate upward in the directory tree. Use `cd` by itself to go to your home directory.</dd>
+       <dt>pwd</dt>
+       <dd>Print Working Directory.</dd>
+</dl>
+
+### Inspection
+<dl>
+       <dt>head</dt>
+       <dd>Like `head` in R, except you supply the number of lines as a separate word like `head -5`, `head -n 5`, or `head -n5`</dd>
+       <dt>tail</dt>
+       <dd>Like head, but tail.</dd>
+       <dt>less</dt>
+       <dd>Page through a document</dd>
+       <dt>file</dt>
+       <dd>Read the file type of a file.  For example, `file textfile` might give `ASCII text`, whereas `file /bin/cp` might give `Mach-O 64-bit executable x86_64`
+       </dd>
+</dl>
+              
+           

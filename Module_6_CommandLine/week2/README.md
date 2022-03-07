@@ -97,6 +97,8 @@ or
 ```curl 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=protein&id=NP_082225.1&rettype=fasta&retmode=text'```
 
 
+I figured out the URL to use from https://www.ncbi.nlm.nih.gov/books/NBK25499/.
+
 ### Command reference
 
 #### tar 

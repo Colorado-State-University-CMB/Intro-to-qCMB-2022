@@ -64,6 +64,17 @@ Once you choose something, you grep it with:
   2. Find a field that mentions the species source (only 3 have one).
   3. Use the single grep command, plus the informative field, to save the result to `species.txt`.
   4. Go to https://www.rcsb.org/ to search your accession numbers and validate your investigative work.
+
+**Get sequences for genes**
+
+Try searching the PDB ID's in ncbi. 
+
+*WebAPI for downloading a sequence from NCBI*
+
+
+
+```curl 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=protein&id=NP_001347554&rettype=fasta&retmode=text'```
+
 ### Command reference
 
 #### tar 

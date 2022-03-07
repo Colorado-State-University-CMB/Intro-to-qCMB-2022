@@ -99,6 +99,25 @@ or
 
 I figured out the URL to use from https://www.ncbi.nlm.nih.gov/books/NBK25499/.
 
+#### Step 5(part 2): Save the protein sequence.
+
+```
+$ curl 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=protein&id=NP_082225.1&rettype=fasta&retmode=text' > NP_082225.1.fasta
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   372    0   372    0     0    740      0 --:--:-- --:--:-- --:--:--   739
+
+$ cat NP_082225.1.fasta 
+>NP_082225.1 PHD finger protein 7 isoform 1 [Mus musculus]
+MKTLKEKNKHPRLRKTIRTKKVTQRKLSSSPVCLLCLQEPGDPEKLGEFLQKDNLCVHYFCLILSSRLPQ
+KGQPNRGLHGFMPEDIKREAVRASKKICFVCKKKGAAIRCQNDQCVQNFHLPCGQERGCLSQFFGEYKSY
+CRKHRPTQNIHQGSLGEESCVLCCENLSRTSVENIQSPCCSQAIYHRKCIQKYAHTSAKHFFKCPQCNNR
+EEFPQEMLRMGIHIPDRDAAWELEPGAFSELYQRYRHCDAPICLYEQGRDSFEDEGRWRLILCATCGSHG
+THRDCSSLRPNSKKWECNECLPASTTS
+```
+
+Move the downloaded file to the directory `proj01/loci/fasta`.
+
 ### Command reference
 
 #### tar 

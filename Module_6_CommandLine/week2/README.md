@@ -116,7 +116,7 @@ EEFPQEMLRMGIHIPDRDAAWELEPGAFSELYQRYRHCDAPICLYEQGRDSFEDEGRWRLILCATCGSHG
 THRDCSSLRPNSKKWECNECLPASTTS
 ```
 
-Move the downloaded file to the directory `proj01/loci/fasta`.
+Move the downloaded file to the directory `proj01/loci/fasta`. Repeat this process for the other PDBs.
 
 ### Command reference
 

@@ -64,13 +64,19 @@ david@Cumbernauld / % pwd
 ```
 
 
-Starting at root (slash), I will navigate back to my home directory, using `pwd` and `ls`
+Starting at root (slash), I will navigate back to my home directory, using `cd`, `pwd` and `ls`
 ```
 david@Cumbernauld / % pwd
 /
 david@Cumbernauld / % ls      
 Applications System       Volumes      cores        etc          opt          sbin         usr
 Library      Users        bin          dev          home         private      tmp          var
+david@Cumbernauld / % cd Users
+david@Cumbernauld /Users % ls
+Shared david
+david@Cumbernauld /Users % cd david
+david@Cumbernauld /Users/david % pwd
+/Users/david
 ```
 
 #### Relative path
@@ -87,3 +93,8 @@ david@Cumbernauld /Users % cd ..
 david@Cumbernauld / % pwd
 /
 ```
+
+## Terminus
+
+Play the in-browser game [Terminus](https://web.mit.edu/mprat/Public/web/Terminus/Web/main.html) to get use to file hiearchy navigation. 
+It is especially good at getting you into the habit of ls'ing after cd'ing.

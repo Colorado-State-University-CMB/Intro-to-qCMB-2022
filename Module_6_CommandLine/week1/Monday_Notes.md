@@ -42,3 +42,13 @@ Windows is similar, but the _path seperator is a backslash (**\\**)_.
 C:\users\
       yournamehere\
 ```
+
+### Navigation
+
+`ls` List your directory contents. For Ubuntu users, this may be blank, as you have just started using it.
+
+_however_,
+
+`ls -a` should reveal more files. These files all start with a '.' and are called _dot files._ They are hidden by convention in order to declutter the output of `ls`. They usually contain configuration issues.
+
+`cd ..`

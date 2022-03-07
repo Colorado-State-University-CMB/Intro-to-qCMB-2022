@@ -42,6 +42,27 @@ wc -l *.cif
    60435 total
 ```
 
+In fact, you can match _all_ files (except dot-files), with the asterisk alone.
+
+```
+wc -l *
+    4075 cif_0.cif
+   25956 cif_1.cif
+   23050 cif_2.cif
+    7354 cif_3.cif
+   60435 total
+```
+
+**Using *less*, choose some fields to grep at in all files**
+
+Once you choose something, you grep it with:
+
+`grep the_pattern *.cif`
+
+**Task**
+  1. Rename each cif file to a meaninful name, (hint: an accession number).
+  2. Find a field that mentions the species source (only 3 have one).
+
 ### Command reference
 
 #### tar 

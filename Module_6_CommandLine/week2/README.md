@@ -72,6 +72,7 @@ Try searching the PDB ID's in ncbi.
 *WebAPI for downloading a sequence from NCBI*
 
 
+![google pdb](/Module_6_CommandLine/week2/images/google.png)
 
 ```curl 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=protein&id=NP_001347554&rettype=fasta&retmode=text'```
 

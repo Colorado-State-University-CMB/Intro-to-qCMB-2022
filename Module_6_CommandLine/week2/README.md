@@ -135,7 +135,7 @@ Use `man tar` to figure out the flags:
   <dt>-f</dt>
   <dd>Specify file.</dd>
   <dt>-x</dt>
-  <dd>...</dd>
+  <dd>Extract (decompress)</dd>
   <dt>-v</dt>
-  <dd>...</dd>
+  <dd>Verbose: list files being expanded or compressed.</dd>
 <dl>

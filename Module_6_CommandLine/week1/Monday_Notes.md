@@ -51,4 +51,39 @@ _however_,
 
 `ls -a` should reveal more files. These files all start with a '.' and are called _dot files._ They are hidden by convention in order to declutter the output of `ls`. They usually contain configuration issues.
 
-`cd ..`
+`cd destination` takes you to a place in the file hierarchy. From the top level, you can go "down" in the hierarchy by supplying just the directory/folder name you wish to travel to.
+
+`pwd` - present working directory. In addition to being displayed by the prompt, you can call up your present working directory explicitly.
+
+```
+david@Cumbernauld /Users/David % pwd
+/Users/David
+david@Cumbernauld /Users/David % cd /
+david@Cumbernauld / % pwd
+/
+```
+
+
+Starting at root (slash), I will navigate back to my home directory, using `pwd` and `ls`
+```
+david@Cumbernauld / % pwd
+/
+david@Cumbernauld / % ls      
+Applications System       Volumes      cores        etc          opt          sbin         usr
+Library      Users        bin          dev          home         private      tmp          var
+```
+
+#### Relative path
+
+You can go "up" using the `..` shortcut.
+
+```
+david@Cumbernauld /Users/david % pwd
+/Users/david
+david@Cumbernauld /Users/david % cd ..
+david@Cumbernauld /Users % pwd
+/Users
+david@Cumbernauld /Users % cd ..
+david@Cumbernauld / % pwd
+/
+```

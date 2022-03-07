@@ -21,7 +21,11 @@ proj01/
 
 Go to CIFs.tgz in this github directory and download them. Move the file into `proj01/pdb/cif`.
 
-`tar -zxvf CIFs.tgz` expands the file, creating a new directory with cif files in them. See [Command reference](https://github.com/Colorado-State-University-CMB/Intro-to-qCMB-2022/edit/main/Module_6_CommandLine/week2/README.md#command-reference) for more on [tar](https://github.com/Colorado-State-University-CMB/Intro-to-qCMB-2022/edit/main/Module_6_CommandLine/week2/README.md#tar).
+`tar -zxvf CIFs.tgz` expands the file, creating a new directory with cif files in them. 
+See [Command reference](https://github.com/Colorado-State-University-CMB/Intro-to-qCMB-2022/blob/main/Module_6_CommandLine/week2/README.md#command-reference) 
+
+
+for more on [tar](https://github.com/Colorado-State-University-CMB/Intro-to-qCMB-2022/blob/main/Module_6_CommandLine/week2/README.md#tar).
 
 **Figure out a field to *grep* on**
 

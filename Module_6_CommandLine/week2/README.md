@@ -60,9 +60,10 @@ Once you choose something, you grep it with:
 `grep the_pattern *.cif`
 
 **Task**
-  1. Rename each cif file to a meaninful name, (hint: an accession number).
+  1. Rename each **cif** file to a meaninful name, (hint: an accession number). Use `mv orig_name new_name` to rename a file.
   2. Find a field that mentions the species source (only 3 have one).
-
+  3. Use the single grep command, plus the informative field, to save the result to `species.txt`.
+  4. Go to https://www.rcsb.org/ to search your accession numbers and validate your investigative work.
 ### Command reference
 
 #### tar 

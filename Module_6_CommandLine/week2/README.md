@@ -88,6 +88,8 @@ Try searching the PDB ID's in ncbi.
 ![google pdb](/Module_6_CommandLine/week2/images/blast_output.png)
 
 
+#### Step 5: Download protein FA from command line.
+
 ```curl 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=protein&id=NP_001347554&rettype=fasta&retmode=text'```
 
 or 

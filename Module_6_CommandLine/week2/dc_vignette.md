@@ -1,6 +1,8 @@
-Taken from https://datacarpentry.org/wrangling-genomics/02-quality-control/index.html.
+
 
 # Bioinformatic workflows
+
+
 
 # Get Data
 
@@ -51,3 +53,6 @@ gunzip SRR2584863_1.fastq.gz
 
 # Documenting our work
 
+---
+
+Adapted from https://datacarpentry.org/wrangling-genomics/02-quality-control/index.html.

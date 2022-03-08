@@ -1,5 +1,6 @@
 Taken from https://datacarpentry.org/wrangling-genomics/02-quality-control/index.html.
 
+# Bioinformatic workflows
 
 # Get Data
 
@@ -36,3 +37,17 @@ We will now assess the quality of the sequence reads contained in our fastq file
 ```
 gunzip SRR2584863_1.fastq.gz
 ```
+
+
+# Assessing quality using FastQC
+
+# Running FastQC
+
+# Viewing the FastQC results
+
+# Decoding the other FastQC outputs
+
+# Working with the FastQC text output
+
+# Documenting our work
+

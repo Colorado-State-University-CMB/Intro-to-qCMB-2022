@@ -1,8 +1,18 @@
 
+# Create Environment
 
-# Bioinformatic workflows
+We need to create a conda environment to house our programs for this workflow, although we won't use them right away.
 
-![](/Module_6_CommandLine/week2/images/variant_calling_workflow.png)
+```
+conda env list
+conda create --name variant-calling fastqc samtools bcftools trimmomatic bwa
+conda env list
+conda activate variant-calling
+
+# confirm programs are there
+bwa -h
+fastqc -h
+```
 
 # Get Data
 
@@ -30,6 +40,11 @@ curl -O ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR258/006/SRR2584866/SRR2584866_1.fa
 curl -O ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR258/006/SRR2584866/SRR2584866_2.fastq.gz
 ```
 
+# Bioinformatic workflows
+
+![](/Module_6_CommandLine/week2/images/variant_calling_workflow.png)
+
+
 # Quality control
 
 We will now assess the quality of the sequence reads contained in our fastq files.
@@ -39,7 +54,6 @@ We will now assess the quality of the sequence reads contained in our fastq file
 ```
 gunzip SRR2584863_1.fastq.gz
 ```
-
 
 # Assessing quality using FastQC
 
@@ -58,8 +72,6 @@ Now let’s take a look at a quality plot on the other end of the spectrum.
 ![](/Module_6_CommandLine/week2/images/bad_quality1.8.png)
 
 # Running FastQC
-
-
 
 # Viewing the FastQC results
 

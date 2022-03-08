@@ -40,10 +40,24 @@ curl -O ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR258/006/SRR2584866/SRR2584866_1.fa
 curl -O ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR258/006/SRR2584866/SRR2584866_2.fastq.gz
 ```
 
+The data comes in a compressed format, which is why there is a `.gz` at the end of the file names. This makes it faster to transfer, and allows it to take up less space on our computer. Let’s unzip one of the files so that we can look at the fastq format.
+
+```
+gunzip SRR2584863_1.fastq.gz
+```
+
 # Bioinformatic workflows
 
 ![](/Module_6_CommandLine/week2/images/variant_calling_workflow.png)
 
+
+1. Quality control - Assessing quality using FastQC
+2. Quality control - Trimming and/or filtering reads (if necessary)
+3. Align reads to reference genome
+4. Perform post-alignment clean-up
+5. Variant calling
+
+These workflows in bioinformatics adopt a plug-and-play approach in that the output of one tool can be easily used as input to another tool without any extensive configuration. Having standards for data formats is what makes this feasible. Standards ensure that data is stored in a way that is generally accepted and agreed upon within the community. The tools that are used to analyze data at different stages of the workflow are therefore built under the assumption that the data will be provided in a specific format.
 
 # Quality control
 
@@ -51,9 +65,19 @@ We will now assess the quality of the sequence reads contained in our fastq file
 
 ![](/Module_6_CommandLine/week2/images/var_calling_workflow_qc.png)
 
-```
-gunzip SRR2584863_1.fastq.gz
-```
+
+# Details on the FASTQ format
+
+Although it looks complicated (and it is), we can understand the fastq format with a little decoding. Some rules about the format include…
+
+| Line	| Description |
+| ------------- | ------------- |
+| 1	| Always begins with ‘@’ and then information about the read |
+| 2	| The actual DNA sequence |
+| 3	| Always begins with a ‘+’ and sometimes the same info in line 1 |
+| 4	| Has a string of characters which represent the quality scores; must have same number of characters as line 2 |
+
+We can view the first complete read in one of the files our dataset by using head to look at the first four lines.
 
 # Assessing quality using FastQC
 

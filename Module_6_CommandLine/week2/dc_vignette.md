@@ -290,7 +290,7 @@ How big are the files? (Hint: Look at the options for the ls command to see how 
 
 ## Viewing the FastQC results
 
-# Decoding the other FastQC outputs
+## Decoding the other FastQC outputs
 
 # Working with the FastQC text output
 

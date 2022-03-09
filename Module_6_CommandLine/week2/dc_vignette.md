@@ -140,7 +140,21 @@ Now let’s take a look at a quality plot on the other end of the spectrum.
 
 ![](/Module_6_CommandLine/week2/images/bad_quality1.8.png)
 
+Here, we see positions within the read in which the boxes span a much wider range. Also, quality scores drop quite low into the “bad” range, particularly on the tail end of the reads. The FastQC tool produces several other diagnostic plots to assess sample quality, in addition to the one plotted above.
+
+
+
 # Running FastQC
+
+We will now assess the quality of the reads that we downloaded. First, make sure you are still in the untrimmed_fastq directory.
+
+```
+$ cd ~/dc_workshop/data/untrimmed_fastq/
+```
+
+**Exercise**
+
+How big are the files? (Hint: Look at the options for the ls command to see how to show file sizes.)
 
 # Viewing the FastQC results
 

@@ -323,7 +323,151 @@ You can then open the html file through your file browser.
 
 # Working with the FastQC text output
 
+Now that we have looked at our HTML reports to get a feel for the data, let’s look more closely at the other output files.
+
+```
+$ cd ~/dc_workshop/results/fastqc_untrimmed_reads/
+$ ls
+```
+
+```
+SRR2584863_1_fastqc.html  SRR2584866_1_fastqc.html  SRR2589044_1_fastqc.html
+SRR2584863_1_fastqc.zip   SRR2584866_1_fastqc.zip   SRR2589044_1_fastqc.zip
+SRR2584863_2_fastqc.html  SRR2584866_2_fastqc.html  SRR2589044_2_fastqc.html
+SRR2584863_2_fastqc.zip   SRR2584866_2_fastqc.zip   SRR2589044_2_fastqc.zip
+```
+
+Our .zip files are compressed files. They each contain multiple different types of output files for a single input FASTQ file. To view the contents of a .zip file, we can use the program unzip to decompress these files. Let’s try doing them all at once using a wildcard.
+
+```
+$ unzip *.zip
+```
+
+```
+Archive:  SRR2584863_1_fastqc.zip
+caution: filename not matched:  SRR2584863_2_fastqc.zip
+caution: filename not matched:  SRR2584866_1_fastqc.zip
+caution: filename not matched:  SRR2584866_2_fastqc.zip
+caution: filename not matched:  SRR2589044_1_fastqc.zip
+caution: filename not matched:  SRR2589044_2_fastqc.zip
+```
+
+This did not work. We unzipped the first file and then got a warning message for each of the other .zip files. This is because unzip expects to get only one zip file as input. We could go through and unzip each file one at a time, but this is very time consuming and error-prone. Someday you may have 500 files to unzip!
+
+A more efficient way is to use a for loop. Let’s see what that looks like and then we will discuss what we are doing with each line of our loop.
+
+```
+$ for filename in *.zip
+> do
+> unzip $filename
+> done
+```
+
+In this example, the input is six filenames (one filename for each of our .zip files). Each time the loop iterates, it will assign a file name to the variable filename and run the unzip command. The first time through the loop, $filename is SRR2584863_1_fastqc.zip. The interpreter runs the command unzip on SRR2584863_1_fastqc.zip. For the second iteration, $filename becomes SRR2584863_2_fastqc.zip. This time, the shell runs unzip on SRR2584863_2_fastqc.zip. It then repeats this process for the four other .zip files in our directory.
+
+When we run our for loop, you will see output that starts like this:
+
+```
+Archive:  SRR2589044_2_fastqc.zip
+   creating: SRR2589044_2_fastqc/
+   creating: SRR2589044_2_fastqc/Icons/
+   creating: SRR2589044_2_fastqc/Images/
+  inflating: SRR2589044_2_fastqc/Icons/fastqc_icon.png
+  inflating: SRR2589044_2_fastqc/Icons/warning.png
+  inflating: SRR2589044_2_fastqc/Icons/error.png
+  inflating: SRR2589044_2_fastqc/Icons/tick.png
+  inflating: SRR2589044_2_fastqc/summary.txt
+  inflating: SRR2589044_2_fastqc/Images/per_base_quality.png
+  inflating: SRR2589044_2_fastqc/Images/per_tile_quality.png
+  inflating: SRR2589044_2_fastqc/Images/per_sequence_quality.png
+  inflating: SRR2589044_2_fastqc/Images/per_base_sequence_content.png
+  inflating: SRR2589044_2_fastqc/Images/per_sequence_gc_content.png
+  inflating: SRR2589044_2_fastqc/Images/per_base_n_content.png
+  inflating: SRR2589044_2_fastqc/Images/sequence_length_distribution.png
+  inflating: SRR2589044_2_fastqc/Images/duplication_levels.png
+  inflating: SRR2589044_2_fastqc/Images/adapter_content.png
+  inflating: SRR2589044_2_fastqc/fastqc_report.html
+  inflating: SRR2589044_2_fastqc/fastqc_data.txt
+  inflating: SRR2589044_2_fastqc/fastqc.fo
+  ```
+  
+The unzip program is decompressing the .zip files and creating a new directory (with subdirectories) for each of our samples, to store all of the different output that is produced by FastQC. There
+
+are a lot of files here. The one we are going to focus on is the summary.txt file.
+
+If you list the files in our directory now you will see:
+
+```
+SRR2584863_1_fastqc       SRR2584866_1_fastqc       SRR2589044_1_fastqc
+SRR2584863_1_fastqc.html  SRR2584866_1_fastqc.html  SRR2589044_1_fastqc.html
+SRR2584863_1_fastqc.zip   SRR2584866_1_fastqc.zip   SRR2589044_1_fastqc.zip
+SRR2584863_2_fastqc       SRR2584866_2_fastqc       SRR2589044_2_fastqc
+SRR2584863_2_fastqc.html  SRR2584866_2_fastqc.html  SRR2589044_2_fastqc.html
+SRR2584863_2_fastqc.zip   SRR2584866_2_fastqc.zip   SRR2589044_2_fastqc.zip
+```
+
+The `.html` files and the uncompressed `.zip` files are still present, but now we also have a new directory for each of our samples. We can see for sure that it is a directory if we use the `-F` flag for `ls`.
+
+```
+$ ls -F
+```
+
+```
+SRR2584863_1_fastqc/      SRR2584866_1_fastqc/      SRR2589044_1_fastqc/
+SRR2584863_1_fastqc.html  SRR2584866_1_fastqc.html  SRR2589044_1_fastqc.html
+SRR2584863_1_fastqc.zip   SRR2584866_1_fastqc.zip   SRR2589044_1_fastqc.zip
+SRR2584863_2_fastqc/      SRR2584866_2_fastqc/      SRR2589044_2_fastqc/
+SRR2584863_2_fastqc.html  SRR2584866_2_fastqc.html  SRR2589044_2_fastqc.html
+SRR2584863_2_fastqc.zip   SRR2584866_2_fastqc.zip   SRR2589044_2_fastqc.zip
+```
+
+Let’s see what files are present within one of these output directories.
+
+```
+$ ls -F SRR2584863_1_fastqc/
+```
+
+```
+fastqc_data.txt  fastqc.fo  fastqc_report.html	Icons/	Images/  summary.txt
+```
+
+Use `less` to preview the `summary.txt` file for this sample.
+
+```
+$ less SRR2584863_1_fastqc/summary.txt
+```
+
+
+```
+PASS    Basic Statistics        SRR2584863_1.fastq
+PASS    Per base sequence quality       SRR2584863_1.fastq
+PASS    Per tile sequence quality       SRR2584863_1.fastq
+PASS    Per sequence quality scores     SRR2584863_1.fastq
+WARN    Per base sequence content       SRR2584863_1.fastq
+WARN    Per sequence GC content SRR2584863_1.fastq
+PASS    Per base N content      SRR2584863_1.fastq
+PASS    Sequence Length Distribution    SRR2584863_1.fastq
+PASS    Sequence Duplication Levels     SRR2584863_1.fastq
+PASS    Overrepresented sequences       SRR2584863_1.fastq
+WARN    Adapter Content SRR2584863_1.fastq
+```
+
+The summary file gives us a list of tests that FastQC ran, and tells us whether this sample passed, failed, or is borderline `(WARN)`. Remember, to quit from `less` you must type `q`.
+
+
 # Documenting our work
+
+We can make a record of the results we obtained for all our samples
+
+by concatenating all of our `summary.txt` files into a single file using the `cat` command. We will call this `fastqc_summaries.txt` and move it to `~/dc_workshop/docs`.
+
+```
+$ cat */summary.txt > ~/dc_workshop/docs/fastqc_summaries.txt
+```
+
+**Exercise**
+
+Which samples failed at least one of FastQC’s quality tests? What test(s) did those samples fail?
 
 ---
 

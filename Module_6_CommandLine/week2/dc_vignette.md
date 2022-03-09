@@ -415,7 +415,7 @@ $ for filename in *.zip
 > done
 ```
 
-In this example, the input is six filenames (one filename for each of our .zip files). Each time the loop iterates, it will assign a file name to the variable filename and run the unzip command. The first time through the loop, $filename is SRR2584863_1_fastqc.zip. The interpreter runs the command unzip on SRR2584863_1_fastqc.zip. For the second iteration, $filename becomes SRR2584863_2_fastqc.zip. This time, the shell runs unzip on SRR2584863_2_fastqc.zip. It then repeats this process for the four other .zip files in our directory.
+In this example, the input is six filenames (one filename for each of our `.zip` files). Each time the loop iterates, it will assign a file name to the variable filename and run the unzip command. The first time through the loop, `$filename` is `SRR2584863_1_fastqc.zip`. The interpreter runs the command `unzip` on `SRR2584863_1_fastqc.zip`. For the second iteration, `$filename` becomes `SRR2584863_2_fastqc.zip`. This time, the shell runs unzip on `SRR2584863_2_fastqc.zip`. It then repeats this process for the four other `.zip` files in our directory.
 
 When we run our for loop, you will see output that starts like this:
 

@@ -10,7 +10,7 @@ conda env list
 conda activate variant-calling
 
 # confirm programs are there
-bwa -h
+bwa 
 fastqc -h
 ```
 
@@ -24,7 +24,7 @@ The data are paired-end, so we will download two files for each sample. We will 
 
 To download the data, run the commands below.
 
-Here we are using the -p option for mkdir. This option allows mkdir to create the new directory, even if one of the parent directories does not already exist. It also supresses errors if the directory already exists, without overwriting that directory.
+Here we are using the `-p` option for `mkdir`. This option allows mkdir to create the new directory, even if one of the parent directories does not already exist. It also supresses errors if the directory already exists, without overwriting that directory.
 
 It will take about 15 minutes to download the files.
 

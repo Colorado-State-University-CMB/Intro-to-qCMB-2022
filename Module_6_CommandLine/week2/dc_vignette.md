@@ -286,7 +286,59 @@ $ cd ~/dc_workshop/data/untrimmed_fastq/
 
 How big are the files? (Hint: Look at the options for the ls command to see how to show file sizes.)
 
+---
 
+FastQC can accept multiple file names as input, and on both zipped and unzipped files, so we can use the *.fastq* wildcard to run FastQC on all of the FASTQ files in this directory.
+
+```
+$ fastqc *.fastq*
+```
+
+You will see an automatically updating output message telling you the progress of the analysis. It will start like this:
+
+```
+Started analysis of SRR2584863_1.fastq
+Approx 5% complete for SRR2584863_1.fastq
+Approx 10% complete for SRR2584863_1.fastq
+Approx 15% complete for SRR2584863_1.fastq
+Approx 20% complete for SRR2584863_1.fastq
+Approx 25% complete for SRR2584863_1.fastq
+Approx 30% complete for SRR2584863_1.fastq
+Approx 35% complete for SRR2584863_1.fastq
+Approx 40% complete for SRR2584863_1.fastq
+Approx 45% complete for SRR2584863_1.fastq
+```
+
+In total, it should take about five minutes for FastQC to run on all six of our FASTQ files. When the analysis completes, your prompt will return. So your screen will look something like this:
+
+```
+Approx 80% complete for SRR2589044_2.fastq.gz
+Approx 85% complete for SRR2589044_2.fastq.gz
+Approx 90% complete for SRR2589044_2.fastq.gz
+Approx 95% complete for SRR2589044_2.fastq.gz
+Analysis complete for SRR2589044_2.fastq.gz
+$
+```
+
+The FastQC program has created several new files within our data/untrimmed_fastq/ directory.
+
+For each input FASTQ file, FastQC has created a `.zip` file and a
+
+`.html` file. The `.zip` file extension indicates that this is actually a compressed set of multiple output files. We will be working with these output files soon. The `.html` file is a stable webpage displaying the summary report for each of our samples.
+
+We want to keep our data files and our results files separate, so we will move these output files into a new directory within our results/ directory.
+
+```
+$ mkdir -p ~/dc_workshop/results/fastqc_untrimmed_reads
+$ mv *.zip ~/dc_workshop/results/fastqc_untrimmed_reads/
+$ mv *.html ~/dc_workshop/results/fastqc_untrimmed_reads/
+```
+
+Now we can navigate into this results directory and do some closer inspection of our output files.
+
+```
+$ cd ~/dc_workshop/results/fastqc_untrimmed_reads/
+```
 
 ## Viewing the FastQC results
 

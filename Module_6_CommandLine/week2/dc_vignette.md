@@ -254,7 +254,7 @@ BUGS
                    
 ```
 
-# Assessing quality using FastQC
+## Assessing quality using FastQC
 
 In real life, you will not be assessing the quality of your reads by visually inspecting your FASTQ files. Rather, you will be using a software program to assess read quality and filter out poor quality reads. We will first use a program called FastQC to visualize the quality of our reads. Later in our workflow, we will use another program to filter out poor quality reads.
 
@@ -274,7 +274,7 @@ Here, we see positions within the read in which the boxes span a much wider rang
 
 
 
-# Running FastQC
+## Running FastQC
 
 We will now assess the quality of the reads that we downloaded. First, make sure you are still in the untrimmed_fastq directory.
 
@@ -288,7 +288,7 @@ How big are the files? (Hint: Look at the options for the ls command to see how 
 
 
 
-# Viewing the FastQC results
+## Viewing the FastQC results
 
 # Decoding the other FastQC outputs
 

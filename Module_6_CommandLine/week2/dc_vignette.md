@@ -294,7 +294,9 @@ Locate the html files by doing:
 
 Ubuntus:
 
-```explorer.exe .```
+```
+explorer.exe .
+```
 
 Macs:
 

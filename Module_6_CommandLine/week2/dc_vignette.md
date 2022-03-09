@@ -122,6 +122,13 @@ CCCFFFFFGHHHHJIJJJJIJJJIIJJJJIIIJJGFIIIJEDDFEGGJIFHHJIJJDECCGGEGIIJFHFFFACD:BBBD
 we can now see that there is a range of quality scores, but that the end of the sequence is very poor (`#`= a quality score of 2).
 
 
+**Exercise**
+
+What is the last read in the SRR2584863_1.fastq file? How confident are you in this read?
+
+
+At this point, lets validate that all the relevant tools are installed.
+
 
 
 # Assessing quality using FastQC

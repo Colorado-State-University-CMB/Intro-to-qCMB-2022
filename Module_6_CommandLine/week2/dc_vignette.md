@@ -308,6 +308,19 @@ You can then open the html file through your file browser.
 
 ## Decoding the other FastQC outputs
 
+<ul>
+  <li><a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/Help/3%20Analysis%20Modules/12%20Per%20Tile%20Sequence%20Quality.html"><strong>Per tile sequence quality</strong></a>: the machines that perform sequencing are divided into tiles. This plot displays patterns in base quality along these tiles. Consistently low scores are often found around the edges, but hot spots can also occur in the middle if an air bubble was introduced at some point during the run.</li>
+  <li><a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/Help/3%20Analysis%20Modules/3%20Per%20Sequence%20Quality%20Scores.html"><strong>Per sequence quality scores</strong></a>: a density plot of quality for all reads at all positions. This plot shows what quality scores are most common.</li>
+  <li><a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/Help/3%20Analysis%20Modules/4%20Per%20Base%20Sequence%20Content.html"><strong>Per base sequence content</strong></a>: plots the proportion of each base position over all of the reads. Typically, we expect to see each base roughly 25% of the time at each position, but this often fails at the beginning or end of the read due to quality or adapter content.</li>
+  <li><a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/Help/3%20Analysis%20Modules/5%20Per%20Sequence%20GC%20Content.html"><strong>Per sequence GC content</strong></a>: a density plot of average GC content in each of the reads.</li>
+  <li><a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/Help/3%20Analysis%20Modules/6%20Per%20Base%20N%20Content.html"><strong>Per base N content</strong></a>: the percent of times that ‘N’ occurs at a position in all reads. If there is an increase at a particular position, this might indicate that something went wrong during sequencing.</li>
+  <li><a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/Help/3%20Analysis%20Modules/7%20Sequence%20Length%20Distribution.html"><strong>Sequence Length Distribution</strong></a>: the distribution of sequence lengths of all reads in the file. If the data is raw, there is often on sharp peak, however if the reads have been trimmed, there may be a distribution of shorter lengths.</li>
+  <li><a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/Help/3%20Analysis%20Modules/8%20Duplicate%20Sequences.html"><strong>Sequence Duplication Levels</strong></a>: A distribution of duplicated sequences. In sequencing, we expect most reads to only occur once. If some sequences are occurring more than once, it might indicate enrichment bias (e.g. from PCR). If the samples are high coverage (or RNA-seq or amplicon), this might not be true.</li>
+  <li><a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/Help/3%20Analysis%20Modules/9%20Overrepresented%20Sequences.html"><strong>Overrepresented sequences</strong></a>: A list of sequences that occur more frequently than would be expected by chance.</li>
+  <li><a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/Help/3%20Analysis%20Modules/10%20Adapter%20Content.html"><strong>Adapter Content</strong></a>: a graph indicating where adapater sequences occur in the reads.</li>
+  <li><a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/Help/3%20Analysis%20Modules/11%20Kmer%20Content.html"><strong>K-mer Content</strong></a>: a graph showing any sequences which may show a positional bias within the reads.</li>
+</ul>
+
 # Working with the FastQC text output
 
 # Documenting our work

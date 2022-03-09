@@ -290,6 +290,20 @@ How big are the files? (Hint: Look at the options for the ls command to see how 
 
 ## Viewing the FastQC results
 
+Locate the html files by doing:
+
+Ubuntus:
+
+```explorer.exe .```
+
+Macs:
+
+```
+open .
+```
+
+You can then open the html file through your file browser.
+
 ## Decoding the other FastQC outputs
 
 # Working with the FastQC text output

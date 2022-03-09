@@ -469,6 +469,4 @@ $ cat */summary.txt > ~/dc_workshop/docs/fastqc_summaries.txt
 
 Which samples failed at least one of FastQC’s quality tests? What test(s) did those samples fail?
 
----
 
-Adapted from https://datacarpentry.org/wrangling-genomics/02-quality-control/index.html.

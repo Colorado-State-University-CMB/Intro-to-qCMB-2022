@@ -66,7 +66,7 @@ We will now assess the quality of the sequence reads contained in our fastq file
 ![](/Module_6_CommandLine/week2/images/var_calling_workflow_qc.png)
 
 
-# Details on the FASTQ format
+## Details on the FASTQ format
 
 Although it looks complicated (and it is), we can understand the fastq format with a little decoding. Some rules about the format include…
 

@@ -91,3 +91,64 @@ We are going to run Trimmomatic on one of our paired-end samples. While using Fa
 ```bash
 $ cp ~/.miniconda3/pkgs/trimmomatic-0.38-0/share/trimmomatic-0.38-0/adapters/NexteraPE-PE.fa .
 ```
+
+!!! We have to search for our installation. !!!
+
+**Do not use cd in the following commands**, stay in the `~/dc_workshop/data/untrimmed_fastq directory`.
+
+#### 1. find your conda install location
+
+```bash
+$ conda env list
+# conda environments:
+#
+base                     /Users/david/opt/miniconda3
+derptools                /Users/david/opt/miniconda3/envs/derptools
+elt-2-rev                /Users/david/opt/miniconda3/envs/elt-2-rev
+variant-calling       *  /Users/david/opt/miniconda3/envs/variant-calling
+
+```
+
+#### 2. Add '/share' to that directory to find your version of trimmomatic
+
+```
+$ ls /Users/david/opt/miniconda3/envs/variant-calling/share
+aclocal            et                 fontconfig         info               man                tabset             trimmomatic        xml
+doc                examples           gettext            locale             nghttp2            terminfo           trimmomatic-0.39-2 zoneinfo
+```
+
+#### 3. Look in the directory with the version attached to find the adapter files
+
+```
+ls /Users/david/opt/miniconda3/envs/variant-calling/share/trimmomatic-0.39-2 
+LICENSE                   build_env_setup.sh        metadata_conda_debug.yaml trimmomatic.jar
+adapters                  conda_build.sh            trimmomatic
+```
+
+There is an `adapters` directory.
+
+```
+$ ls /Users/david/opt/miniconda3/envs/variant-calling/share/trimmomatic-0.39-2/adapters
+NexteraPE-PE.fa TruSeq2-PE.fa   TruSeq2-SE.fa   TruSeq3-PE-2.fa TruSeq3-PE.fa   TruSeq3-SE.fa
+```
+
+#### 4. Copy the adapters to your current directory (should be ~/dc_workshop/untrimmed_fastq)
+
+The adapter sequences are in `NexteraPE-PE.fa`. Copy *yours* to your current directory. 
+
+My copy command is this:
+
+```
+$ cp /Users/david/opt/miniconda3/envs/variant-calling/share/trimmomatic-0.39-2/adapters/NexteraPE-PE.fa .
+```
+
+---
+
+We will also use a sliding window of size 4 that will remove bases if their phred score is below 20 (like in our example above). We will also discard any reads that do not have at least 25 bases remaining after this trimming step. Three additional pieces of code are also added to the end of the ILLUMINACLIP step. These three additional numbers (2:40:15) tell Trimmimatic how to handle sequence matches to the Nextera adapters. A detailed explanation of how they work is advanced for this particular lesson. For now we will use these numbers as a default and recognize they are needed to for Trimmomatic to run properly. This command will take a few minutes to run.
+
+```
+$ trimmomatic PE SRR2589044_1.fastq.gz SRR2589044_2.fastq.gz \
+                SRR2589044_1.trim.fastq.gz SRR2589044_1un.trim.fastq.gz \
+                SRR2589044_2.trim.fastq.gz SRR2589044_2un.trim.fastq.gz \
+                SLIDINGWINDOW:4:20 MINLEN:25 ILLUMINACLIP:NexteraPE-PE.fa:2:40:15
+```

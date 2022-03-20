@@ -32,3 +32,29 @@ This output shows us that we must first specify whether we have paired end (`PE`
 | `<outputFile2P>`	| Output file that contains surviving pairs from the `_2` file. |
 | `<outputFile2U>`	| Output file that contains orphaned reads from the `_2` file.
 
+The last thing trimmomatic expects to see is the trimming parameters:
+
+|step	| meaning |
+| --- | --- |
+| `ILLUMINACLIP`	| Perform adapter removal. | 
+| `SLIDINGWINDOW` | 	Perform sliding window trimming, cutting once the average quality within the window falls below a threshold. |
+| `LEADING`	| Cut bases off the start of a read, if below a threshold quality. |
+| `TRAILING`	| Cut bases off the end of a read, if below a threshold quality. |
+| `CROP`	| Cut the read to a specified length. |
+| `HEADCROP`	| Cut the specified number of bases from the start of the read. |
+| `MINLEN`	| Drop an entire read if it is below a specified length. |
+| `TOPHRED33`	| Convert quality scores to Phred-33. |
+| `TOPHRED64`	|Convert quality scores to Phred-64. |
+
+We will use only a few of these options and trimming steps in our analysis. It is important to understand the steps you are using to clean your data. For more information about the Trimmomatic arguments and options, see the [Trimmomatic manual](http://www.usadellab.org/cms/uploads/supplementary/Trimmomatic/TrimmomaticManual_V0.32.pdf).
+
+However, a complete command for Trimmomatic will look something like the command below. **This command is an example and will not work, as we do not have the files it refers to:**
+
+```bash
+$ trimmomatic PE -threads 4 SRR_1056_1.fastq SRR_1056_2.fastq  \
+              SRR_1056_1.trimmed.fastq SRR_1056_1un.trimmed.fastq \
+              SRR_1056_2.trimmed.fastq SRR_1056_2un.trimmed.fastq \
+              ILLUMINACLIP:SRR_adapters.fa SLIDINGWINDOW:4:20
+```
+
+

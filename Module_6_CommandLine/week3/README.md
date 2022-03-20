@@ -1,3 +1,29 @@
+### From last time
+
+From your home directory (use `cd` without arguments to get there).
+
+```
+$ ls dc_workshop/results/fastqc_untrimmed_reads
+SRR2584863_1_fastqc.html SRR2584863_2_fastqc.html SRR2584866_1_fastqc.html SRR2584866_2_fastqc.html SRR2589044_1_fastqc.html SRR2589044_2_fastqc.html
+SRR2584863_1_fastqc.zip  SRR2584863_2_fastqc.zip  SRR2584866_1_fastqc.zip  SRR2584866_2_fastqc.zip  SRR2589044_1_fastqc.zip  SRR2589044_2_fastqc.zip
+```
+
+Mine also expanded directories in `dc_workshop/data/untrimmed_fastq` (they end in \_fastqc).
+
+Let's move those to the results directory:
+
+```
+$ mv dc_workshop/data/untrimmed_fastq/*_fastqc dc_workshop/results/fastqc_untrimmed_reads
+$ cd dc_workshop/data/untrimmed_fastq 
+$ ls
+SRR2584863_1.fastq    SRR2584863_2.fastq.gz SRR2584866_1.fastq    
+SRR2584866_2.fastq.gz SRR2589044_1.fastq.gz SRR2589044_2.fastq.gz
+```
+
+It should look something like the above, although I unzipped more than one fastq file.
+
+
+
 # Trimming and Filtering
 
 ## Cleaning reads

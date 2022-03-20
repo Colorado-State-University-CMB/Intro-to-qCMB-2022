@@ -176,3 +176,34 @@ TrimmomaticPE: Completed successfully
 ```
 
 Mine took a little over a minute and a half.
+
+### Exercise
+
+Use the output from your Trimmomatic command to answer the following questions.
+
+1) What percent of reads did we discard from our sample? 
+2) What percent of reads did we keep both pairs?
+
+<!--
+1) 0.23% 2) 79.96%
+-->
+
+You may have noticed that Trimmomatic automatically detected the quality encoding of our sample. It is always a good idea to double-check this or to enter the quality encoding manually.
+
+We can confirm that we have our output files:
+
+```
+$ ls SRR2589044*trim*
+SRR2589044_1.trim.fastq.gz   SRR2589044_1un.trim.fastq.gz SRR2589044_2.trim.fastq.gz   SRR2589044_2un.trim.fastq.gz
+SRR2589044_1.fastq.gz       SRR2589044_1un.trim.fastq.gz  SRR2589044_2.trim.fastq.gz
+SRR2589044_1.trim.fastq.gz  SRR2589044_2.fastq.gz         SRR2589044_2un.trim.fastq.gz
+```
+The output files are also FASTQ files. It should be smaller than our input file, because we have removed reads. We can confirm this:
+
+```
+ls -lh SRR2589044*
+-rw-r--r--  1 david  staff    93M Mar 20 15:40 SRR2589044_1.trim.fastq.gz
+-rw-r--r--  1 david  staff    17M Mar 20 15:40 SRR2589044_1un.trim.fastq.gz
+-rw-r--r--  1 david  staff    91M Mar 20 15:40 SRR2589044_2.trim.fastq.gz
+-rw-r--r--  1 david  staff   271K Mar 20 15:40 SRR2589044_2un.trim.fastq.gz
+```

@@ -10,10 +10,26 @@ SRR2584863_1_fastqc.zip  SRR2584863_2_fastqc.zip  SRR2584866_1_fastqc.zip  SRR25
 
 Mine also expanded directories in `dc_workshop/data/untrimmed_fastq` (they end in \_fastqc).
 
+```
+$ ls dc_workshop/results/fastqc_untrimmed_reads
+SRR2584863_2_fastqc          SRR2584866_2_fastqc          SRR2584863_1.fastq           
+SRR2584866_1.fastq           SRR2589044_1.fastq.gz        SRR2589044_2.fastq.gz
+SRR2584863_1_fastqc          SRR2584866_1_fastqc          SRR2584863_2.fastq.gz        
+SRR2584866_2.fastq.gz        SRR2589044_1_fastqc          SRR2589044_2_fastqc
+```
+
 Let's move those to the results directory:
 
 ```
 $ mv dc_workshop/data/untrimmed_fastq/*_fastqc dc_workshop/results/fastqc_untrimmed_reads
+$ ls dc_workshop/results/fastqc_untrimmed_reads                                         
+SRR2584863_1_fastqc      SRR2584863_2_fastqc      SRR2584866_1_fastqc      SRR2584866_2_fastqc      SRR2589044_1_fastqc      SRR2589044_2_fastqc
+SRR2584863_1_fastqc.html SRR2584863_2_fastqc.html SRR2584866_1_fastqc.html SRR2584866_2_fastqc.html SRR2589044_1_fastqc.html SRR2589044_2_fastqc.html
+SRR2584863_1_fastqc.zip  SRR2584863_2_fastqc.zip  SRR2584866_1_fastqc.zip  SRR2584866_2_fastqc.zip  SRR2589044_1_fastqc.zip  SRR2589044_2_fastqc.zip
+```
+
+
+```
 $ cd dc_workshop/data/untrimmed_fastq 
 $ ls
 SRR2584863_1.fastq    SRR2584863_2.fastq.gz SRR2584866_1.fastq    
@@ -23,6 +39,16 @@ SRR2584866_2.fastq.gz SRR2589044_1.fastq.gz SRR2589044_2.fastq.gz
 It should look something like the above, although I unzipped more than one fastq file.
 
 
+### pwd check
+
+Check to make sure you are in `dc_workshop/data/untrimmed_fastq` before proceeding.
+
+```
+$ pwd
+/Users/david/dc_workshop/data/untrimmed_fastq
+```
+
+My home directory `/Users/david/` will differ from yours.
 
 # Trimming and Filtering
 

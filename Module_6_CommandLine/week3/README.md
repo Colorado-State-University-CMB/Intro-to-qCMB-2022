@@ -77,3 +77,17 @@ In this example, we have told Trimmomatic:
 **Some of the commands we ran in this lesson are long!** When typing a long command into your terminal, you can use the `\` character to separate code chunks onto separate lines. This can make your code more readable.
 
 ---
+
+## Running Trimmomatic
+
+Now we will run Trimmomatic on our data. To begin, navigate to your untrimmed_fastq data directory:
+
+```bash
+$ cd ~/dc_workshop/data/untrimmed_fastq
+```
+
+We are going to run Trimmomatic on one of our paired-end samples. While using FastQC we saw that Nextera adapters were present in our samples. The adapter sequences came with the installation of trimmomatic, so we will first copy these sequences into our current directory.
+
+```bash
+$ cp ~/.miniconda3/pkgs/trimmomatic-0.38-0/share/trimmomatic-0.38-0/adapters/NexteraPE-PE.fa .
+```

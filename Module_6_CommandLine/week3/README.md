@@ -71,3 +71,9 @@ In this example, we have told Trimmomatic:
 | `SRR_1056_2un.trimmed.fastq` |	the output file for orphaned reads from the `_2` file |
 | `ILLUMINACLIP:SRR_adapters.fa` | to clip the Illumina adapters from the input file using the adapter sequences listed in `SRR_adapters.fa` |
 | `SLIDINGWINDOW:4:20`	 | to use a sliding window of size 4 that will remove bases if their phred score is below 20 |
+
+---
+
+**Some of the commands we ran in this lesson are long!** When typing a long command into your terminal, you can use the `\` character to separate code chunks onto separate lines. This can make your code more readable.
+
+---

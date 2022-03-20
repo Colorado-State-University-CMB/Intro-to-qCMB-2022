@@ -57,4 +57,17 @@ $ trimmomatic PE -threads 4 SRR_1056_1.fastq SRR_1056_2.fastq  \
               ILLUMINACLIP:SRR_adapters.fa SLIDINGWINDOW:4:20
 ```
 
+In this example, we have told Trimmomatic:
 
+| code	| meaning |
+| ---  | --- |
+| `PE`	| that it will be taking a paired end file as input |
+| `-threads 4`	| to use four computing threads to run (this will speed up our run) |
+| `SRR_1056_1.fastq`	| the first input file name |
+| `SRR_1056_2.fastq`	| the second input file name |
+| `SRR_1056_1.trimmed.fastq` |	the output file for surviving pairs from the `_1` file |
+| `SRR_1056_1un.trimmed.fastq`	| the output file for orphaned reads from the `_1` file |
+| `SRR_1056_2.trimmed.fastq`	| the output file for surviving pairs from the `_2` file |
+| `SRR_1056_2un.trimmed.fastq` |	the output file for orphaned reads from the `_2` file |
+| `ILLUMINACLIP:SRR_adapters.fa` | to clip the Illumina adapters from the input file using the adapter sequences listed in `SRR_adapters.fa` |
+| `SLIDINGWINDOW:4:20`	 | to use a sliding window of size 4 that will remove bases if their phred score is below 20 |

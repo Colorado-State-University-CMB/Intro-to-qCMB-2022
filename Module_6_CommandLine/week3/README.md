@@ -253,7 +253,6 @@ The output files are also FASTQ files. It should be smaller than our input file,
 
 ```
 ls -lh SRR2589044*
-ls -lh SRR2589044*
 -rw-r--r--  1 david  staff   123M Mar  9 08:51 SRR2589044_1.fastq.gz
 -rw-r--r--  1 david  staff    93M Mar 20 15:40 SRR2589044_1.trim.fastq.gz
 -rw-r--r--  1 david  staff    17M Mar 20 15:40 SRR2589044_1un.trim.fastq.gz
@@ -263,6 +262,8 @@ ls -lh SRR2589044*
 ```
 
 We have just successfully run Trimmomatic on one of our FASTQ files! However, there is some bad news. Trimmomatic can only operate on one sample at a time and we have more than one sample. The good news is that we can use a `for` loop to iterate through our sample files quickly!
+
+## Run the rest in a for-loop
 
 We unzipped one of our files before to work with it, let’s compress it again before we run our for loop.
 
@@ -295,6 +296,8 @@ SRR2584863_2.fastq.gz         SRR2584866_2.trim.fastq.gz    SRR2589044_2un.trim.
 SRR2584863_2.trim.fastq.gz    SRR2584866_2un.trim.fastq.gz
 SRR2584863_2un.trim.fastq.gz  SRR2589044_1.fastq.gz
 ```
+
+### Create a "trimmed" output directory.
 
 We have now completed the trimming and filtering steps of our quality control process! Before we move on, let’s move our trimmed FASTQ files to a new subdirectory within our data/ directory.
 

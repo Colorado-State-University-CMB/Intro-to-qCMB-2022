@@ -261,3 +261,51 @@ ls -lh SRR2589044*
 -rw-r--r--  1 david  staff    91M Mar 20 15:40 SRR2589044_2.trim.fastq.gz
 -rw-r--r--  1 david  staff   271K Mar 20 15:40 SRR2589044_2un.trim.fastq.gz
 ```
+
+We have just successfully run Trimmomatic on one of our FASTQ files! However, there is some bad news. Trimmomatic can only operate on one sample at a time and we have more than one sample. The good news is that we can use a `for` loop to iterate through our sample files quickly!
+
+We unzipped one of our files before to work with it, let’s compress it again before we run our for loop.
+
+```
+gzip SRR2584863_1.fastq 
+```
+
+This is second next-level coding here...
+
+```
+$ for infile in *_1.fastq.gz
+> do
+>   base=$(basename ${infile} _1.fastq.gz)
+>   trimmomatic PE ${infile} ${base}_2.fastq.gz \
+>                ${base}_1.trim.fastq.gz ${base}_1un.trim.fastq.gz \
+>                ${base}_2.trim.fastq.gz ${base}_2un.trim.fastq.gz \
+>                SLIDINGWINDOW:4:20 MINLEN:25 ILLUMINACLIP:NexteraPE-PE.fa:2:40:15 
+> done
+```
+
+Go ahead and run the for loop. It should take a few minutes for Trimmomatic to run for each of our six input files. Once it is done running, take a look at your directory contents. You will notice that even though we ran Trimmomatic on file SRR2589044 before running the for loop, there is only one set of files for it. Because we matched the ending \_1.fastq.gz, we re-ran Trimmomatic on this file, overwriting our first results. That is ok, but it is good to be aware that it happened.
+
+```
+$ ls
+NexteraPE-PE.fa               SRR2584866_1.fastq.gz         SRR2589044_1.trim.fastq.gz
+SRR2584863_1.fastq.gz         SRR2584866_1.trim.fastq.gz    SRR2589044_1un.trim.fastq.gz
+SRR2584863_1.trim.fastq.gz    SRR2584866_1un.trim.fastq.gz  SRR2589044_2.fastq.gz
+SRR2584863_1un.trim.fastq.gz  SRR2584866_2.fastq.gz         SRR2589044_2.trim.fastq.gz
+SRR2584863_2.fastq.gz         SRR2584866_2.trim.fastq.gz    SRR2589044_2un.trim.fastq.gz
+SRR2584863_2.trim.fastq.gz    SRR2584866_2un.trim.fastq.gz
+SRR2584863_2un.trim.fastq.gz  SRR2589044_1.fastq.gz
+```
+
+We have now completed the trimming and filtering steps of our quality control process! Before we move on, let’s move our trimmed FASTQ files to a new subdirectory within our data/ directory.
+
+```
+$ cd ~/dc_workshop/data/untrimmed_fastq
+$ mkdir ../trimmed_fastq
+$ mv *.trim* ../trimmed_fastq
+$ cd ../trimmed_fastq
+$ ls
+SRR2584863_1.trim.fastq.gz    SRR2584866_1.trim.fastq.gz    SRR2589044_1.trim.fastq.gz
+SRR2584863_1un.trim.fastq.gz  SRR2584866_1un.trim.fastq.gz  SRR2589044_1un.trim.fastq.gz
+SRR2584863_2.trim.fastq.gz    SRR2584866_2.trim.fastq.gz    SRR2589044_2.trim.fastq.gz
+SRR2584863_2un.trim.fastq.gz  SRR2584866_2un.trim.fastq.gz  SRR2589044_2un.trim.fastq.gz
+```

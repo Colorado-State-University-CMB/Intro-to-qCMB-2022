@@ -222,6 +222,7 @@ You can run this from the command line **_in jupyter hub_**, but let's do a prop
    - Right-click on the *untitled.txt*, and change the name to *trimmomatic.bash*
    - Paste-in the CODE from above.
    - Put `#!/usr/bin/env bash` on the very first line.
+3. Run the script with `bash trimmomatic.bash`
 
 My OUTPUT:
 
@@ -275,6 +276,48 @@ ls -lh SRR2589044*
 
 We have just successfully run Trimmomatic on one of our FASTQ files! However, there is some bad news. Trimmomatic can only operate on one sample at a time and we have more than one sample. The good news is that we can use a `for` loop to iterate through our sample files quickly!
 
+## Convert to a batch script to run on summit
+
+Add the following lines to the script, underneath the first line: `#!/usr/bin/env bash`
+
+```
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --time=0:03:00
+#SBATCH --qos=normal
+#SBATCH --partition=shas
+#SBATCH --job-name=trimmomatic
+```
+
+These are headers that request resources. Once you've inserted them, save the file.
+
+### You *submit* the job now with a slightly different command:
+
+`sbatch trimmomatic.bash`
+
+### Check running and queued jobs with squeue
+
+`squeue -u $USER`
+
+### Check the status with sacct
+
+`sacct -X`
+
+```
+$ sacct -X
+       JobID    JobName  Partition    Account  AllocCPUS      State ExitCode 
+------------ ---------- ---------- ---------- ---------- ---------- -------- 
+9770173      spawner-j+ shas-inte+ csu-gener+          1    RUNNING      0:0
+9770249      trimmomat+       shas csu-gener+          1    PENDING      0:0
+```
+
+### Check the log file
+
+`cat slurm-9770249.out`
+
+(It will have a different number)
+
+
 ## Run the rest in a for-loop
 
 We unzipped one of our files before to work with it, let’s compress it again before we run our for loop.
@@ -283,7 +326,7 @@ We unzipped one of our files before to work with it, let’s compress it again b
 gzip SRR2584863_1.fastq 
 ```
 
-This is second next-level coding here...
+This is next-level coding here...
 
 ```
 $ for infile in *_1.fastq.gz

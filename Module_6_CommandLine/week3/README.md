@@ -211,6 +211,18 @@ $ trimmomatic PE SRR2589044_1.fastq.gz SRR2589044_2.fastq.gz \
                 SLIDINGWINDOW:4:20 MINLEN:25 ILLUMINACLIP:NexteraPE-PE.fa:2:40:15
 ```
 
+You can run this from the command line **_in jupyter hub_**, but let's do a proper script.
+
+1. Sync your file browser with your current directory
+   - Do pwd, copy the output
+   - In the jupyterhub *File* menu, paste the copied path into *Open from Path...*
+   - Click **Open**
+2. Create a text file to make the command into a script.
+   - Open the Launcher: *+*, go down to the bottom row and click **Text file**.
+   - Right-click on the *untitled.txt*, and change the name to *trimmomatic.bash*
+   - Paste-in the CODE from above.
+   - Put `#!/usr/bin/env bash` on the very first line.
+
 My OUTPUT:
 
 ```

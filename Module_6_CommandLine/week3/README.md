@@ -52,6 +52,8 @@ My home directory `/Users/david/` will differ from yours.
 
 # Trimming and Filtering
 
+**The following instructions will specify paths which pertain to my Summit account, rather than a local installation.**
+
 ## Cleaning reads
 In the previous episode, we took a high-level look at the quality of each of our samples using FastQC. We visualized per-base quality graphs showing the distribution of read quality at each base across all reads in a sample and extracted information about which samples fail which quality checks. Some of our samples failed quite a few quality metrics used by FastQC. This does not mean, though, that our samples should be thrown out! It is very common to have some quality metrics fail, and this may or may not be a problem for your downstream application. For our variant calling workflow, we will be removing some of the low quality sequences to reduce our false positive rate due to sequencing error.
 
@@ -135,10 +137,12 @@ In this example, we have told Trimmomatic:
 Now we will run Trimmomatic on our data. To begin, navigate to your untrimmed_fastq data directory:
 
 ```bash
-$ cd ~/dc_workshop/data/untrimmed_fastq
+$ cd /projects/dcking@colostate.edu/variant_calling_dc_workshop/data/untrimmed_fastq
 ```
 
 We are going to run Trimmomatic on one of our paired-end samples. While using FastQC we saw that Nextera adapters were present in our samples. The adapter sequences came with the installation of trimmomatic, so we will first copy these sequences into our current directory.
+
+Example entry DOES NOT APPLY TO SUMMIT.
 
 ```bash
 $ cp ~/.miniconda3/pkgs/trimmomatic-0.38-0/share/trimmomatic-0.38-0/adapters/NexteraPE-PE.fa .
@@ -148,7 +152,7 @@ $ cp ~/.miniconda3/pkgs/trimmomatic-0.38-0/share/trimmomatic-0.38-0/adapters/Nex
 
 !!! We have to search for our installation. !!!
 
-**Do not use cd in the following commands**, stay in the `~/dc_workshop/data/untrimmed_fastq directory`.
+**Do not use cd in the following commands**, stay in the `/projects/dcking@colostate.edu/variant_calling_dc_workshop/data/untrimmed_fastq` the whole time.
 
 #### 1. find your conda install location
 
@@ -156,17 +160,15 @@ $ cp ~/.miniconda3/pkgs/trimmomatic-0.38-0/share/trimmomatic-0.38-0/adapters/Nex
 $ conda env list
 # conda environments:
 #
-base                     /Users/david/opt/miniconda3
-derptools                /Users/david/opt/miniconda3/envs/derptools
-elt-2-rev                /Users/david/opt/miniconda3/envs/elt-2-rev
-variant-calling       *  /Users/david/opt/miniconda3/envs/variant-calling
+base                     /curc/sw/anaconda3/2020.11
+variant-calling       *  /projects/dcking@colostate.edu/software/anaconda/envs/variant-calling
 
 ```
 
 #### 2. Add '/share' to that directory to find your version of trimmomatic
 
 ```
-$ ls /Users/david/opt/miniconda3/envs/variant-calling/share
+$ ls /projects/dcking@colostate.edu/software/anaconda/envs/variant-calling/share
 aclocal            et                 fontconfig         info               man                tabset             trimmomatic        xml
 doc                examples           gettext            locale             nghttp2            terminfo           trimmomatic-0.39-2 zoneinfo
 ```
@@ -174,7 +176,7 @@ doc                examples           gettext            locale             nght
 #### 3. Look in the directory with the version attached to find the adapter files
 
 ```
-ls /Users/david/opt/miniconda3/envs/variant-calling/share/trimmomatic-0.39-2 
+ls /projects/dcking@colostate.edu/software/anaconda/envs/variant-calling/share/trimmomatic-0.39-2 
 LICENSE                   build_env_setup.sh        metadata_conda_debug.yaml trimmomatic.jar
 adapters                  conda_build.sh            trimmomatic
 ```
@@ -182,7 +184,7 @@ adapters                  conda_build.sh            trimmomatic
 There is an `adapters` directory.
 
 ```
-$ ls /Users/david/opt/miniconda3/envs/variant-calling/share/trimmomatic-0.39-2/adapters
+$ ls /projects/dcking@colostate.edu/software/anaconda/envs/variant-calling/share/trimmomatic-0.39-2/adapters
 NexteraPE-PE.fa TruSeq2-PE.fa   TruSeq2-SE.fa   TruSeq3-PE-2.fa TruSeq3-PE.fa   TruSeq3-SE.fa
 ```
 
@@ -193,7 +195,7 @@ The adapter sequences are in `NexteraPE-PE.fa`. Copy *yours* to your current dir
 My copy command is this:
 
 ```
-$ cp /Users/david/opt/miniconda3/envs/variant-calling/share/trimmomatic-0.39-2/adapters/NexteraPE-PE.fa .
+$ cp /projects/dcking@colostate.edu/software/anaconda/envs/variant-calling/share/trimmomatic-0.39-2/adapters/NexteraPE-PE.fa .
 ```
 
 ---
@@ -357,7 +359,7 @@ SRR2584863_2un.trim.fastq.gz  SRR2589044_1.fastq.gz
 We have now completed the trimming and filtering steps of our quality control process! Before we move on, let’s move our trimmed FASTQ files to a new subdirectory within our data/ directory.
 
 ```
-$ cd ~/dc_workshop/data/untrimmed_fastq
+$ cd /projects/dcking@colostate.edu/variant_calling_dc_workshop/data/untrimmed_fastq
 $ mkdir ../trimmed_fastq
 $ mv *.trim* ../trimmed_fastq
 $ cd ../trimmed_fastq

@@ -78,6 +78,90 @@ Have a look at the [bwa options page](http://bio-bwa.sourceforge.net/bwa.shtml).
 
 We are going to start by aligning the reads from just one of the samples in our dataset (SRR2584866). Later, we will be iterating this whole process on all of our sample files.
 
+**In jupyterhub, do:**
+
+```
+bwa mem data/ref_genome/ecoli_rel606.fasta data/trimmed_fastq_small/SRR2584866_1.trim.sub.fastq data/trimmed_fastq_small/SRR2584866_2.trim.sub.fastq > results/sam/SRR2584866.aligned.sam
+```
+
+You will see output that starts like this:
+
+```
+[M::bwa_idx_load_from_disk] read 0 ALT contigs
+[M::process] read 77446 sequences (10000033 bp)...
+[M::process] read 77296 sequences (10000182 bp)...
+[M::mem_pestat] # candidate unique pairs for (FF, FR, RF, RR): (48, 36728, 21, 61)
+[M::mem_pestat] analyzing insert size distribution for orientation FF...
+[M::mem_pestat] (25, 50, 75) percentile: (420, 660, 1774)
+[M::mem_pestat] low and high boundaries for computing mean and std.dev: (1, 4482)
+[M::mem_pestat] mean and std.dev: (784.68, 700.87)
+[M::mem_pestat] low and high boundaries for proper pairs: (1, 5836)
+[M::mem_pestat] analyzing insert size distribution for orientation FR...
+```
+
+### SAM/BAM format
+The [SAM file](https://genome.sph.umich.edu/wiki/SAM), is a tab-delimited text file that contains information for each individual read and its alignment to the genome. While we do not have time to go into detail about the features of the SAM format, the paper by [Heng Li et al.](http://bioinformatics.oxfordjournals.org/content/25/16/2078.full) provides a lot more detail on the specification.
+
+The compressed binary version of SAM is called a BAM file. We use this version to reduce size and to allow for _indexing_, which enables efficient random access of the data contained within the file.
+
+The file begins with a header, which is optional. The header is used to describe the source of data, reference sequence, method of alignment, etc., this will change depending on the aligner being used. Following the header is the alignment section. Each line that follows corresponds to alignment information for a single read. Each alignment line has 11 mandatory fields for essential mapping information and a variable number of other fields for aligner specific information. An example entry from a SAM file is displayed below with the different fields highlighted.
+
+![SAM header example](img/sam_bam.png)
+
+We will convert the SAM file to BAM format using the `samtools` program with the `view` command and tell this command that the input is in SAM format (`-S`) and to output BAM format (`-b`):
+
+**In jupyterhub, do:**
+
+```
+samtools view -S -b results/sam/SRR2584866.aligned.sam > results/bam/SRR2584866.aligned.bam
+```
+
+Output:
+
+```
+[samopen] SAM header is present: 1 sequences.
+```
+
+### Sort BAM file by coordinates
+
+Next we sort the BAM file using the sort command from samtools. -o tells the command where to write the output.
+
+```
+samtools sort -o results/bam/SRR2584866.aligned.sorted.bam results/bam/SRR2584866.aligned.bam 
+```
+
+Our files are pretty small, so we will not see this output. If you run the workflow with larger files, you will see something like this:
+
+```
+[bam_sort_core] merging from 2 files...
+```
+
+SAM/BAM files can be sorted in multiple ways, e.g. by location of alignment on the chromosome, by read name, etc. It is important to be aware that different alignment tools will output differently sorted SAM/BAM, and different downstream tools require differently sorted alignment files as input.
+
+You can use samtools to learn more about this bam file as well.
+
+```
+samtools flagstat results/bam/SRR2584866.aligned.sorted.bam
+```
+
+This will give you the following statistics about your sorted bam file:
+
+```
+351169 + 0 in total (QC-passed reads + QC-failed reads)
+0 + 0 secondary
+1169 + 0 supplementary
+0 + 0 duplicates
+351103 + 0 mapped (99.98% : N/A)
+350000 + 0 paired in sequencing
+175000 + 0 read1
+175000 + 0 read2
+346688 + 0 properly paired (99.05% : N/A)
+349876 + 0 with itself and mate mapped
+58 + 0 singletons (0.02% : N/A)
+0 + 0 with mate mapped to a different chr
+0 + 0 with mate mapped to a different chr (mapQ>=5)
+```
+
 ## Explore the VCF format:
 
 ## Assess the alignment (visualization) - optional step

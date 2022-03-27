@@ -4,7 +4,7 @@ We mentioned before that we are working with files from a long-term evolution st
 
 ## Alignment to reference genome
 
-![This is an image](img/variant_calling_workflow.png)
+![This is an image](img/variant_calling_workflow_align.png)
 
 We perform read alignment or mapping to determine where in the genome our reads originated from. There are a number of tools to choose from and, while there is no gold standard, there are some tools that are better suited for particular NGS analyses. We will be using the Burrows Wheeler Aligner (BWA), which is a software package for mapping low-divergent sequences against a large reference genome.
 
@@ -26,7 +26,7 @@ gunzip data/ref_genome/ecoli_rel606.fasta.gz
 
 <span style="background-color:pink">QUESTION: We saved this file as data/ref_genome/ecoli_rel606.fasta.gz and then decompressed it. What is the real name of the genome?</span>
 
-## Variant calling
+
 
 We will also download a set of trimmed FASTQ files to work with. These are small subsets of our real trimmed data, and will enable us to run our variant calling workflow quite quickly.
 
@@ -162,6 +162,41 @@ This will give you the following statistics about your sorted bam file:
 0 + 0 with mate mapped to a different chr (mapQ>=5)
 ```
 
+## Variant calling
+
+A variant call is a conclusion that there is a nucleotide difference vs. some reference at a given position in an individual genome or transcriptome, often referred to as a Single Nucleotide Variant (SNV). The call is usually accompanied by an estimate of variant frequency and some measure of confidence. Similar to other steps in this workflow, there are a number of tools available for variant calling. In this workshop we will be using `bcftools`, but there are a few things we need to do before actually calling the variants.
+
+![workflow](img/variant_calling_workflow.png)
+
 ## Explore the VCF format:
+
+### Step 1: Calculate the read coverage of positions in the genome
+
+Do the first pass on variant calling by counting read coverage with bcftools. We will use the command mpileup. The flag `-O b` tells `bcftools` to generate a bcf format output file, -o specifies where to write the output file, and -f flags the path to the reference genome:
+
+```
+bcftools mpileup -O b -o results/bcf/SRR2584866_raw.bcf \
+-f data/ref_genome/ecoli_rel606.fasta results/bam/SRR2584866.aligned.sorted.bam
+```
+
+```
+[mpileup] 1 samples in 1 input files
+```
+
+We have now generated a file with coverage information for every base.
+
+### Step 2: Detect the single nucleotide variants (SNVs)
+
+Identify SNVs using bcftools call. We have to specify ploidy with the flag --ploidy, which is one for the haploid E. coli. -m allows for multiallelic and rare-variant calling, -v tells the program to output variant sites only (not every site in the genome), and -o specifies where to write the output file:
+
+```
+bcftools call --ploidy 1 -m -v -o results/vcf/SRR2584866_variants.vcf results/bcf/SRR2584866_raw.bcf 
+```
+
+### Step 3: Filter and report the SNV variants in variant calling format (VCF)
+
+Filter the SNVs for the final output in VCF format, using vcfutils.pl:
+
+`vcfutils.pl varFilter results/bcf/SRR2584866_variants.vcf  > results/vcf/SRR2584866_final_variants.vcf`
 
 ## Assess the alignment (visualization) - optional step

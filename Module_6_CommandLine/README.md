@@ -6,4 +6,4 @@
 
 [Week3 - Variant Calling Part 2 - Read Trimming](week3)
 
-[Week4 - Variant Calling Part 3](week4)
+[Week4 - Variant Calling Part 3 - Alignment](week4)

@@ -24,7 +24,7 @@ curl -L -o data/ref_genome/ecoli_rel606.fasta.gz ftp://ftp.ncbi.nlm.nih.gov/geno
 gunzip data/ref_genome/ecoli_rel606.fasta.gz
 ```
 
-<span style="background-color:pink">QUESTION: We saved this file as data/ref_genome/ecoli_rel606.fasta.gz and then decompressed it. What is the real name of the genome?</span>
+QUESTION: We saved this file as data/ref_genome/ecoli_rel606.fasta.gz and then decompressed it. What is the real name of the genome?
 
 
 
@@ -33,7 +33,7 @@ We will also download a set of trimmed FASTQ files to work with. These are small
 ```
 curl -L -o sub.tar.gz https://ndownloader.figshare.com/files/14418248
 tar xvf sub.tar.gz
-mv sub/ /projects/$USER/dc_workshop/data/trimmed_fastq_small
+mv sub/ data/trimmed_fastq_small
 ```
 
 You will also need to create directories for the results that will be generated as part of this workflow. We can do this in a single line of code, because mkdir can accept multiple new directory names as input.

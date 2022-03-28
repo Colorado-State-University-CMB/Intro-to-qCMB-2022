@@ -348,3 +348,11 @@ Below the horizontal line, we can see all of the reads in our sample aligned wit
 Optional to view on your own computer:
 
 [Viewing with IGV](https://datacarpentry.org/wrangling-genomics/04-variant_calling/index.html#viewing-with-igv)
+
+# Pipeline steps
+
+1. Alignment: `bwa mem`
+2. Format alignment output: `samtools view`, `sort`
+3. Calculate read coverage: `bcftools mpileup`
+3. SNV calling: `bcftools call` 
+4. Filter with vcfutils.pl

@@ -198,7 +198,7 @@ bcftools call --ploidy 1 -m -v -o results/vcf/SRR2584866_variants.vcf results/bc
 
 Filter the SNVs for the final output in VCF format, using vcfutils.pl:
 
-`vcfutils.pl varFilter results/bcf/SRR2584866_variants.vcf  > results/vcf/SRR2584866_final_variants.vcf`
+`vcfutils.pl varFilter results/vcf/SRR2584866_variants.vcf  > results/vcf/SRR2584866_final_variants.vcf`
 
 ## Explore VCF format
 

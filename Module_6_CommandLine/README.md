@@ -15,6 +15,8 @@
 
 https://curc.readthedocs.io/en/latest/
 
+Slides on Partitions and QoS: https://github.com/ResearchComputing/Partition_and_QoS_Fall_2021
+
 ### Stopping your jupyterhub server
 
 It is good practice to stop your server once you are done working.

@@ -1,4 +1,4 @@
-[See the alignment/variant-calling lesson here.](week4/alignment.md)
+[See Monday's alignment/variant-calling lesson here.](week4/alignment.md)
 
 ## Putting the steps together into a script
 

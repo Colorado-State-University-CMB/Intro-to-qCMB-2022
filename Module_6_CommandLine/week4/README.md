@@ -141,8 +141,89 @@ Example output:
 ```
 
 
-### How long did it take?
+### Check output, try other parameters
 
+- Where is the output file? What's in it?
+- How long did it take?
+- Replace ACCESSION with SRR2584863 and rerun
+- Increase `--ntasks` to 5 and rerun
+- Did it go faster?
 
+## Modify to run on all samples at once
 
+The following modification to the script makes use of `basename`, which was used in the trimmomatic script. 
+
+We will use it to extract the accession number from the files matched by `data/trimmed_fastq_small/*_1.trim.sub.fastq`
+
+### Example basename usage
+
+```bash
+$ ls data/trimmed_fastq_small/*_1.trim.sub.fastq
+data/trimmed_fastq_small/SRR2584863_1.trim.sub.fastq  data/trimmed_fastq_small/SRR2584866_1.trim.sub.fastq  data/trimmed_fastq_small/SRR2589044_1.trim.sub.fastq
+$ basename data/trimmed_fastq_small/SRR2584863_1.trim.sub.fastq 
+SRR2584863_1.trim.sub.fastq
+```
+
+Adding a second argument, a file extension, will clip that extension from the filename. For our example, the returned string is the accession number of the sample.
+
+```bash
+$ basename data/trimmed_fastq_small/SRR2584863_1.trim.sub.fastq  _1.trim.sub.fastq
+SRR2584863
+```
+
+To save the value to a variable, wrap the entire command in `$(  )`
+
+```bash
+acc=$(basename data/trimmed_fastq_small/SRR2584863_1.trim.sub.fastq  _1.trim.sub.fastq)
+echo $acc
+SRR2584863
+```
+
+### Script with loop
+
+Using the for-loop introduced in `trimmomatic.bash`, we'll run the `basename` command on each file in turn.
+
+```bash
+#!/usr/bin/env bash
+#SBATCH --nodes=1
+#SBATCH --ntasks=5
+#SBATCH --time=0:15:00
+#SBATCH --qos=normal
+#SBATCH --partition=shas
+#SBATCH --job-name=pipeline-step2
+
+module purge
+source /curc/sw/anaconda3/latest
+conda activate variant-calling
+
+for fname in data/trimmed_fastq_small/*_1.trim.sub.fastq
+do
+    # It is convention to indent the loop contents to make it visually stand out
+
+    # this part extracts the accession number from the string stored in $fname
+    ACCESSION=$(basename $fname _1.trim.sub.fastq)
+    echo "Working on ACCESSION: $ACCESSION"
+
+    # The rest of the body is the same, but notice the done statement at the end!
+
+    # bwa index was run to create the alignment index in data/ref_genome/
+
+    bwa mem -t $SLURM_NTASKS data/ref_genome/ecoli_rel606.fasta \
+    data/trimmed_fastq_small/${ACCESSION}_1.trim.sub.fastq \
+    data/trimmed_fastq_small/${ACCESSION}_2.trim.sub.fastq > results/sam/${ACCESSION}.aligned.sam
+
+    samtools view --threads $SLURM_NTASKS -S -b results/sam/${ACCESSION}.aligned.sam > results/bam/${ACCESSION}.aligned.bam
+    samtools sort --threads $SLURM_NTASKS -o results/bam/${ACCESSION}.aligned.sorted.bam results/bam/${ACCESSION}.aligned.bam 
+
+    bcftools mpileup --threads $SLURM_NTASKS -O b -o results/bcf/${ACCESSION}_raw.bcf \
+    -f data/ref_genome/ecoli_rel606.fasta results/bam/${ACCESSION}.aligned.sorted.bam
+
+    bcftools call --threads $SLURM_NTASKS --ploidy 1 -m -v -o results/vcf/${ACCESSION}_variants.vcf results/bcf/${ACCESSION}_raw.bcf 
+
+    vcfutils.pl varFilter results/vcf/${ACCESSION}_variants.vcf > results/vcf/${ACCESSION}_final_variants.vcf
+
+done  ### <-- DON'T FORGET TO ADD THIS 'done' statement !
+```
+
+Submit the job again using `sbatch`.
 

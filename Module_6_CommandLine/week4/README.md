@@ -324,7 +324,7 @@ vcfutils.pl varFilter results/vcf/${ACCESSION}_variants.vcf > results/vcf/${ACCE
 
 Run with `sbatch --array=0-2 pipeline.bash`
 
-The full data takes much longer, even with 8 CPUs (ntasks):
+The full data takes much longer, even with 6 CPUs (ntasks):
 
 ```
        JobID    JobName  AllocCPUS      State ExitCode    Elapsed  Timelimit              Submit               Start                 End 

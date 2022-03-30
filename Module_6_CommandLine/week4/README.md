@@ -301,6 +301,12 @@ This array script is run with `sbatch --array=0-2 pipeline.bash`, because bash a
 args=( data/trimmed_fastq/*_1.trim.fastq.gz )
 fname=${args[$SLURM_ARRAY_TASK_ID]}
 
+module purge
+source /curc/sw/anaconda3/latest
+conda activate variant-calling
+
+
+
 ACCESSION=$(basename $fname _1.trim.fastq.gz)
 
 echo "Working on ACCESSION: $ACCESSION"

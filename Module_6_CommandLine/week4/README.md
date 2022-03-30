@@ -149,7 +149,7 @@ Example output:
 - Increase `--ntasks` to 5 and rerun
 - Did it go faster?
 
-## Modify to run on all samples at once
+## Modify to run on all samples 
 
 The following modification to the script makes use of `basename`, which was used in the trimmomatic script. 
 
@@ -227,3 +227,54 @@ done  ### <-- DON'T FORGET TO ADD THIS 'done' statement !
 
 Submit the job again using `sbatch`.
 
+## Modify to run on all samples in parallel
+
+We will take advantage of the "array" feature of sbatch to submit 3 instances of the script (3 separate jobs), automatically.
+
+Syntax:
+
+`sbatch --array=1-3 pipeline.bash`
+
+The above example submits pipeline.bash 3 times, but setting the variable `SLURM_ARRAY_TASK_ID` to 1, 2, and 3 for each respective instance.
+
+We can change our script to take advantage of that variable by counting our passes through the loop, and only executing the contents when the loop iteration matches `SLURM_ARRAY_TASK_ID`
+
+```bash
+i=0 # ADD A COUNTER
+for fname in data/trimmed_fastq_small/*_1.trim.sub.fastq
+do
+    i=$((i+1)) # INCREMENT COUNTER
+
+    # SKIP INPUT FILE WHEN THE ARRAY INDEX DOESN'T MATCH
+    if [ $i -ne $SLURM_ARRAY_TASK_ID ]
+    then
+        continue
+    fi  
+    
+    ACCESSION=$(basename $fname _1.trim.sub.fastq)
+    echo "Working on ACCESSION: $ACCESSION"
+
+    # bwa index was run to create the alignment index in data/ref_genome/
+
+    bwa mem -t $SLURM_NTASKS data/ref_genome/ecoli_rel606.fasta \
+    data/trimmed_fastq_small/${ACCESSION}_1.trim.sub.fastq \
+    data/trimmed_fastq_small/${ACCESSION}_2.trim.sub.fastq > results/sam/${ACCESSION}.aligned.sam
+
+    samtools view --threads $SLURM_NTASKS -S -b results/sam/${ACCESSION}.aligned.sam > results/bam/${ACCESSION}.aligned.bam
+    samtools sort --threads $SLURM_NTASKS -o results/bam/${ACCESSION}.aligned.sorted.bam results/bam/${ACCESSION}.aligned.bam 
+
+    bcftools mpileup --threads $SLURM_NTASKS -O b -o results/bcf/${ACCESSION}_raw.bcf \
+    -f data/ref_genome/ecoli_rel606.fasta results/bam/${ACCESSION}.aligned.sorted.bam
+
+    bcftools call --threads $SLURM_NTASKS --ploidy 1 -m -v -o results/vcf/${ACCESSION}_variants.vcf results/bcf/${ACCESSION}_raw.bcf
+
+    vcfutils.pl varFilter results/vcf/${ACCESSION}_variants.vcf > results/vcf/${ACCESSION}_final_variants.vcf
+
+done  ### <-- DON'T FORGET TO ADD THIS 'done' statement !
+```
+
+Try it!
+
+`sbatch --array=1-3 pipeline.bash`
+
+What do you see with `squeue -u $USER` ?

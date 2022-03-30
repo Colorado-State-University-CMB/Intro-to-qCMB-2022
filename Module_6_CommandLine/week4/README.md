@@ -117,7 +117,7 @@ Check the pending/running status with `squeue -u $USER`
 
 Check `sacct -X` for another view.  
 
-!TIP! If you want to use what I do for more information -
+#### !TIP! Set an alias for sacct to return more fields
 
 `sacct -X --format JobID,JobName,AllocCPUS,State,ExitCode,Elapsed,TimeLimit,Submit,Start,End`
 
@@ -141,7 +141,7 @@ Example output:
 ```
 
 
-
+### How long did it take?
 
 
 

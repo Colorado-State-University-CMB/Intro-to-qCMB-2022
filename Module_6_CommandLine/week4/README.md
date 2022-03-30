@@ -336,9 +336,10 @@ The full data takes much longer, even with 8 CPUs (ntasks):
 
 ## Next steps
 
-The fastqc and trimmomatic steps can be added to the beginning of this script, creating a full pipeline that only requires a few steps:
+The fastqc and trimmomatic steps can be added to the beginning of this script, creating a full pipeline that only requires a few steps to set up from scratch:
 
 1. Download data and organize directory structure
 2. Create bwa index
 3. Run pipeline script
 
+What would you have to do to integrate all of the previous commands of fastqc and trimmomatic?

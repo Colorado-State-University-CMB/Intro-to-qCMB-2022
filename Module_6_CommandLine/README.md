@@ -11,6 +11,10 @@
 
 ## Resources and tips
 
+### CURC Documentation
+
+https://curc.readthedocs.io/en/latest/
+
 ### Stopping your jupyterhub server
 
 It is good practice to stop your server once you are done working.

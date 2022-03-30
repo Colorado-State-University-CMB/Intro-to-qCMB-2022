@@ -227,7 +227,9 @@ done  ### <-- DON'T FORGET TO ADD THIS 'done' statement !
 
 Submit the job again using `sbatch`.
 
-## Modify to run on all samples in parallel
+## Array jobs: Modify to run on all samples in parallel
+
+Sometimes the pipeline has too much data to process to complete all samples in the available time (24 hours for normal qos, shas). A solution is to submit a different job individually for each sample. `Array jobs` provide a built-in way to do this in a single command.
 
 We will take advantage of the "array" feature of sbatch to submit 3 instances of the script (3 separate jobs), automatically.
 
@@ -278,3 +280,65 @@ Try it!
 `sbatch --array=1-3 pipeline.bash`
 
 What do you see with `squeue -u $USER` ?
+
+## Script on full data
+
+There are two major changes in this script:
+
+1. Changed all "sub" input files, which are in decompressed fastq, to the original, trimmed samples, which are gzipped (fastq.gz).
+2. Replaced the loop by setting `data/trimmed_fastq/*_1.trim.fastq.gz` to an array, and then select the array entry using $SLURM_ARRAY_TASK_ID.
+
+This array script is run with `sbatch --array=0-2 pipeline.bash`, because bash arrays are 0-based (R is 1-based).
+
+```bash
+#!/usr/bin/env bash
+#SBATCH --nodes=1
+#SBATCH --ntasks=6
+#SBATCH --time=0:20:00
+#SBATCH --qos=normal
+#SBATCH --partition=shas
+#SBATCH --job-name=pipeline
+args=( data/trimmed_fastq/*_1.trim.fastq.gz )
+fname=${args[$SLURM_ARRAY_TASK_ID]}
+
+ACCESSION=$(basename $fname _1.trim.fastq.gz)
+
+echo "Working on ACCESSION: $ACCESSION"
+
+# bwa index was run to create the alignment index in data/ref_genome/
+
+bwa mem -t $SLURM_NTASKS data/ref_genome/ecoli_rel606.fasta \
+data/trimmed_fastq/${ACCESSION}_1.trim.fastq.gz \
+data/trimmed_fastq/${ACCESSION}_2.trim.fastq.gz > results/sam/${ACCESSION}.aligned.sam
+
+samtools view --threads $SLURM_NTASKS -S -b results/sam/${ACCESSION}.aligned.sam > results/bam/${ACCESSION}.aligned.bam
+samtools sort --threads $SLURM_NTASKS -o results/bam/${ACCESSION}.aligned.sorted.bam results/bam/${ACCESSION}.aligned.bam 
+
+bcftools mpileup --threads $SLURM_NTASKS -O b -o results/bcf/${ACCESSION}_raw.bcf \
+-f data/ref_genome/ecoli_rel606.fasta results/bam/${ACCESSION}.aligned.sorted.bam
+
+bcftools call --threads $SLURM_NTASKS --ploidy 1 -m -v -o results/vcf/${ACCESSION}_variants.vcf results/bcf/${ACCESSION}_raw.bcf 
+
+vcfutils.pl varFilter results/vcf/${ACCESSION}_variants.vcf > results/vcf/${ACCESSION}_final_variants.vcf
+```
+
+Run with `sbatch --array=0-2 pipeline.bash`
+
+The full data takes much longer, even with 8 CPUs (ntasks):
+
+```
+       JobID    JobName  AllocCPUS      State ExitCode    Elapsed  Timelimit              Submit               Start                 End 
+------------ ---------- ---------- ---------- -------- ---------- ---------- ------------------- ------------------- -------------------
+9801084_0    pipeline-+          6  COMPLETED      0:0   00:09:37   00:20:00 2022-03-29T17:15:52 2022-03-29T17:15:52 2022-03-29T17:25:29 
+9801084_1    pipeline-+          6  COMPLETED      0:0   00:15:58   00:20:00 2022-03-29T17:15:52 2022-03-29T17:15:52 2022-03-29T17:31:50 
+9801084_2    pipeline-+          6  COMPLETED      0:0   00:06:47   00:20:00 2022-03-29T17:15:52 2022-03-29T17:25:41 2022-03-29T17:32:28 
+```
+
+## Next steps
+
+The fastqc and trimmomatic steps can be added to the beginning of this script, creating a full pipeline that only requires a few steps:
+
+1. Download data and organize directory structure
+2. Create bwa index
+3. Run pipeline script
+

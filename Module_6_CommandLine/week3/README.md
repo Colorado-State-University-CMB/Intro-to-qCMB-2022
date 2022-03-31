@@ -207,7 +207,7 @@ We will also use a sliding window of size 4 that will remove bases if their phre
 CODE:
 
 ```
-$ trimmomatic PE SRR2589044_1.fastq.gz SRR2589044_2.fastq.gz \
+trimmomatic PE SRR2589044_1.fastq.gz SRR2589044_2.fastq.gz \
                 SRR2589044_1.trim.fastq.gz SRR2589044_1un.trim.fastq.gz \
                 SRR2589044_2.trim.fastq.gz SRR2589044_2un.trim.fastq.gz \
                 SLIDINGWINDOW:4:20 MINLEN:25 ILLUMINACLIP:NexteraPE-PE.fa:2:40:15
@@ -224,7 +224,7 @@ You can run this from the command line **_in jupyter hub_**, but let's do a prop
    - Right-click on the *untitled.txt*, and change the name to *trimmomatic.bash*
    - Paste-in the CODE from above.
    - Put `#!/usr/bin/env bash` on the very first line.
-3. Run the script with `bash trimmomatic.bash`
+3. Now from the terminal, run the script with `bash trimmomatic.bash`
 
 My OUTPUT:
 

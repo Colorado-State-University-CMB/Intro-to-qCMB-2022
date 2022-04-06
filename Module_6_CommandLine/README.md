@@ -35,7 +35,9 @@ Files will still be installed in `/projects/$USER`, but through a link which doe
 
 #### An example R environment
 
-\*Make sure bioconda and conda-forge are added to your list of channels.
+\*Make sure bioconda and conda-forge are added to your list of channels. 
+As in: `conda config --add channels conda-forge`
+And: `conda config --add channels bioconda`
 
 You can install R packages directly (search for them with `conda search` to get the precise name).
 

@@ -19,7 +19,7 @@ Conda instructions: https://curc.readthedocs.io/en/latest/software/python.html#c
 
 
 #### Special setup for CSU users 
-... involves using a directy that omits the `@` sign. It is not always necessary, but some PERL code fails.
+... involves using a directory that omits the `@` sign. It is not always necessary, but some PERL code fails.
 
 Below is how I would set up my configuration (username dcking@colostate.edu).
 

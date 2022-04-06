@@ -15,6 +15,25 @@
 
 https://curc.readthedocs.io/en/latest/
 
+Conda instructions: https://curc.readthedocs.io/en/latest/software/python.html#configuring-conda-with-condarc
+
+
+#### Special setup for CSU users 
+... involves using a directy that omits the `@` sign. It is not always necessary, but some PERL code fails.
+
+Below is how I would set up my configuration (username dcking@colostate.edu).
+
+(The warning below is because I already have these settings)
+```
+$ conda activate /curc/sw/anaconda3/latest
+$ conda config --add pkgs_dirs /projects/.colostate.edu/dcking/.conda_pkgs
+Warning: '/projects/.colostate.edu/dcking/.conda_pkgs' already in 'pkgs_dirs' list, moving to the top
+$ conda config --add envs_dirs '/projects/.colostate.edu/dcking/software/anaconda/envs'
+Warning: '/projects/.colostate.edu/dcking/software/anaconda/envs' already in 'envs_dirs' list, moving to the top
+```
+Files will still be installed in `/projects/$USER`, but through a link which doesn't use an `@` sign.
+
+
 Slides on Partitions and QoS: https://github.com/ResearchComputing/Partition_and_QoS_Fall_2021
 
 ### Stopping your jupyterhub server

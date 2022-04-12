@@ -1,4 +1,4 @@
-# Module 6 - Data Visualization
+# Module 9 - Data Visualization
 
 Guest instructor: Dan Sloan
 

@@ -29,7 +29,8 @@ library(tibble)
 # r-usethis
 # r-dplyr
 # r-tibble
-
+# conda create --name jess-mod r-base=4 r-biomartr r-usethis r-dplyr r-tibble
+# or conda env create -f environment.yml
 ```
 
 ***

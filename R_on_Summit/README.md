@@ -4,7 +4,7 @@ See another example R environment setup here: https://github.com/Colorado-State-
 
 To get ready:
 
-Open Github desktop and Fetch/Pull. Go to 
+Open Github desktop and Fetch/Pull. Go to the directory R_on_Summit.
 
 Steps:
 1. Configure R environment on Summit if you haven't already. Install libraries if needed.

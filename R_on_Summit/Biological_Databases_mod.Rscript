@@ -1,0 +1,172 @@
+#!/usr/bin/env Rscript
+## ----setup, include=FALSE-----------------------------------------------------------
+#knitr::opts_chunk$set(echo = TRUE, error = TRUE, warning = FALSE)
+
+
+## ---- message=FALSE-----------------------------------------------------------------
+# if you havent yet installed these packages please uncomment and do so now
+#install.packages(c("usethis", "devtools", "dplyr", "tibble"))
+#devtools::install_github('Timag/imageclipr')
+#BiocManager::install("biomaRt")
+
+
+## ---- message=FALSE-----------------------------------------------------------------
+# packages to load 
+library(usethis)
+library(biomaRt)
+library(dplyr)
+library(tibble)
+#library(imageclipr)
+
+
+## -----------------------------------------------------------------------------------
+mart <- useMart("parasite_mart", dataset = "wbps_gene", host = "https://parasite.wormbase.org", port = 443)
+
+
+## -----------------------------------------------------------------------------------
+head(listFilters(mart)) # I commented them out becease there are A LOT 
+head(listAttributes(mart))
+
+
+## -----------------------------------------------------------------------------------
+genes <- getBM(mart = mart,
+                      filters = list(species_id_1010 = "caelegprjna13758", biotype = "protein_coding"),
+               attributes = c("wbps_gene_id", "external_gene_id"))
+
+
+## -----------------------------------------------------------------------------------
+head(genes)
+
+
+## -----------------------------------------------------------------------------------
+# we can check with the class() and str() functions
+class(genes)
+str(genes)
+
+
+## -----------------------------------------------------------------------------------
+print(length(unique(genes$wbps_gene_id)))
+
+
+## -----------------------------------------------------------------------------------
+genes %>% filter(grepl("clec", external_gene_id)) -> clec_genes
+head(clec_genes)
+
+
+## -----------------------------------------------------------------------------------
+print(length(clec_genes$wbps_gene_id))
+
+
+## -----------------------------------------------------------------------------------
+# First, lets make a new object containing all the clec wbps_gene_id. 
+clec_gene_ids <- clec_genes$wbps_gene_id
+head(clec_gene_ids, 20)
+
+
+## -----------------------------------------------------------------------------------
+mart <- useMart("parasite_mart", dataset = "wbps_gene", host = "https://parasite.wormbase.org", port = 443)
+
+
+## -----------------------------------------------------------------------------------
+clec_pro_domains <- getBM(mart = mart,
+                      filters = list(wbps_gene_id = clec_gene_ids),
+                      attributes = c("wbps_gene_id", "external_gene_id", "wbps_peptide_id", "interpro_id", "interpro_short_description", "transmembrane_domain", "signal_domain"))
+
+
+## ---- include=FALSE-----------------------------------------------------------------
+head(clec_pro_domains)
+
+
+## -----------------------------------------------------------------------------------
+head(unique(clec_pro_domains$interpro_short_description))
+
+# this should output the same value, does it? 
+head(unique(clec_pro_domains$interpro_id))
+
+
+## -----------------------------------------------------------------------------------
+freq_pro_doms <- table(clec_pro_domains$interpro_short_description)
+head(sort(freq_pro_doms, decreasing = TRUE)) 
+# the frequency of clec proteins associated with a particular protein domain. 
+
+
+## -----------------------------------------------------------------------------------
+mean(freq_pro_doms)
+median(freq_pro_doms)
+max(freq_pro_doms)
+min(freq_pro_doms)
+range(freq_pro_doms) # we also get our min and max data points using range
+hist(freq_pro_doms) # look at distribution of the data 
+
+
+## -----------------------------------------------------------------------------------
+# function used to produce result summaries. Depends on the class of the R object 
+summary(freq_pro_doms) # why didn't this work?  
+
+# determine the class of any R objects 'internal' type  
+class(freq_pro_doms) 
+
+# determine the (R internal) type or storage mode of any object
+typeof(freq_pro_doms) 
+
+
+## -----------------------------------------------------------------------------------
+quantile(freq_pro_doms)
+
+boxplot(freq_pro_doms)
+
+
+## -----------------------------------------------------------------------------------
+sorted_doms <- sort(freq_pro_doms, decreasing = TRUE)
+sorted_doms <- as.data.frame(sorted_doms)
+top9 <- sorted_doms[1:9, ]
+head(top9)
+print(top9)
+
+clec_pro_domains[, 4:5] %>% filter(interpro_short_description %in% top9[,1]) -> Top9domIDs
+head(unique(Top9domIDs))
+print(unique(Top9domIDs))
+
+
+## -----------------------------------------------------------------------------------
+# this new dataset will contain all of the CLECs with only a predicted transmembrane domain
+CLECs_TM <- clec_pro_domains %>% filter(transmembrane_domain == 'TMhelix' & signal_domain != 'SignalP-noTM' & signal_domain != 'SignalP-TM')
+head(CLECs_TM)
+
+# this new dataset will contain all of the CLECs with both a predicted transmembrane domain and a cleavage site
+CLECs_TM_SP <- clec_pro_domains %>% filter(transmembrane_domain == 'TMhelix' & (signal_domain == 'SignalP-noTM' | signal_domain == 'SignalP-TM'))
+head(CLECs_TM_SP)
+
+# this new dataset will contain all of the CLECs with only a predicted cleavage site/signal peptide
+CLECs_SP <- clec_pro_domains %>% filter(transmembrane_domain != 'TMhelix' & (signal_domain == 'SignalP-noTM' | signal_domain == 'SignalP-TM'))
+head(CLECs_SP)
+
+# this new dataset will contain all of the CLECs without any predicted transmembrane domain or cleavage site
+CLECs_CS <- clec_pro_domains %>% filter(transmembrane_domain != 'TMhelix' & signal_domain != 'SignalP-noTM' & signal_domain != 'SignalP-TM')
+head(CLECs_CS) 
+
+
+## -----------------------------------------------------------------------------------
+a <- length(unique(clec_genes$external_gene_id)) # total number of clec genes
+a
+
+# what percentage of CLECs are membrane bound?
+b <- length(unique((CLECs_TM$external_gene_id)))
+(b/a)*100
+
+# what percentage of CLECs are secreted? 
+c <- length(unique(CLECs_SP$external_gene_id))
+(c/a)*100
+
+# what percentage of CLECs are cytosolic? 
+d <- length(unique(CLECs_CS$external_gene_id))
+(d/a)*100
+  
+# what percentage of CLECs have both a signla peptide and TM doamin 
+e <- length(unique(CLECs_TM_SP$external_gene_id)) 
+(e/a)*100
+
+
+## -----------------------------------------------------------------------------------
+b+c+d+e
+

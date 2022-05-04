@@ -23,6 +23,13 @@ library(biomaRt)
 library(dplyr)
 library(tibble)
 #library(imageclipr)
+
+#conda:
+# r-biomartr
+# r-usethis
+# r-dplyr
+# r-tibble
+
 ```
 
 ***
@@ -113,8 +120,8 @@ mart <- useMart("parasite_mart", dataset = "wbps_gene", host = "https://parasite
 
 We can then list the available filters and attributes to pick from 
 ```{r}
-listFilters(mart) # I commented them out becease there are A LOT 
-#listAttributes(mart)
+head(listFilters(mart)) # I commented them out becease there are A LOT 
+head(listAttributes(mart))
 ```
 
 Now lets build our query. 
@@ -258,6 +265,9 @@ typeof(freq_pro_doms)
 quantile(freq_pro_doms)
 
 boxplot(freq_pro_doms)
+
+
+
 ```
 
 Lets pull out the top 9 protein domains and IDs

@@ -1,0 +1,36 @@
+conda info
+
+     active environment : base
+    active env location : /Users/david/miniconda3
+            shell level : 1
+       user config file : /Users/david/.condarc
+ populated config files : /Users/david/.condarc
+          conda version : 4.12.0
+    conda-build version : not installed
+         python version : 3.8.3.final.0
+       virtual packages : __osx=10.16=0
+                          __unix=0=0
+                          __archspec=1=x86_64
+       base environment : /Users/david/miniconda3  (writable)
+      conda av data dir : /Users/david/miniconda3/etc/conda
+  conda av metadata url : None
+           channel URLs : https://conda.anaconda.org/bioconda/osx-64
+                          https://conda.anaconda.org/bioconda/noarch
+                          https://conda.anaconda.org/conda-forge/osx-64
+                          https://conda.anaconda.org/conda-forge/noarch
+                          https://repo.anaconda.com/pkgs/main/osx-64
+                          https://repo.anaconda.com/pkgs/main/noarch
+                          https://repo.anaconda.com/pkgs/r/osx-64
+                          https://repo.anaconda.com/pkgs/r/noarch
+          package cache : /Users/david/miniconda3/pkgs
+                          /Users/david/.conda/pkgs
+       envs directories : /opt/anaconda3
+                          /opt/anaconda3/envs
+                          /Users/david/miniconda3/envs
+                          /Users/david/.conda/envs
+               platform : osx-64
+             user-agent : conda/4.12.0 requests/2.27.1 CPython/3.8.3 Darwin/21.4.0 OSX/10.16
+                UID:GID : 504:20
+             netrc file : None
+           offline mode : False
+

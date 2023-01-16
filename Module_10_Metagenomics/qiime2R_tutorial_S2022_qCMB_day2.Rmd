@@ -106,9 +106,15 @@ We will do this using a tool called ANCOM-BC. In short, ANCOM-BC (https://www.na
 # if R asks to update packages, say all and press enter, and then say 'yes' when prompted
 if (!requireNamespace("BiocManager", quietly = TRUE))
   install.packages("BiocManager")
+<<<<<<< Updated upstream
 BiocManager::install("ANCOMBC")
 BiocManager::install("phyloseq")
 BiocManager::install("microbiome")
+=======
+#BiocManager::install("ANCOMBC")
+#BiocManager::install("phyloseq")
+#BiocManager::install("microbiome")
+>>>>>>> Stashed changes
 ```
 
 # You can install DT from the CRAN repository.

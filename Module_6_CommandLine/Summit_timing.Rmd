@@ -1,0 +1,24 @@
+---
+title: "Summit Fun"
+author: "David C. King"
+date: "3/28/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+library(ggplot2)
+```
+
+## Summit Job Timings
+
+
+```{r trimmomatic-timings}
+
+ntasks = c(1,2,4,8,16,16)
+elapsed = c(10.5,3.75,4,3.5,(3*60+48)/60,(3*60+24)/60)
+df = data.frame(ntasks, elapsed)
+df %>% ggplot(aes(x=ntasks,y=elapsed)) + geom_line()  + geom_point() + ggtitle("Trimmomatic elapsed time versus ntasks")
+```
+

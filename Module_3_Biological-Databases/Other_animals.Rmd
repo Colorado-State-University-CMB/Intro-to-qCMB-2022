@@ -1,0 +1,59 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message=FALSE)
+library(biomaRt)
+```
+## Databases OTHER than *C. elegans*.
+
+```{r ensembl}
+
+mart <- useEnsembl("ensembl")
+listDatasets(mart)
+# see the output for the available datasets there 
+```
+Mine gave the first row as `Pink-footed goose genes (ASM259213v1)` (WOW! EXOTIC!). In the version column, it reads: 'ASM259213v1', same as in parentheses of the "description".
+
+```{r search datasets}
+searchDatasets(mart = mart, pattern = "mouse")
+
+```
+Mine gave five datasets with "mouse" in the name. Looks like it pertains to 5 different species, but I don't see the common model species *Mus musculus.*
+
+```{r where-is-mouse}
+
+searchDatasets(mart = mart, pattern = "musculus")
+```
+The problem was it needed to be 'Mouse' instead of 'mouse'. Here's how to search for either.
+
+```{r search-for-capital-or-lowercase-mouse}
+searchDatasets(mart = mart, pattern = "[Mm]ouse")
+
+# choose the boring one
+mart = useDataset("mmusculus_gene_ensembl", mart=mart)
+```
+
+## build up a query to get all genes' chromosome locations
+```{r build-up-a-query}
+listAttributes(mart) 
+# I'll use chromosome_name, start_position, end_position and ensembl_gene_id
+# but first, how do we supply filters?
+listFilters(mart) 
+
+# biotype is there, like in the C. elegans examples
+listFilterOptions(mart, "biotype")
+
+# still using "protein_coding", although look at all the options!!!
+```
+
+```{r the-query}
+
+bm = getBM(attributes = c("chromosome_name", "start_position", "end_position", "external_gene_name", "ensembl_gene_id"),filters = list(biotype="protein_coding"), mart=mart)
+```
+
+```{r the-data}
+bm %>% dim() # 21,884 genes
+```
